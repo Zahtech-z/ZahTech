@@ -20,8 +20,8 @@ dist-ssr
 .wrangler/
 .dev.vars
 
-# Vercel
-.vercel/
+# Vercel build output
+/output
 
 # Editor directories and files
 .vscode/*
@@ -33,3 +33,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
