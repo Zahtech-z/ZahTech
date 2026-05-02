@@ -2,8 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { TrustedStack } from "@/components/site/TrustedStack";
-import { Services } from "@/components/site/Services";
+import { CodeTabs } from "@/components/site/CodeTabs";
 import { Experience } from "@/components/site/Experience";
+import { Features } from "@/components/site/Features";
+import { CodePreview } from "@/components/site/CodePreview";
+import { Brief } from "@/components/site/Brief";
+import { Services } from "@/components/site/Services";
+import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
@@ -11,10 +16,10 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "ZahTech — Tech for businesses that ship" },
-      { name: "description", content: "ZahTech assembles modern software, cloud, and AI into products your customers love. Web, mobile, DevOps, and security." },
-      { property: "og:title", content: "ZahTech — Tech for businesses that ship" },
-      { property: "og:description", content: "Engineering excellence, delivered. Web, cloud, AI, mobile, security, and data services." },
+      { title: "ZahTech — Tech for businesses" },
+      { name: "description", content: "The best way to build, deploy and scale your digital product. From MVP to enterprise — delivered fast." },
+      { property: "og:title", content: "ZahTech — Tech for businesses" },
+      { property: "og:description", content: "Build, deploy and scale your digital product with ZahTech." },
     ],
   }),
 });
@@ -25,8 +30,13 @@ function Index() {
       <Nav />
       <Hero />
       <TrustedStack />
-      <Services />
+      <CodeTabs />
       <Experience />
+      <Features />
+      <CodePreview />
+      <Brief />
+      <Services />
+      <Process />
       <Contact />
       <Footer />
     </main>
