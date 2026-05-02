@@ -203,9 +203,29 @@ export const translations = {
       copyright: "© 2026 ZahTech LLC · contact@zahtech.org",
     },
   },
-} as const;
+};
 
-type Translations = (typeof translations)["en"];
+type ServiceItem = { title: string; desc: string };
+type ProcessStep = { title: string; desc: string };
+
+export type Translations = {
+  nav: { services: string; process: string; stack: string; work: string; contact: string; login: string; cta: string };
+  hero: { badge: string; heading1: string; heading2: string; sub: string; cta: string; secondary: string };
+  services: { heading: string; items: ServiceItem[] };
+  process: { heading: string; steps: ProcessStep[] };
+  contact: {
+    heading: string; sub: string;
+    nameLabel: string; namePlaceholder: string;
+    emailLabel: string; emailPlaceholder: string;
+    servicesLabel: string;
+    budgetLabel: string; budgetDefault: string;
+    timelineLabel: string; timelineDefault: string;
+    descLabel: string; descPlaceholder: string;
+    submit: string; submitting: string; note: string;
+    successTitle: string; successDesc: string;
+  };
+  footer: { tagline: string; services: string; company: string; connect: string; copyright: string };
+};
 
 interface LangContextValue {
   lang: Lang;
