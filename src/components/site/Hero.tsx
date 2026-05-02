@@ -1,7 +1,6 @@
-import { Cpu, Database, Cloud, Code2, Box, Zap, Server, GitBranch, Layers } from "lucide-react";
+import { Cpu, Database, Cloud, Code2, Box, Zap, Server, GitBranch, Layers, ChevronRight } from "lucide-react";
 
 export function Hero() {
-  // Assembly nodes with random start offsets
   const nodes = [
     { Icon: Code2, x: -180, y: -80, delay: 0 },
     { Icon: Database, x: 200, y: -120, delay: 0.08 },
@@ -14,47 +13,53 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      <div className="absolute inset-0 bg-radial-fade" />
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Resend-style ambient lighting */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute -bottom-32 left-1/4 h-64 w-[60%] rotate-[-3deg] bg-gradient-to-r from-transparent via-primary/15 to-transparent blur-2xl" />
+      </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-32 md:pb-40">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated px-3 py-1 text-xs text-muted-foreground animate-float-in">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-slow" />
-            Engineering excellence, delivered.
-          </div>
-          <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-            Tech for <span className="italic text-primary">businesses</span>
-            <br />that ship.
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-40 pb-32 lg:grid-cols-2 lg:pt-48">
+        {/* Left: copy */}
+        <div className="animate-float-in">
+          <a href="#services" className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs text-foreground/90 backdrop-blur">
+            <span className="bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent">Announcing ZahTech AI</span>
+            <ChevronRight className="h-3 w-3 text-primary" />
+          </a>
+          <h1 className="text-balance font-display text-6xl font-medium leading-[0.95] tracking-tight text-foreground/95 md:text-7xl lg:text-[88px]">
+            Tech for
+            <br />
+            <span className="bg-gradient-to-b from-foreground to-foreground/40 bg-clip-text text-transparent">businesses</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-balance text-base text-muted-foreground md:text-lg">
-            ZahTech assembles modern software, infrastructure, and AI into products your customers love — and your team can maintain.
+          <p className="mt-8 max-w-md text-base text-muted-foreground md:text-lg">
+            The best way to ship software, infrastructure, and AI. Build production-grade systems at scale.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-3">
-            <a href="#contact" className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
-              Start a project
+          <div className="mt-10 flex items-center gap-3">
+            <a href="#contact" className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90">
+              Get started
             </a>
-            <a href="#services" className="rounded-md border border-border bg-surface-elevated px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary">
-              Explore services
+            <a href="#services" className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              Documentation
             </a>
           </div>
         </div>
 
-        {/* Assembly animation */}
-        <div className="relative mx-auto mt-20 h-[320px] w-full max-w-2xl">
+        {/* Right: assembly cube */}
+        <div className="relative h-[420px] w-full lg:h-[500px]">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
-              className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-primary/40 bg-surface-elevated shadow-[0_0_60px_-10px_oklch(0.74_0.14_280/0.6)] animate-assemble"
+              className="relative flex h-28 w-28 items-center justify-center rounded-2xl border border-primary/40 bg-surface-elevated shadow-[0_0_80px_-10px_oklch(0.74_0.14_280/0.7)] animate-assemble"
               style={{ ["--tx" as never]: "0px", ["--ty" as never]: "0px" }}
             >
-              <Cpu className="h-10 w-10 text-primary" strokeWidth={1.3} />
+              <Cpu className="h-12 w-12 text-primary" strokeWidth={1.2} />
             </div>
           </div>
           {nodes.map(({ Icon, x, y, delay }, i) => (
             <div
               key={i}
-              className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-border bg-surface-elevated animate-assemble"
+              className="absolute left-1/2 top-1/2 flex h-16 w-16 items-center justify-center rounded-xl border border-border bg-surface-elevated/80 backdrop-blur animate-assemble"
               style={{
                 transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                 ["--tx" as never]: `${x * 1.5}px`,
@@ -62,11 +67,10 @@ export function Hero() {
                 animationDelay: `${delay}s`,
               }}
             >
-              <Icon className="h-5 w-5 text-muted-foreground" strokeWidth={1.5} />
+              <Icon className="h-6 w-6 text-muted-foreground" strokeWidth={1.4} />
             </div>
           ))}
-          {/* connecting lines via SVG */}
-          <svg className="absolute inset-0 h-full w-full opacity-30" aria-hidden>
+          <svg className="absolute inset-0 h-full w-full opacity-20" aria-hidden>
             {nodes.map((n, i) => (
               <line
                 key={i}
