@@ -26,7 +26,7 @@ export function Features() {
           transition={{ duration: 0.5 }}
           className="mb-14 rounded-md border border-border bg-[#06060a] px-4 py-2 text-center font-mono text-[11px] text-muted-foreground/60"
         >
-          HTTP 200  {`{ "id": "proj_7f3a2d9c-1b4e-4a8f-9c2d-5e6f7a8b9c0d" }`}
+          HTTP 200 {`{ "id": "proj_7f3a2d9c-1b4e-4a8f-9c2d-5e6f7a8b9c0d" }`}
         </motion.div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
@@ -41,7 +41,10 @@ export function Features() {
               <Icon className="mb-5 h-6 w-6 text-foreground" strokeWidth={1.5} />
               <h3 className="font-display text-xl font-bold">{title}</h3>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{desc}</p>
-              <a href="#contact" className="mt-4 inline-block text-sm text-primary transition-opacity hover:opacity-80">
+              <a
+                href="#contact"
+                className="mt-4 inline-block text-sm text-primary transition-opacity hover:opacity-80"
+              >
                 Learn more
               </a>
             </motion.div>
@@ -65,7 +68,8 @@ export function Features() {
             Build using a delightful process
           </motion.h2>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-            A modern workflow that makes it easy for anyone to launch, scale, and maintain digital products.
+            A modern workflow that makes it easy for anyone to launch, scale, and maintain digital
+            products.
           </p>
         </div>
       </div>

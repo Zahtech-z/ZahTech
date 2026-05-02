@@ -1,9 +1,20 @@
 import { Logo } from "./Logo";
 
 const cols = [
-  { title: "Services", links: ["App Development", "Cloud & DevOps", "AI-Powered Build", "MVP Launch"] },
+  {
+    title: "Services",
+    links: ["App Development", "Cloud & DevOps", "AI-Powered Build", "MVP Launch"],
+  },
   { title: "Company", links: ["About", "Process", "Work", "Contact"] },
-  { title: "Connect", links: ["contact@zahtech.net", "GitHub", "LinkedIn", "X / Twitter"] },
+  {
+    title: "Connect",
+    links: [
+      { label: "contact@zahtech.net", href: "mailto:contact@zahtech.net" },
+      { label: "GitHub", href: "https://github.com/Zahtech-z" },
+      { label: "LinkedIn", href: "#" },
+      { label: "X / Twitter", href: "https://x.com/ZahTech_z" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -18,11 +29,23 @@ export function Footer() {
         </div>
         {cols.map((c) => (
           <div key={c.title}>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/80">{c.title}</h4>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/80">
+              {c.title}
+            </h4>
             <ul className="space-y-2 text-sm">
-              {c.links.map((l) => (
-                <li key={l}><a href="#" className="text-muted-foreground transition-colors hover:text-foreground">{l}</a></li>
-              ))}
+              {c.links.map((l) => {
+                const link = typeof l === "string" ? { label: l, href: "#" } : l;
+                return (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

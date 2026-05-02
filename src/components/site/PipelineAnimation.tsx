@@ -14,7 +14,17 @@ const LOG_LINES = [
   { icon: "arrow", text: "Deploying to production...", time: "▓▓▓▓░" },
 ];
 
-function CountUp({ to, suffix = "", decimals = 0, trigger }: { to: number; suffix?: string; decimals?: number; trigger: number }) {
+function CountUp({
+  to,
+  suffix = "",
+  decimals = 0,
+  trigger,
+}: {
+  to: number;
+  suffix?: string;
+  decimals?: number;
+  trigger: number;
+}) {
   const mv = useMotionValue(0);
   const rounded = useTransform(mv, (v) => v.toFixed(decimals) + suffix);
   const [val, setVal] = useState("0" + suffix);
@@ -22,7 +32,10 @@ function CountUp({ to, suffix = "", decimals = 0, trigger }: { to: number; suffi
     mv.set(0);
     const controls = animate(mv, to, { duration: 0.9, ease: [0.22, 1, 0.36, 1] });
     const unsub = rounded.on("change", (v) => setVal(v));
-    return () => { controls.stop(); unsub(); };
+    return () => {
+      controls.stop();
+      unsub();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger, to]);
   return <span>{val}</span>;
@@ -53,11 +66,13 @@ export function PipelineAnimation() {
     }
 
     // deploy complete
-    timers.push(setTimeout(() => {
-      setStages(["done", "done", "done", "done"]);
-      setDeployDone(true);
-      setPhase(4);
-    }, 3500));
+    timers.push(
+      setTimeout(() => {
+        setStages(["done", "done", "done", "done"]);
+        setDeployDone(true);
+        setPhase(4);
+      }, 3500),
+    );
 
     timers.push(setTimeout(() => setPhase(5), 4500));
     timers.push(setTimeout(() => setPhase(6), 5500));
@@ -108,7 +123,10 @@ export function PipelineAnimation() {
       {/* card */}
       <motion.div
         animate={{ y: [0, -10, 0], opacity: fadeOut ? 0 : 1 }}
-        transition={{ y: { duration: 5, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 0.5 } }}
+        transition={{
+          y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+          opacity: { duration: 0.5 },
+        }}
         style={{ transform: "rotate(-2deg)" }}
         className="absolute left-1/2 top-1/2 z-20 w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-[14px] border border-[rgba(255,255,255,0.08)] bg-[#0a0a0e] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(129,140,248,0.08)]"
       >
@@ -160,7 +178,14 @@ export function PipelineAnimation() {
                   <motion.div
                     animate={
                       isRunning
-                        ? { scale: [1, 1.08, 1], boxShadow: ["0 0 0 0 rgba(129,140,248,0.5)", "0 0 0 6px rgba(129,140,248,0)", "0 0 0 0 rgba(129,140,248,0)"] }
+                        ? {
+                            scale: [1, 1.08, 1],
+                            boxShadow: [
+                              "0 0 0 0 rgba(129,140,248,0.5)",
+                              "0 0 0 6px rgba(129,140,248,0)",
+                              "0 0 0 0 rgba(129,140,248,0)",
+                            ],
+                          }
                         : {}
                     }
                     transition={{ duration: 1.2, repeat: isRunning ? Infinity : 0 }}
@@ -168,11 +193,15 @@ export function PipelineAnimation() {
                       isDone
                         ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-400"
                         : isRunning
-                        ? "border-primary/60 bg-primary/15 text-primary"
-                        : "border-white/10 bg-white/[0.03] text-white/30"
+                          ? "border-primary/60 bg-primary/15 text-primary"
+                          : "border-white/10 bg-white/[0.03] text-white/30"
                     }`}
                   >
-                    {isDone ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : <s.Icon className="h-3.5 w-3.5" />}
+                    {isDone ? (
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    ) : (
+                      <s.Icon className="h-3.5 w-3.5" />
+                    )}
                   </motion.div>
                   {i < stageDefs.length - 1 && (
                     <div className="relative h-px flex-1 bg-white/10">
@@ -185,7 +214,9 @@ export function PipelineAnimation() {
                     </div>
                   )}
                 </div>
-                <span className={`mt-1.5 text-[10px] ${isDone ? "text-emerald-400/90" : isRunning ? "text-primary" : "text-white/40"}`}>
+                <span
+                  className={`mt-1.5 text-[10px] ${isDone ? "text-emerald-400/90" : isRunning ? "text-primary" : "text-white/40"}`}
+                >
                   {s.label}
                 </span>
               </div>
@@ -238,7 +269,9 @@ export function PipelineAnimation() {
               <div className="flex items-center gap-2 text-[12px] font-medium text-emerald-400">
                 🚀 Live in 4.5s
               </div>
-              <div className="mt-0.5 font-mono text-[10px] text-white/60">client-app.zahtech.net</div>
+              <div className="mt-0.5 font-mono text-[10px] text-white/60">
+                client-app.zahtech.net
+              </div>
               <div className="mt-1 flex items-center gap-1.5 text-[10px] text-emerald-400/90">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 99.9% uptime

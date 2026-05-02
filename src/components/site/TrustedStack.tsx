@@ -15,7 +15,9 @@ export function TrustedStack() {
           transition={{ duration: 0.5 }}
           className="mx-auto mb-12 max-w-md text-center text-sm text-muted-foreground"
         >
-          Businesses of all sizes trust ZahTech<br />to build and scale their digital products.
+          Businesses of all sizes trust ZahTech
+          <br />
+          to build and scale their digital products.
         </motion.p>
 
         <div className="space-y-8">
@@ -66,7 +68,8 @@ export function TrustedStack() {
             </span>
           </motion.h2>
           <p className="mx-auto mt-6 max-w-xl text-muted-foreground md:text-lg">
-            A simple, powerful process so you can launch products in days. It fits right into your workflow with a team that ships at startup speed.
+            A simple, powerful process so you can launch products in days. It fits right into your
+            workflow with a team that ships at startup speed.
           </p>
         </div>
       </div>

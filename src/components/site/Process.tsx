@@ -1,9 +1,21 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { n: "01", title: "Discovery Call", desc: "We understand your goals, audience, and constraints." },
-  { n: "02", title: "Scope & Quote", desc: "Clear deliverables, timeline, and a fixed quote in 24h." },
-  { n: "03", title: "Build & Iterate", desc: "Weekly demos. Feedback loops. Production-grade code." },
+  {
+    n: "01",
+    title: "Discovery Call",
+    desc: "We understand your goals, audience, and constraints.",
+  },
+  {
+    n: "02",
+    title: "Scope & Quote",
+    desc: "Clear deliverables, timeline, and a fixed quote in 24h.",
+  },
+  {
+    n: "03",
+    title: "Build & Iterate",
+    desc: "Weekly demos. Feedback loops. Production-grade code.",
+  },
   { n: "04", title: "Deploy & Support", desc: "Launch, monitor, and maintain — we stay with you." },
 ];
 

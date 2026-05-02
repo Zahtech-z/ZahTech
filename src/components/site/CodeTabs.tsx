@@ -56,7 +56,11 @@ function highlight(line: string) {
     for (const p of patterns) {
       const m = rest.match(p.re);
       if (m) {
-        parts.push(<span key={key++} style={{ color: p.color }}>{m[0]}</span>);
+        parts.push(
+          <span key={key++} style={{ color: p.color }}>
+            {m[0]}
+          </span>,
+        );
         rest = rest.slice(m[0].length);
         matched = true;
         break;
@@ -114,18 +118,30 @@ export function CodeTabs() {
               {tabs.find((t) => t.id === active)?.label} · index.ts
             </span>
             <button
-              onClick={() => { navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
+              onClick={() => {
+                navigator.clipboard.writeText(code);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1500);
+              }}
               className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-surface-elevated hover:text-foreground"
             >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+              {copied ? (
+                <Check className="h-3.5 w-3.5 text-emerald-400" />
+              ) : (
+                <Copy className="h-3.5 w-3.5" />
+              )}
             </button>
           </div>
           <div className="flex font-mono text-[13px] leading-6">
             <div className="select-none border-r border-border bg-[#04040800] px-4 py-4 text-right text-muted-foreground/50">
-              {lines.map((_, i) => <div key={i}>{i + 1}</div>)}
+              {lines.map((_, i) => (
+                <div key={i}>{i + 1}</div>
+              ))}
             </div>
             <pre className="flex-1 overflow-x-auto py-4 pl-4 pr-6">
-              {lines.map((l, i) => <div key={i}>{highlight(l) || "\u00A0"}</div>)}
+              {lines.map((l, i) => (
+                <div key={i}>{highlight(l) || "\u00A0"}</div>
+              ))}
             </pre>
           </div>
         </motion.div>

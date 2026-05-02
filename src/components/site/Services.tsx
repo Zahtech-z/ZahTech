@@ -2,12 +2,36 @@ import { motion } from "framer-motion";
 import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket } from "lucide-react";
 
 const services = [
-  { Icon: Code2, title: "App Development", desc: "React, Next.js, full-stack apps built for production." },
-  { Icon: Cloud, title: "Cloud & DevOps", desc: "AWS, Docker, CI/CD, server maintenance that never sleeps." },
-  { Icon: Compass, title: "Tech Consulting", desc: "Architecture reviews and strategic guidance for companies." },
-  { Icon: Sparkles, title: "AI-Powered Build", desc: "Vibe coding and LLM-assisted dev to ship 3× faster." },
-  { Icon: ShieldCheck, title: "Server Maintenance", desc: "24/7 monitoring, security patches, incident response." },
-  { Icon: Rocket, title: "MVP Launch", desc: "Idea to live product in weeks, scoped and production-ready." },
+  {
+    Icon: Code2,
+    title: "App Development",
+    desc: "React, Next.js, full-stack apps built for production.",
+  },
+  {
+    Icon: Cloud,
+    title: "Cloud & DevOps",
+    desc: "AWS, Docker, CI/CD, server maintenance that never sleeps.",
+  },
+  {
+    Icon: Compass,
+    title: "Tech Consulting",
+    desc: "Architecture reviews and strategic guidance for companies.",
+  },
+  {
+    Icon: Sparkles,
+    title: "AI-Powered Build",
+    desc: "Vibe coding and LLM-assisted dev to ship 3× faster.",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "Server Maintenance",
+    desc: "24/7 monitoring, security patches, incident response.",
+  },
+  {
+    Icon: Rocket,
+    title: "MVP Launch",
+    desc: "Idea to live product in weeks, scoped and production-ready.",
+  },
 ];
 
 export function Services() {

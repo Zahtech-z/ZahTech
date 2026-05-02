@@ -26,10 +26,16 @@ export function CodePreview() {
           Create production-ready apps without complex configurations and deployments.
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
-          <a href="#contact" className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90">
+          <a
+            href="#contact"
+            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          >
             Start a Project ›
           </a>
-          <a href="#stack" className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+          <a
+            href="#stack"
+            className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+          >
             View docs ›
           </a>
         </div>
@@ -75,15 +81,45 @@ export function CodePreview() {
 
             {/* code */}
             <div className="border-r border-border p-4 font-mono text-[12px] leading-6">
-              <div><span style={{ color: "#818cf8" }}>export default function</span> <span style={{ color: "#c084fc" }}>Home</span><span style={{ color: "rgba(255,255,255,0.6)" }}>() {"{"}</span></div>
-              <div className="pl-4"><span style={{ color: "#818cf8" }}>return</span> (</div>
-              <div className="pl-8"><span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span><span style={{ color: "#22d3ee" }}>main</span><span style={{ color: "rgba(255,255,255,0.6)" }}>{">"}</span></div>
-              <div className="pl-12"><span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span><span style={{ color: "#c084fc" }}>Hero</span> <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span></div>
-              <div className="pl-12"><span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span><span style={{ color: "#c084fc" }}>Services</span> <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span></div>
-              <div className="pl-12"><span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span><span style={{ color: "#c084fc" }}>Contact</span> <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span></div>
-              <div className="pl-8"><span style={{ color: "rgba(255,255,255,0.6)" }}>{"</"}</span><span style={{ color: "#22d3ee" }}>main</span><span style={{ color: "rgba(255,255,255,0.6)" }}>{">"}</span></div>
-              <div className="pl-4"><span style={{ color: "rgba(255,255,255,0.6)" }}>)</span></div>
-              <div><span style={{ color: "rgba(255,255,255,0.6)" }}>{"}"}</span></div>
+              <div>
+                <span style={{ color: "#818cf8" }}>export default function</span>{" "}
+                <span style={{ color: "#c084fc" }}>Home</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>() {"{"}</span>
+              </div>
+              <div className="pl-4">
+                <span style={{ color: "#818cf8" }}>return</span> (
+              </div>
+              <div className="pl-8">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span>
+                <span style={{ color: "#22d3ee" }}>main</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{">"}</span>
+              </div>
+              <div className="pl-12">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span>
+                <span style={{ color: "#c084fc" }}>Hero</span>{" "}
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span>
+              </div>
+              <div className="pl-12">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span>
+                <span style={{ color: "#c084fc" }}>Services</span>{" "}
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span>
+              </div>
+              <div className="pl-12">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"<"}</span>
+                <span style={{ color: "#c084fc" }}>Contact</span>{" "}
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>/{">"}</span>
+              </div>
+              <div className="pl-8">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"</"}</span>
+                <span style={{ color: "#22d3ee" }}>main</span>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{">"}</span>
+              </div>
+              <div className="pl-4">
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>)</span>
+              </div>
+              <div>
+                <span style={{ color: "rgba(255,255,255,0.6)" }}>{"}"}</span>
+              </div>
             </div>
 
             {/* preview */}

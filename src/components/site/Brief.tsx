@@ -25,20 +25,28 @@ export function Brief() {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <button className="rounded-md px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">Preview</button>
-              <button className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90">Send Quote</button>
+              <button className="rounded-md px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">
+                Preview
+              </button>
+              <button className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90">
+                Send Quote
+              </button>
             </div>
           </div>
 
           {/* fields */}
           <div className="divide-y divide-border text-sm">
-            <FieldRow label="From"><span className="font-mono text-foreground/90">contact@zahtech.net</span></FieldRow>
+            <FieldRow label="From">
+              <span className="font-mono text-foreground/90">contact@zahtech.net</span>
+            </FieldRow>
             <FieldRow label="To">
               <span className="inline-flex items-center gap-1.5 rounded-md bg-surface-elevated px-2 py-0.5 text-xs">
                 <User className="h-3 w-3 text-primary" /> Client Name
               </span>
             </FieldRow>
-            <FieldRow label="Subject"><span>Your ZahTech Quote</span></FieldRow>
+            <FieldRow label="Subject">
+              <span>Your ZahTech Quote</span>
+            </FieldRow>
           </div>
 
           {/* content */}
@@ -78,7 +86,13 @@ function Line({ k, v, emphasize }: { k: string; v: string; emphasize?: boolean }
   return (
     <div className="flex items-center justify-between gap-4">
       <span className="text-muted-foreground">{k}</span>
-      <span className={emphasize ? "font-display text-base font-bold text-foreground" : "text-foreground/90"}>{v}</span>
+      <span
+        className={
+          emphasize ? "font-display text-base font-bold text-foreground" : "text-foreground/90"
+        }
+      >
+        {v}
+      </span>
     </div>
   );
 }

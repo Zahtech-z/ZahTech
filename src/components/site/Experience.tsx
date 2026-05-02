@@ -15,10 +15,30 @@ const logs = [
 ];
 
 const projects = [
-  { color: "bg-emerald-400", status: "Active", name: "SimuWork App", meta: "zahtech.net · deployed 2h ago" },
-  { color: "bg-sky-400", status: "Building", name: "E-Commerce MVP", meta: "zahtech.net · in progress" },
-  { color: "bg-emerald-400", status: "Active", name: "Dashboard SaaS", meta: "zahtech.net · deployed 1d ago" },
-  { color: "bg-amber-400", status: "Review", name: "Mobile App", meta: "zahtech.net · awaiting approval" },
+  {
+    color: "bg-emerald-400",
+    status: "Active",
+    name: "SimuWork App",
+    meta: "zahtech.net · deployed 2h ago",
+  },
+  {
+    color: "bg-sky-400",
+    status: "Building",
+    name: "E-Commerce MVP",
+    meta: "zahtech.net · in progress",
+  },
+  {
+    color: "bg-emerald-400",
+    status: "Active",
+    name: "Dashboard SaaS",
+    meta: "zahtech.net · deployed 1d ago",
+  },
+  {
+    color: "bg-amber-400",
+    status: "Review",
+    name: "Mobile App",
+    meta: "zahtech.net · awaiting approval",
+  },
 ];
 
 export function Experience() {
@@ -33,10 +53,13 @@ export function Experience() {
           className="mb-14 max-w-2xl"
         >
           <h2 className="text-balance font-display text-4xl font-bold leading-[1.05] md:text-6xl">
-            First-class<br />client experience
+            First-class
+            <br />
+            client experience
           </h2>
           <p className="mt-5 max-w-md text-muted-foreground md:text-lg">
-            We are builders creating solutions for businesses. Our goal: deliver the tech partner that just works.
+            We are builders creating solutions for businesses. Our goal: deliver the tech partner
+            that just works.
           </p>
         </motion.div>
 
@@ -84,7 +107,9 @@ export function Experience() {
                   ) : (
                     <ArrowRight className="h-4 w-4 text-cyan-400" strokeWidth={2.5} />
                   )}
-                  <span className={log.kind === "ok" ? "text-emerald-400/90" : "text-cyan-400/90"}>{log.text}</span>
+                  <span className={log.kind === "ok" ? "text-emerald-400/90" : "text-cyan-400/90"}>
+                    {log.text}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -112,14 +137,19 @@ export function Experience() {
                   transition={{ delay: 0.2 + i * 0.1 }}
                   className="flex items-center gap-3 py-3.5"
                 >
-                  <Circle className={`h-2.5 w-2.5 fill-current ${p.color.replace("bg-", "text-")}`} strokeWidth={0} />
+                  <Circle
+                    className={`h-2.5 w-2.5 fill-current ${p.color.replace("bg-", "text-")}`}
+                    strokeWidth={0}
+                  />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 text-sm">
                       <span className="text-muted-foreground">{p.status}</span>
                       <span className="text-muted-foreground/40">—</span>
                       <span className="truncate text-foreground">{p.name}</span>
                     </div>
-                    <p className="mt-0.5 font-mono text-[11px] text-muted-foreground/60">{p.meta}</p>
+                    <p className="mt-0.5 font-mono text-[11px] text-muted-foreground/60">
+                      {p.meta}
+                    </p>
                   </div>
                 </motion.div>
               ))}
