@@ -1,16 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronRight, Check } from "lucide-react";
-
-const chips = [
-  { label: "React", x: -280, y: -120, delay: 0.1 },
-  { label: "Next.js", x: 280, y: -140, delay: 0.18 },
-  { label: "AWS", x: -320, y: 20, delay: 0.26 },
-  { label: "Docker", x: 320, y: 40, delay: 0.34 },
-  { label: "Node", x: -240, y: 160, delay: 0.42 },
-  { label: "SQL", x: 240, y: 180, delay: 0.5 },
-  { label: "CI/CD", x: -120, y: -200, delay: 0.58 },
-  { label: "Vercel", x: 140, y: -210, delay: 0.66 },
-];
+import { ChevronRight } from "lucide-react";
+import { PipelineAnimation } from "./PipelineAnimation";
 
 export function Hero() {
   return (
@@ -48,51 +38,8 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Right: assembly animation */}
-        <div className="relative h-[460px] w-full lg:h-[540px]">
-          {/* chips */}
-          {chips.map((c, i) => (
-            <motion.div
-              key={c.label}
-              initial={{ x: c.x * 1.4, y: c.y * 1.4, opacity: 0, scale: 0.6, filter: "blur(8px)" }}
-              animate={{ x: 0, y: 0, opacity: [0, 1, 1, 0.4], scale: [0.6, 1, 1, 0.7], filter: "blur(0px)" }}
-              transition={{ duration: 2.4, delay: c.delay, ease: [0.22, 1, 0.36, 1], times: [0, 0.4, 0.75, 1] }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-border bg-surface-elevated/90 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur"
-              style={{ zIndex: 10 + i }}
-            >
-              {c.label}
-            </motion.div>
-          ))}
-
-          {/* Laptop */}
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.92 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
-          >
-            <div className="relative w-[360px] rounded-t-xl border border-border bg-surface-elevated p-3 shadow-[0_0_120px_-20px_oklch(0.74_0.14_280/0.6)]">
-              <div className="mb-2 flex gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-              </div>
-              <div className="flex h-44 flex-col items-center justify-center rounded-md bg-background">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 2.2, duration: 0.5 }}
-                  className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-400"
-                >
-                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                  Deployed
-                </motion.div>
-                <p className="mt-3 font-mono text-[10px] text-muted-foreground">myapp.zahtech.net</p>
-              </div>
-            </div>
-            <div className="mx-auto h-2 w-[400px] rounded-b-2xl bg-gradient-to-b from-surface-elevated to-[#0a0a0e]" />
-          </motion.div>
-        </div>
+        {/* Right: DevOps pipeline animation */}
+        <PipelineAnimation />
       </div>
     </section>
   );
