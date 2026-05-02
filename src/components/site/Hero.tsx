@@ -1,16 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronRight, Check } from "lucide-react";
-
-const chips = [
-  { label: "React", x: -280, y: -120, delay: 0.1 },
-  { label: "Next.js", x: 280, y: -140, delay: 0.18 },
-  { label: "AWS", x: -320, y: 20, delay: 0.26 },
-  { label: "Docker", x: 320, y: 40, delay: 0.34 },
-  { label: "Node", x: -240, y: 160, delay: 0.42 },
-  { label: "SQL", x: 240, y: 180, delay: 0.5 },
-  { label: "CI/CD", x: -120, y: -200, delay: 0.58 },
-  { label: "Vercel", x: 140, y: -210, delay: 0.66 },
-];
+import { ChevronRight } from "lucide-react";
+import { PipelineAnimation } from "./PipelineAnimation";
 
 export function Hero() {
   return (
