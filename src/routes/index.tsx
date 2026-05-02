@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { TrustedStack } from "@/components/site/TrustedStack";
@@ -33,19 +34,21 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <Hero />
-      <TrustedStack />
-      <CodeTabs />
-      <Experience />
-      <Features />
-      <CodePreview />
-      <Brief />
-      <Services />
-      <Process />
-      <Contact />
-      <Footer />
-    </main>
+    <LanguageProvider>
+      <main className="min-h-screen bg-background text-foreground">
+        <Nav />
+        <Hero />
+        <TrustedStack />
+        <CodeTabs />
+        <Experience />
+        <Features />
+        <CodePreview />
+        <Brief />
+        <Services />
+        <Process />
+        <Contact />
+        <Footer />
+      </main>
+    </LanguageProvider>
   );
 }

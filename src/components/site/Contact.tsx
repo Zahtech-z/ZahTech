@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket, Check } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
-const services = [
-  { Icon: Code2, label: "App Development" },
-  { Icon: Cloud, label: "Cloud & DevOps" },
-  { Icon: Compass, label: "Tech Consulting" },
-  { Icon: Sparkles, label: "AI-Powered Build" },
-  { Icon: ShieldCheck, label: "Server Maintenance" },
-  { Icon: Rocket, label: "MVP Launch" },
-];
-
+const serviceIcons = [Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket];
 const budgets = ["< $5k", "$5k – $15k", "$15k – $40k", "$40k+", "Not sure"];
 const timelines = ["ASAP", "2 – 4 weeks", "1 – 2 months", "3+ months", "Flexible"];
 
 export function Contact() {
+  const { t } = useLang();
   const [picked, setPicked] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -22,7 +16,7 @@ export function Contact() {
   const toggle = (label: string) =>
     setPicked((p) => (p.includes(label) ? p.filter((x) => x !== label) : [...p, label]));
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
@@ -52,11 +46,9 @@ export function Contact() {
           className="mb-12 text-center"
         >
           <h2 className="text-balance font-display text-4xl font-bold md:text-5xl">
-            Ready to build something great?
+            {t.contact.heading}
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Tell us about your project. We'll send you a custom quote in 24h.
-          </p>
+          <p className="mt-4 text-muted-foreground">{t.contact.sub}</p>
         </motion.div>
 
         {submitted ? (
@@ -64,10 +56,8 @@ export function Contact() {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-primary">
               <Check className="h-5 w-5" strokeWidth={3} />
             </div>
-            <h3 className="font-display text-2xl font-bold">Quote request received</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              We respond within 24h by email at contact@zahtech.net.
-            </p>
+            <h3 className="font-display text-2xl font-bold">{t.contact.successTitle}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{t.contact.successDesc}</p>
           </div>
         ) : (
           <form
@@ -75,38 +65,41 @@ export function Contact() {
             className="grid grid-cols-1 gap-5 rounded-2xl border border-border bg-[#0a0a0e] p-6 md:p-8"
           >
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Field label="Full Name">
-                <input required name="name" className={inputCls} placeholder="Your name" />
+              <Field label={t.contact.nameLabel}>
+                <input required name="name" className={inputCls} placeholder={t.contact.namePlaceholder} />
               </Field>
-              <Field label="Email">
+              <Field label={t.contact.emailLabel}>
                 <input
                   required
                   type="email"
                   name="email"
                   className={inputCls}
-                  placeholder="you@company.com"
+                  placeholder={t.contact.emailPlaceholder}
                 />
               </Field>
             </div>
 
             <div>
-              <span className="mb-2 block text-xs font-medium text-muted-foreground">Services</span>
+              <span className="mb-2 block text-xs font-medium text-muted-foreground">
+                {t.contact.servicesLabel}
+              </span>
               <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-                {services.map(({ Icon, label }) => {
-                  const on = picked.includes(label);
+                {t.services.items.map(({ title }, i) => {
+                  const Icon = serviceIcons[i];
+                  const on = picked.includes(title);
                   return (
                     <button
                       type="button"
-                      key={label}
-                      onClick={() => toggle(label)}
+                      key={title}
+                      onClick={() => toggle(title)}
                       className={`flex items-center gap-2 rounded-md border px-3 py-2.5 text-left text-xs transition-all ${
                         on
                           ? "border-primary/60 bg-primary/10 text-foreground"
                           : "border-border bg-background/40 text-muted-foreground hover:text-foreground"
                       }`}
                     >
-                      <Icon className="h-3.5 w-3.5" strokeWidth={1.6} />
-                      {label}
+                      <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.6} />
+                      {title}
                     </button>
                   );
                 })}
@@ -114,21 +107,17 @@ export function Contact() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Field label="Budget">
+              <Field label={t.contact.budgetLabel}>
                 <select name="budget" className={inputCls + " appearance-none"} defaultValue="">
-                  <option value="" disabled>
-                    Select a budget…
-                  </option>
+                  <option value="" disabled>{t.contact.budgetDefault}</option>
                   {budgets.map((b) => (
                     <option key={b}>{b}</option>
                   ))}
                 </select>
               </Field>
-              <Field label="Timeline">
+              <Field label={t.contact.timelineLabel}>
                 <select name="timeline" className={inputCls + " appearance-none"} defaultValue="">
-                  <option value="" disabled>
-                    Select a timeline…
-                  </option>
+                  <option value="" disabled>{t.contact.timelineDefault}</option>
                   {timelines.map((t) => (
                     <option key={t}>{t}</option>
                   ))}
@@ -136,12 +125,12 @@ export function Contact() {
               </Field>
             </div>
 
-            <Field label="Project description">
+            <Field label={t.contact.descLabel}>
               <textarea
                 required
                 name="description"
                 rows={5}
-                placeholder="Goals, audience, must-haves…"
+                placeholder={t.contact.descPlaceholder}
                 className={inputCls + " resize-none"}
               />
             </Field>
@@ -151,11 +140,9 @@ export function Contact() {
               disabled={submitting}
               className="mt-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {submitting ? "Sending…" : "Get a Quote →"}
+              {submitting ? t.contact.submitting : t.contact.submit}
             </button>
-            <p className="text-center text-xs text-muted-foreground">
-              We respond within 24h by email.
-            </p>
+            <p className="text-center text-xs text-muted-foreground">{t.contact.note}</p>
           </form>
         )}
       </div>

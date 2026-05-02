@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { PipelineAnimation } from "./PipelineAnimation";
+import { useLang } from "@/lib/i18n";
 
 export function Hero() {
+  const { t } = useLang();
+
   return (
     <section className="relative min-h-screen overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
@@ -23,34 +26,33 @@ export function Hero() {
           >
             <span className="flex items-center gap-2 rounded-full bg-background px-3 py-1">
               <span className="bg-gradient-to-r from-primary via-[#22d3ee] to-[#c084fc] bg-clip-text text-transparent">
-                Now accepting new clients — 2026
+                {t.hero.badge}
               </span>
               <ChevronRight className="h-3 w-3 text-primary" />
             </span>
           </a>
           <h1 className="text-balance font-display text-6xl font-medium leading-[0.95] tracking-tight text-foreground/95 md:text-7xl lg:text-[88px]">
-            Tech for
+            {t.hero.heading1}
             <br />
             <span className="bg-gradient-to-b from-foreground to-foreground/40 bg-clip-text text-transparent">
-              businesses
+              {t.hero.heading2}
             </span>
           </h1>
           <p className="mt-8 max-w-md text-base text-muted-foreground md:text-lg">
-            The best way to build, deploy and scale your digital product. From MVP to enterprise —
-            delivered fast.
+            {t.hero.sub}
           </p>
           <div className="mt-10 flex items-center gap-3">
             <a
               href="#contact"
               className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
             >
-              Get a Quote
+              {t.hero.cta}
             </a>
             <a
               href="#services"
               className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
             >
-              View services
+              {t.hero.secondary}
             </a>
           </div>
         </motion.div>
