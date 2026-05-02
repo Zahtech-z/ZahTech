@@ -1,32 +1,34 @@
-import { Cpu, Database, Cloud, Code2, Box, Zap, Server, GitBranch, Layers, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronRight, Check } from "lucide-react";
+
+const chips = [
+  { label: "React", x: -280, y: -120, delay: 0.1 },
+  { label: "Next.js", x: 280, y: -140, delay: 0.18 },
+  { label: "AWS", x: -320, y: 20, delay: 0.26 },
+  { label: "Docker", x: 320, y: 40, delay: 0.34 },
+  { label: "Node", x: -240, y: 160, delay: 0.42 },
+  { label: "SQL", x: 240, y: 180, delay: 0.5 },
+  { label: "CI/CD", x: -120, y: -200, delay: 0.58 },
+  { label: "Vercel", x: 140, y: -210, delay: 0.66 },
+];
 
 export function Hero() {
-  const nodes = [
-    { Icon: Code2, x: -180, y: -80, delay: 0 },
-    { Icon: Database, x: 200, y: -120, delay: 0.08 },
-    { Icon: Cloud, x: -240, y: 60, delay: 0.16 },
-    { Icon: Server, x: 220, y: 80, delay: 0.24 },
-    { Icon: GitBranch, x: -100, y: 140, delay: 0.32 },
-    { Icon: Layers, x: 140, y: -180, delay: 0.4 },
-    { Icon: Box, x: -260, y: -40, delay: 0.48 },
-    { Icon: Zap, x: 280, y: 0, delay: 0.56 },
-  ];
-
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Resend-style ambient lighting */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="absolute -bottom-32 left-1/4 h-64 w-[60%] rotate-[-3deg] bg-gradient-to-r from-transparent via-primary/15 to-transparent blur-2xl" />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-40 pb-32 lg:grid-cols-2 lg:pt-48">
-        {/* Left: copy */}
-        <div className="animate-float-in">
-          <a href="#services" className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs text-foreground/90 backdrop-blur">
-            <span className="bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent">Announcing ZahTech AI</span>
-            <ChevronRight className="h-3 w-3 text-primary" />
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
+          <a href="#contact" className="mb-8 inline-flex items-center gap-2 rounded-full p-px text-xs" style={{ background: "linear-gradient(90deg, #818cf8, #22d3ee, #c084fc, #818cf8)" }}>
+            <span className="flex items-center gap-2 rounded-full bg-background px-3 py-1">
+              <span className="bg-gradient-to-r from-primary via-[#22d3ee] to-[#c084fc] bg-clip-text text-transparent">
+                Now accepting new clients — 2026
+              </span>
+              <ChevronRight className="h-3 w-3 text-primary" />
+            </span>
           </a>
           <h1 className="text-balance font-display text-6xl font-medium leading-[0.95] tracking-tight text-foreground/95 md:text-7xl lg:text-[88px]">
             Tech for
@@ -34,54 +36,62 @@ export function Hero() {
             <span className="bg-gradient-to-b from-foreground to-foreground/40 bg-clip-text text-transparent">businesses</span>
           </h1>
           <p className="mt-8 max-w-md text-base text-muted-foreground md:text-lg">
-            The best way to ship software, infrastructure, and AI. Build production-grade systems at scale.
+            The best way to build, deploy and scale your digital product. From MVP to enterprise — delivered fast.
           </p>
           <div className="mt-10 flex items-center gap-3">
             <a href="#contact" className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90">
-              Get started
+              Get a Quote
             </a>
             <a href="#services" className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
-              Documentation
+              View services
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right: assembly cube */}
-        <div className="relative h-[420px] w-full lg:h-[500px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div
-              className="relative flex h-28 w-28 items-center justify-center rounded-2xl border border-primary/40 bg-surface-elevated shadow-[0_0_80px_-10px_oklch(0.74_0.14_280/0.7)] animate-assemble"
-              style={{ ["--tx" as never]: "0px", ["--ty" as never]: "0px" }}
+        {/* Right: assembly animation */}
+        <div className="relative h-[460px] w-full lg:h-[540px]">
+          {/* chips */}
+          {chips.map((c, i) => (
+            <motion.div
+              key={c.label}
+              initial={{ x: c.x * 1.4, y: c.y * 1.4, opacity: 0, scale: 0.6, filter: "blur(8px)" }}
+              animate={{ x: 0, y: 0, opacity: [0, 1, 1, 0.4], scale: [0.6, 1, 1, 0.7], filter: "blur(0px)" }}
+              transition={{ duration: 2.4, delay: c.delay, ease: [0.22, 1, 0.36, 1], times: [0, 0.4, 0.75, 1] }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-border bg-surface-elevated/90 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur"
+              style={{ zIndex: 10 + i }}
             >
-              <Cpu className="h-12 w-12 text-primary" strokeWidth={1.2} />
-            </div>
-          </div>
-          {nodes.map(({ Icon, x, y, delay }, i) => (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2 flex h-16 w-16 items-center justify-center rounded-xl border border-border bg-surface-elevated/80 backdrop-blur animate-assemble"
-              style={{
-                transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                ["--tx" as never]: `${x * 1.5}px`,
-                ["--ty" as never]: `${y * 1.5}px`,
-                animationDelay: `${delay}s`,
-              }}
-            >
-              <Icon className="h-6 w-6 text-muted-foreground" strokeWidth={1.4} />
-            </div>
+              {c.label}
+            </motion.div>
           ))}
-          <svg className="absolute inset-0 h-full w-full opacity-20" aria-hidden>
-            {nodes.map((n, i) => (
-              <line
-                key={i}
-                x1="50%" y1="50%"
-                x2={`calc(50% + ${n.x}px)`} y2={`calc(50% + ${n.y}px)`}
-                stroke="oklch(0.74 0.14 280)"
-                strokeWidth="1"
-                strokeDasharray="2 4"
-              />
-            ))}
-          </svg>
+
+          {/* Laptop */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
+          >
+            <div className="relative w-[360px] rounded-t-xl border border-border bg-surface-elevated p-3 shadow-[0_0_120px_-20px_oklch(0.74_0.14_280/0.6)]">
+              <div className="mb-2 flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              </div>
+              <div className="flex h-44 flex-col items-center justify-center rounded-md bg-background">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2.2, duration: 0.5 }}
+                  className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-400"
+                >
+                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                  Deployed
+                </motion.div>
+                <p className="mt-3 font-mono text-[10px] text-muted-foreground">myapp.zahtech.net</p>
+              </div>
+            </div>
+            <div className="mx-auto h-2 w-[400px] rounded-b-2xl bg-gradient-to-b from-surface-elevated to-[#0a0a0e]" />
+          </motion.div>
         </div>
       </div>
     </section>
