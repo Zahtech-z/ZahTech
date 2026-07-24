@@ -60,6 +60,9 @@ export const translations = {
       note: "We respond within 24h by email.",
       successTitle: "Quote request received",
       successDesc: "We respond within 24h by email at contact@zahtech.org.",
+      errorTitle: "Something went wrong",
+      errorDesc: "We couldn't send your request. Please try again or email us directly at contact@zahtech.org.",
+      retry: "Try again",
     },
     footer: {
       tagline: "Tech for businesses. Built fast, shipped right.",
@@ -127,6 +130,9 @@ export const translations = {
       note: "Nous répondons dans les 24h par email.",
       successTitle: "Demande de devis reçue",
       successDesc: "Nous répondons dans les 24h par email à contact@zahtech.org.",
+      errorTitle: "Une erreur est survenue",
+      errorDesc: "Nous n'avons pas pu envoyer votre demande. Réessayez ou écrivez-nous directement à contact@zahtech.org.",
+      retry: "Réessayer",
     },
     footer: {
       tagline: "Tech pour les entreprises. Construit vite, livré bien.",
@@ -194,6 +200,9 @@ export const translations = {
       note: "Respondemos en 24h por correo.",
       successTitle: "Solicitud de cotización recibida",
       successDesc: "Respondemos en 24h por correo a contact@zahtech.org.",
+      errorTitle: "Algo salió mal",
+      errorDesc: "No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos directamente a contact@zahtech.org.",
+      retry: "Intentar de nuevo",
     },
     footer: {
       tagline: "Tecnología para empresas. Construido rápido, entregado bien.",
@@ -223,6 +232,7 @@ export type Translations = {
     descLabel: string; descPlaceholder: string;
     submit: string; submitting: string; note: string;
     successTitle: string; successDesc: string;
+    errorTitle: string; errorDesc: string; retry: string;
   };
   footer: { tagline: string; services: string; company: string; connect: string; copyright: string };
 };

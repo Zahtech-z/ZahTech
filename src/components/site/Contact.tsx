@@ -12,6 +12,7 @@ export function Contact() {
   const [picked, setPicked] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   const toggle = (label: string) =>
     setPicked((p) => (p.includes(label) ? p.filter((x) => x !== label) : [...p, label]));
@@ -19,17 +20,19 @@ export function Contact() {
   async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
+    setError(false);
     const fd = new FormData(e.currentTarget);
     fd.set("services", picked.join(", "));
     try {
-      await fetch("https://formspree.io/f/meenovry", {
+      const res = await fetch("https://formspree.io/f/meenovry", {
         method: "POST",
         body: fd,
         headers: { Accept: "application/json" },
       });
+      if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
-      setSubmitted(true);
+      setError(true);
     } finally {
       setSubmitting(false);
     }
@@ -52,7 +55,11 @@ export function Contact() {
         </motion.div>
 
         {submitted ? (
-          <div className="rounded-2xl border border-primary/40 bg-[#0a0a0e] p-10 text-center">
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-2xl border border-primary/40 bg-surface p-10 text-center"
+          >
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-primary">
               <Check className="h-5 w-5" strokeWidth={3} />
             </div>
@@ -62,8 +69,18 @@ export function Contact() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-1 gap-5 rounded-2xl border border-border bg-[#0a0a0e] p-6 md:p-8"
+            className="grid grid-cols-1 gap-5 rounded-2xl border border-border bg-surface p-6 md:p-8"
           >
+            {error && (
+              <div
+                role="alert"
+                aria-live="assertive"
+                className="rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+              >
+                <p className="font-medium">{t.contact.errorTitle}</p>
+                <p className="mt-1 text-destructive/80">{t.contact.errorDesc}</p>
+              </div>
+            )}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Field label={t.contact.nameLabel}>
                 <input required name="name" className={inputCls} placeholder={t.contact.namePlaceholder} />
@@ -140,7 +157,7 @@ export function Contact() {
               disabled={submitting}
               className="mt-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {submitting ? t.contact.submitting : t.contact.submit}
+              {submitting ? t.contact.submitting : error ? t.contact.retry : t.contact.submit}
             </button>
             <p className="text-center text-xs text-muted-foreground">{t.contact.note}</p>
           </form>

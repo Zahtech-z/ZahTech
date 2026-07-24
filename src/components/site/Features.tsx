@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FlaskConical, Zap } from "lucide-react";
 import { LogoMark } from "./Logo";
 
@@ -16,6 +16,8 @@ const items = [
 ];
 
 export function Features() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="relative border-b border-border py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -24,7 +26,7 @@ export function Features() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14 rounded-md border border-border bg-[#06060a] px-4 py-2 text-center font-mono text-[11px] text-muted-foreground/60"
+          className="mb-14 rounded-md border border-border bg-surface px-4 py-2 text-center font-mono text-[11px] text-muted-foreground/60"
         >
           HTTP 200 {`{ "id": "proj_7f3a2d9c-1b4e-4a8f-9c2d-5e6f7a8b9c0d" }`}
         </motion.div>
@@ -53,7 +55,7 @@ export function Features() {
 
         <div className="mt-32 flex flex-col items-center text-center">
           <motion.div
-            animate={{ y: [0, -9, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, -9, 0] }}
             transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
           >
             <LogoMark size={72} />

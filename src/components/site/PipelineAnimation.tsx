@@ -1,4 +1,11 @@
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+  animate,
+  useReducedMotion,
+} from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, Code2, Hammer, FlaskConical, Rocket, Cloud } from "lucide-react";
 
@@ -42,6 +49,7 @@ function CountUp({
 }
 
 export function PipelineAnimation() {
+  const reduceMotion = useReducedMotion();
   const [loop, setLoop] = useState(0);
   const [phase, setPhase] = useState(0); // 0..6
   const [stages, setStages] = useState<StageState[]>(["pending", "pending", "pending", "pending"]);
@@ -99,36 +107,36 @@ export function PipelineAnimation() {
 
       {/* floating chips around card */}
       <motion.div
-        animate={{ y: [0, -8, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         className="absolute right-2 top-6 z-30 rotate-[3deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur"
       >
         Next.js ▲
       </motion.div>
       <motion.div
-        animate={{ y: [0, 10, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
         className="absolute left-0 top-2 z-30 -rotate-[1deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur"
       >
         AWS ☁
       </motion.div>
       <motion.div
-        animate={{ y: [0, -10, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
         className="absolute bottom-6 left-4 z-30 -rotate-[2deg] rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] text-emerald-400 backdrop-blur"
       >
-        ✓ Deployed
+        <Check className="mr-1 inline h-2.5 w-2.5" strokeWidth={3} /> Deployed
       </motion.div>
 
       {/* card */}
       <motion.div
-        animate={{ y: [0, -10, 0], opacity: fadeOut ? 0 : 1 }}
+        animate={{ y: reduceMotion ? 0 : [0, -10, 0], opacity: fadeOut ? 0 : 1 }}
         transition={{
-          y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+          y: { duration: 5, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" },
           opacity: { duration: 0.5 },
         }}
         style={{ transform: "rotate(-2deg)" }}
-        className="absolute left-1/2 top-1/2 z-20 w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-[14px] border border-[rgba(255,255,255,0.08)] bg-[#0a0a0e] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(129,140,248,0.08)]"
+        className="absolute left-1/2 top-1/2 z-20 w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-[14px] border border-[rgba(255,255,255,0.08)] bg-surface p-5 shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(129,140,248,0.08)]"
       >
         {/* top bar */}
         <div className="mb-4 flex items-center justify-between">
@@ -140,7 +148,7 @@ export function PipelineAnimation() {
           </div>
           <div className="flex items-center gap-1.5 text-[10px] text-emerald-500">
             <motion.span
-              animate={{ opacity: [0.4, 1, 0.4] }}
+              animate={reduceMotion ? undefined : { opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 1.4, repeat: Infinity }}
               className="h-1.5 w-1.5 rounded-full bg-emerald-500"
             />
@@ -177,7 +185,7 @@ export function PipelineAnimation() {
                   )}
                   <motion.div
                     animate={
-                      isRunning
+                      isRunning && !reduceMotion
                         ? {
                             scale: [1, 1.08, 1],
                             boxShadow: [
@@ -188,7 +196,7 @@ export function PipelineAnimation() {
                           }
                         : {}
                     }
-                    transition={{ duration: 1.2, repeat: isRunning ? Infinity : 0 }}
+                    transition={{ duration: 1.2, repeat: isRunning && !reduceMotion ? Infinity : 0 }}
                     className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full border ${
                       isDone
                         ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-400"
@@ -301,7 +309,7 @@ export function PipelineAnimation() {
                 initial={{ opacity: 0, y: 10, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-full border border-primary/30 bg-[#0a0a0e]/90 px-3 py-1 font-mono text-[10px] text-foreground/90 backdrop-blur"
+                className="rounded-full border border-primary/30 bg-surface/90 px-3 py-1 font-mono text-[10px] text-foreground/90 backdrop-blur"
               >
                 <CountUp to={b.val} decimals={b.decimals ?? 0} trigger={loop} />
                 {b.suffix}

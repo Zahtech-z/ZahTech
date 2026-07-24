@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Globe } from "lucide-react";
+import { Check, ChevronDown, Globe } from "lucide-react";
 import { useLang, type Lang } from "@/lib/i18n";
 
 const LANGS: { code: Lang; label: string; flag: string }[] = [
@@ -13,6 +13,23 @@ const LANGS: { code: Lang; label: string; flag: string }[] = [
 export function Nav() {
   const { lang, setLang, t } = useLang();
   const [langOpen, setLangOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!langOpen) return;
+    function onPointerDown(e: PointerEvent) {
+      if (!langMenuRef.current?.contains(e.target as Node)) setLangOpen(false);
+    }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setLangOpen(false);
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [langOpen]);
 
   const navItems = [
     { key: "services", label: t.nav.services },
@@ -44,9 +61,11 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           {/* Language switcher */}
-          <div className="relative">
+          <div className="relative" ref={langMenuRef}>
             <button
               onClick={() => setLangOpen((o) => !o)}
+              aria-haspopup="listbox"
+              aria-expanded={langOpen}
               className="flex items-center gap-1.5 rounded-full border border-border bg-background/40 px-3 py-1.5 text-xs text-foreground/70 transition-colors hover:text-foreground"
             >
               <Globe className="h-3.5 w-3.5" />
@@ -54,10 +73,15 @@ export function Nav() {
               <ChevronDown className="h-3 w-3 opacity-60" strokeWidth={2} />
             </button>
             {langOpen && (
-              <div className="absolute right-0 top-full mt-1.5 min-w-[130px] overflow-hidden rounded-lg border border-border bg-background shadow-lg">
+              <div
+                role="listbox"
+                className="absolute right-0 top-full mt-1.5 min-w-[130px] overflow-hidden rounded-lg border border-border bg-background shadow-lg"
+              >
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
+                    role="option"
+                    aria-selected={lang === l.code}
                     onClick={() => { setLang(l.code); setLangOpen(false); }}
                     className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs transition-colors hover:bg-surface-elevated ${
                       lang === l.code ? "text-foreground" : "text-muted-foreground"
@@ -65,7 +89,7 @@ export function Nav() {
                   >
                     <span>{l.flag}</span>
                     <span>{l.label}</span>
-                    {lang === l.code && <span className="ml-auto text-primary">✓</span>}
+                    {lang === l.code && <Check className="ml-auto h-3 w-3 text-primary" strokeWidth={3} />}
                   </button>
                 ))}
               </div>
