@@ -314,14 +314,14 @@ def audit_file(filepath, output_file=None):
     print(f"Auditing: {path}")
     print("Please wait...\n")
 
-    html_content = path.read_text()
+    html_content = path.read_text(encoding="utf-8")
     auditor = DesignAuditor(html_content)
     auditor.audit()
     report = auditor.generate_report()
 
     if output_file:
         output_path = Path(output_file)
-        output_path.write_text(report)
+        output_path.write_text(report, encoding="utf-8")
         print(f"✅ Audit complete!")
         print(f"   Report saved to: {output_path}")
     else:

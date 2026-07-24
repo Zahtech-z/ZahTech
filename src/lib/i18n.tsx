@@ -4,6 +4,9 @@ export type Lang = "en" | "fr" | "es";
 
 export const translations = {
   en: {
+    a11y: {
+      skipToContent: "Skip to main content",
+    },
     nav: {
       services: "Services",
       process: "Process",
@@ -74,6 +77,9 @@ export const translations = {
   },
 
   fr: {
+    a11y: {
+      skipToContent: "Passer au contenu principal",
+    },
     nav: {
       services: "Services",
       process: "Processus",
@@ -144,6 +150,9 @@ export const translations = {
   },
 
   es: {
+    a11y: {
+      skipToContent: "Saltar al contenido principal",
+    },
     nav: {
       services: "Servicios",
       process: "Proceso",
@@ -218,6 +227,7 @@ type ServiceItem = { title: string; desc: string };
 type ProcessStep = { title: string; desc: string };
 
 export type Translations = {
+  a11y: { skipToContent: string };
   nav: { services: string; process: string; stack: string; work: string; contact: string; login: string; cta: string };
   hero: { badge: string; heading1: string; heading2: string; sub: string; cta: string; secondary: string };
   services: { heading: string; items: ServiceItem[] };

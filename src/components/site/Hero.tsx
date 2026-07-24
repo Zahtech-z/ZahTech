@@ -7,7 +7,7 @@ export function Hero() {
   const { t } = useLang();
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section id="main-content" tabIndex={-1} className="relative min-h-screen overflow-hidden outline-none">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
