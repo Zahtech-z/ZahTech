@@ -5,11 +5,56 @@ import {
   useTransform,
   animate,
   useReducedMotion,
+  type Variants,
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, Code2, Hammer, FlaskConical, Rocket, Cloud } from "lucide-react";
 
 type StageState = "pending" | "running" | "done";
+
+type ChipConfig = { distance: number; duration: number; delay: number };
+
+const floatVariants: Variants = {
+  float: (c: ChipConfig) => ({
+    y: [0, c.distance, 0],
+    transition: { duration: c.duration, repeat: Infinity, ease: "easeInOut" as const, delay: c.delay },
+  }),
+  still: { y: 0 },
+};
+
+const CHIPS: Array<{ key: string; className: string; content: React.ReactNode } & ChipConfig> = [
+  {
+    key: "nextjs",
+    distance: -8,
+    duration: 4,
+    delay: 0,
+    className:
+      "absolute right-2 top-6 z-30 rotate-[3deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur",
+    content: "Next.js ▲",
+  },
+  {
+    key: "aws",
+    distance: 10,
+    duration: 5,
+    delay: 0.6,
+    className:
+      "absolute left-0 top-2 z-30 -rotate-[1deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur",
+    content: "AWS ☁",
+  },
+  {
+    key: "deployed",
+    distance: -10,
+    duration: 4.5,
+    delay: 1.2,
+    className:
+      "absolute bottom-6 left-4 z-30 -rotate-[2deg] rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] text-emerald-400 backdrop-blur",
+    content: (
+      <>
+        <Check className="mr-1 inline h-2.5 w-2.5" strokeWidth={3} /> Deployed
+      </>
+    ),
+  },
+];
 
 const LOG_LINES = [
   { icon: "check", text: "Installing dependencies...", time: "0.3s" },
@@ -106,27 +151,17 @@ export function PipelineAnimation() {
       </div>
 
       {/* floating chips around card */}
-      <motion.div
-        animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-2 top-6 z-30 rotate-[3deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur"
-      >
-        Next.js ▲
-      </motion.div>
-      <motion.div
-        animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-        className="absolute left-0 top-2 z-30 -rotate-[1deg] rounded-md border border-border bg-surface-elevated/90 px-2.5 py-1 font-mono text-[10px] text-foreground/80 backdrop-blur"
-      >
-        AWS ☁
-      </motion.div>
-      <motion.div
-        animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-        className="absolute bottom-6 left-4 z-30 -rotate-[2deg] rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] text-emerald-400 backdrop-blur"
-      >
-        <Check className="mr-1 inline h-2.5 w-2.5" strokeWidth={3} /> Deployed
-      </motion.div>
+      {CHIPS.map((chip) => (
+        <motion.div
+          key={chip.key}
+          custom={chip}
+          variants={floatVariants}
+          animate={reduceMotion ? "still" : "float"}
+          className={chip.className}
+        >
+          {chip.content}
+        </motion.div>
+      ))}
 
       {/* card */}
       <motion.div
@@ -176,26 +211,15 @@ export function PipelineAnimation() {
                   {i > 0 && (
                     <div className="relative h-px flex-1 bg-white/10">
                       <motion.div
-                        initial={{ width: "0%" }}
-                        animate={{ width: stages[i - 1] === "done" ? "100%" : "0%" }}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: stages[i - 1] === "done" ? 1 : 0 }}
                         transition={{ duration: 0.4 }}
-                        className="absolute inset-y-0 left-0 bg-emerald-500/60"
+                        className="absolute inset-y-0 left-0 w-full origin-left bg-emerald-500/60"
                       />
                     </div>
                   )}
                   <motion.div
-                    animate={
-                      isRunning && !reduceMotion
-                        ? {
-                            scale: [1, 1.08, 1],
-                            boxShadow: [
-                              "0 0 0 0 rgba(129,140,248,0.5)",
-                              "0 0 0 6px rgba(129,140,248,0)",
-                              "0 0 0 0 rgba(129,140,248,0)",
-                            ],
-                          }
-                        : {}
-                    }
+                    animate={isRunning && !reduceMotion ? { scale: [1, 1.08, 1] } : { scale: 1 }}
                     transition={{ duration: 1.2, repeat: isRunning && !reduceMotion ? Infinity : 0 }}
                     className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full border ${
                       isDone
@@ -205,6 +229,15 @@ export function PipelineAnimation() {
                           : "border-white/10 bg-white/[0.03] text-white/30"
                     }`}
                   >
+                    {isRunning && !reduceMotion && (
+                      <motion.span
+                        aria-hidden="true"
+                        initial={{ scale: 1, opacity: 0.5 }}
+                        animate={{ scale: 1.7, opacity: 0 }}
+                        transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
+                        className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary"
+                      />
+                    )}
                     {isDone ? (
                       <Check className="h-3.5 w-3.5" strokeWidth={3} />
                     ) : (
@@ -214,10 +247,10 @@ export function PipelineAnimation() {
                   {i < stageDefs.length - 1 && (
                     <div className="relative h-px flex-1 bg-white/10">
                       <motion.div
-                        initial={{ width: "0%" }}
-                        animate={{ width: isDone ? "100%" : "0%" }}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: isDone ? 1 : 0 }}
                         transition={{ duration: 0.4 }}
-                        className="absolute inset-y-0 left-0 bg-emerald-500/60"
+                        className="absolute inset-y-0 left-0 w-full origin-left bg-emerald-500/60"
                       />
                     </div>
                   )}
