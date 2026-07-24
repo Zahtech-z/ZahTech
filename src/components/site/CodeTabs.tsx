@@ -11,7 +11,7 @@ const tabs = [
   { id: "vercel", label: "Vercel", icon: "▲" },
 ];
 
-const code = `// ZahTech — Deploy your app
+const code = `// ZahTech - Deploy your app
 import { ZahTech } from 'zahtech-sdk';
 
 const client = new ZahTech('zt_xxxxxxxxx');

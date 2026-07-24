@@ -18,13 +18,13 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "ZahTech — Tech for businesses" },
+      { title: "ZahTech: Tech for businesses" },
       {
         name: "description",
         content:
-          "The best way to build, deploy and scale your digital product. From MVP to enterprise — delivered fast.",
+          "The best way to build, deploy and scale your digital product. From MVP to enterprise, delivered fast.",
       },
-      { property: "og:title", content: "ZahTech — Tech for businesses" },
+      { property: "og:title", content: "ZahTech: Tech for businesses" },
       {
         property: "og:description",
         content: "Build, deploy and scale your digital product with ZahTech.",

@@ -11,7 +11,7 @@ const items = [
   {
     Icon: Zap,
     title: "Real-time Updates",
-    desc: "Get notified at every step. From kickoff to deployment — full transparency throughout your project.",
+    desc: "Get notified at every step. From kickoff to deployment, with full transparency throughout your project.",
   },
 ];
 

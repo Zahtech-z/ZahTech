@@ -11,7 +11,7 @@ const logs = [
   { kind: "ok", text: "Deployed to production" },
   { kind: "ok", text: "SSL certificate active" },
   { kind: "ok", text: "Domain connected" },
-  { kind: "info", text: "HTTP 200 — zahtech.net/api/status" },
+  { kind: "info", text: "HTTP 200 - zahtech.net/api/status" },
 ];
 
 const projects = [
@@ -144,7 +144,7 @@ export function Experience() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 text-sm">
                       <span className="text-muted-foreground">{p.status}</span>
-                      <span className="text-muted-foreground/40">—</span>
+                      <span className="text-muted-foreground/40">-</span>
                       <span className="truncate text-foreground">{p.name}</span>
                     </div>
                     <p className="mt-0.5 font-mono text-[11px] text-muted-foreground/60">
