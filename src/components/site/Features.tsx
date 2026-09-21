@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FlaskConical, Zap } from "lucide-react";
 import { LogoMark } from "./Logo";
+import { useLang } from "@/lib/i18n";
 
 const items = [
   {
@@ -17,6 +18,7 @@ const items = [
 
 export function Features() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLang();
 
   return (
     <section className="relative border-b border-border py-24">
@@ -32,7 +34,9 @@ export function Features() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
-          {items.map(({ Icon, title, desc }, i) => (
+          {t.landing.features.items.map(({ title, desc }, i) => {
+            const Icon = items[i].Icon;
+            return (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
@@ -47,10 +51,11 @@ export function Features() {
                 href="#contact"
                 className="mt-4 inline-block text-sm text-primary transition-opacity hover:opacity-80"
               >
-                Learn more
+                {t.landing.features.learnMore}
               </a>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-32 flex flex-col items-center text-center">
@@ -67,11 +72,10 @@ export function Features() {
             transition={{ duration: 0.7 }}
             className="mt-10 text-balance font-display text-4xl font-bold tracking-tight md:text-5xl"
           >
-            Build using a delightful process
+            {t.landing.features.heading}
           </motion.h2>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-            A modern workflow that makes it easy for anyone to launch, scale, and maintain digital
-            products.
+            {t.landing.features.sub}
           </p>
         </div>
       </div>

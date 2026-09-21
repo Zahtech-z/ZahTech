@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { LogoMark } from "./Logo";
+import { useLang } from "@/lib/i18n";
 
 const row1 = ["⚛ React", "▲ Next.js", "☁ AWS", "🐳 Docker", "🐘 PostgreSQL", "▲ Vercel"];
 const row2 = ["⬡ Node.js", "TS TypeScript", "Ⓢ Stripe", "⚡ Supabase", "🌬 Tailwind", "◈ Framer"];
 
 export function TrustedStack() {
+  const { t } = useLang();
+  const [introFirst, introSecond] = t.landing.trusted.intro.split("\n");
   return (
     <section id="stack" className="relative border-b border-border py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -15,9 +18,9 @@ export function TrustedStack() {
           transition={{ duration: 0.5 }}
           className="mx-auto mb-12 max-w-md text-center text-sm text-muted-foreground"
         >
-          Businesses of all sizes trust ZahTech
+          {introFirst}
           <br />
-          to build and scale their digital products.
+          {introSecond}
         </motion.p>
 
         <div className="space-y-8">
@@ -62,14 +65,10 @@ export function TrustedStack() {
             transition={{ duration: 0.7 }}
             className="mt-12 text-balance font-display text-5xl font-bold tracking-tight md:text-7xl"
           >
-            Build{" "}
-            <span className="bg-gradient-to-r from-[#818cf8] to-[#22d3ee] bg-clip-text text-transparent">
-              this week
-            </span>
+            {t.landing.trusted.heading}
           </motion.h2>
           <p className="mx-auto mt-6 max-w-xl text-muted-foreground md:text-lg">
-            A simple, powerful process so you can launch products in days. It fits right into your
-            workflow with a team that ships at startup speed.
+            {t.landing.trusted.sub}
           </p>
         </div>
       </div>

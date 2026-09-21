@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket, Check } from "lucide-react";
+import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket, Check, Loader2 } from "lucide-react";
+import { BookCallButton } from "./BookCallButton";
 import { useLang } from "@/lib/i18n";
 
 const serviceIcons = [Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket];
-const budgets = ["< $5k", "$5k – $15k", "$15k – $40k", "$40k+", "Not sure"];
-const timelines = ["ASAP", "2 – 4 weeks", "1 – 2 months", "3+ months", "Flexible"];
-
 export function Contact() {
   const { t } = useLang();
   const [picked, setPicked] = useState<string[]>([]);
@@ -22,12 +20,15 @@ export function Contact() {
     setSubmitting(true);
     setError(false);
     const fd = new FormData(e.currentTarget);
-    fd.set("services", picked.join(", "));
+    const payload = {
+      ...Object.fromEntries(fd.entries()),
+      services: picked.join(", "),
+    };
     try {
-      const res = await fetch("https://formspree.io/f/meenovry", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: fd,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
@@ -69,7 +70,7 @@ export function Contact() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-1 gap-5 rounded-2xl border border-border bg-surface p-6 md:p-8"
+            className="relative grid grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-border bg-surface p-6 md:p-8"
           >
             {error && (
               <div
@@ -127,7 +128,7 @@ export function Contact() {
               <Field label={t.contact.budgetLabel}>
                 <select name="budget" className={inputCls + " appearance-none"} defaultValue="">
                   <option value="" disabled>{t.contact.budgetDefault}</option>
-                  {budgets.map((b) => (
+                  {t.landing.contactOptions.budgets.map((b) => (
                     <option key={b}>{b}</option>
                   ))}
                 </select>
@@ -135,12 +136,22 @@ export function Contact() {
               <Field label={t.contact.timelineLabel}>
                 <select name="timeline" className={inputCls + " appearance-none"} defaultValue="">
                   <option value="" disabled>{t.contact.timelineDefault}</option>
-                  {timelines.map((t) => (
-                    <option key={t}>{t}</option>
+                  {t.landing.contactOptions.timelines.map((timeline) => (
+                    <option key={timeline}>{timeline}</option>
                   ))}
                 </select>
               </Field>
             </div>
+
+            {/* Honeypot: hidden from people, tempting to bots */}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute -left-[9999px] h-0 w-0 opacity-0"
+            />
 
             <Field label={t.contact.descLabel}>
               <textarea
@@ -155,10 +166,18 @@ export function Contact() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-60"
+              aria-busy={submitting}
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
+              {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
               {submitting ? t.contact.submitting : error ? t.contact.retry : t.contact.submit}
             </button>
+            <div className="flex items-center gap-3 text-xs text-muted-foreground" aria-hidden>
+              <span className="h-px flex-1 bg-border" />
+              {t.contact.or}
+              <span className="h-px flex-1 bg-border" />
+            </div>
+            <BookCallButton label={t.contact.bookCall} className="w-full py-3" />
             <p className="text-center text-xs text-muted-foreground">{t.contact.note}</p>
           </form>
         )}

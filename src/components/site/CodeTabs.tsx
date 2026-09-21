@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Copy, Check } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
 const tabs = [
   { id: "nextjs", label: "Next.js", icon: "▲" },
@@ -11,7 +12,7 @@ const tabs = [
   { id: "vercel", label: "Vercel", icon: "▲" },
 ];
 
-const code = `// ZahTech - Deploy your app
+const codeFor = (comment: string) => `// ${comment}
 import { ZahTech } from 'zahtech-sdk';
 
 const client = new ZahTech('zt_xxxxxxxxx');
@@ -30,8 +31,6 @@ if (error) {
 
 console.log(data);
 // { id: "proj_xxx", url: "myapp.zahtech.net" }`;
-
-const lines = code.split("\n");
 
 function highlight(line: string) {
   // simple tokenizer
@@ -72,6 +71,14 @@ function highlight(line: string) {
 }
 
 export function CodeTabs() {
+  const { lang } = useLang();
+  const comment = {
+    en: "ZahTech: Deploy your app",
+    fr: "ZahTech : Déployez votre application",
+    es: "ZahTech: Despliega tu aplicación",
+  }[lang];
+  const code = codeFor(comment);
+  const lines = code.split("\n");
   const [active, setActive] = useState("nextjs");
   const [copied, setCopied] = useState(false);
 

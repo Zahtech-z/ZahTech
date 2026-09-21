@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { PipelineAnimation } from "./PipelineAnimation";
 import { useLang } from "@/lib/i18n";
+import { BookCallButton } from "./BookCallButton";
 
 export function Hero() {
   const { t } = useLang();
@@ -41,13 +42,14 @@ export function Hero() {
           <p className="mt-8 max-w-md text-base text-muted-foreground md:text-lg">
             {t.hero.sub}
           </p>
-          <div className="mt-10 flex items-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
               className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
             >
               {t.hero.cta}
             </a>
+            <BookCallButton label={t.hero.bookCall} />
             <a
               href="#services"
               className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"

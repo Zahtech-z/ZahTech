@@ -172,3 +172,34 @@
 @utility bg-radial-fade {
   background: radial-gradient(ellipse at top, oklch(0.74 0.14 280 / 0.18), transparent 60%);
 }
+
+/* Smooth in-page navigation; offset anchors so the sticky nav never covers headings */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* WhatsApp floating button pulse */
+@keyframes wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+.wa-pulse {
+  animation: wa-pulse 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .wa-pulse {
+    animation: none;
+  }
+}

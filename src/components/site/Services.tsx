@@ -29,9 +29,9 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative bg-background p-8 transition-colors hover:bg-surface-elevated"
+                className="group relative bg-background p-8 transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:bg-surface-elevated hover:shadow-[0_10px_40px_-12px_oklch(0.74_0.14_280/0.45)]"
               >
-                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-elevated text-primary transition-colors group-hover:border-primary/50">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-elevated text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_-4px_oklch(0.74_0.14_280/0.6)]">
                   <Icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">{title}</h3>

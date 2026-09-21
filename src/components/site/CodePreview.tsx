@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Folder, FolderOpen, FileCode, Circle } from "lucide-react";
 import { LogoMark } from "./Logo";
+import { useLang } from "@/lib/i18n";
 
 const codeLines = [
   { t: "export", c: "#818cf8" },
@@ -10,6 +11,7 @@ const codeLines = [
 ];
 
 export function CodePreview() {
+  const { t } = useLang();
   return (
     <section className="relative border-b border-border py-24">
       <div className="mx-auto max-w-5xl px-6 text-center">
@@ -20,23 +22,23 @@ export function CodePreview() {
           transition={{ duration: 0.6 }}
           className="text-balance font-display text-4xl font-bold tracking-tight md:text-6xl"
         >
-          Build apps using Next.js
+          {t.landing.codePreview.heading}
         </motion.h2>
         <p className="mx-auto mt-5 max-w-xl text-muted-foreground md:text-lg">
-          Create production-ready apps without complex configurations and deployments.
+          {t.landing.codePreview.sub}
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
           <a
             href="#contact"
             className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
-            Start a Project ›
+            {t.landing.codePreview.start}
           </a>
           <a
             href="#stack"
             className="rounded-full px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
           >
-            View docs ›
+            {t.landing.codePreview.docs}
           </a>
         </div>
 
@@ -125,13 +127,13 @@ export function CodePreview() {
             {/* preview */}
             <div className="flex flex-col items-center justify-center gap-3 bg-[#0d0d18] p-6">
               <LogoMark size={56} />
-              <h3 className="font-display text-base font-bold">Welcome to ZahTech</h3>
+              <h3 className="font-display text-base font-bold">{t.landing.codePreview.welcome}</h3>
               <div className="flex items-center gap-1.5 text-xs text-emerald-400">
                 <Circle className="h-2 w-2 fill-current" strokeWidth={0} />
-                Your project is live ✓
+                {t.landing.codePreview.live}
               </div>
               <button className="mt-2 rounded-md bg-primary px-3.5 py-1.5 text-xs font-medium text-background">
-                Get a Quote
+                {t.landing.codePreview.quote}
               </button>
             </div>
           </div>

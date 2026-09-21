@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Circle } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
 const httpLines = [
   'HTTP 200:  { "id": "proj_f3c6d5f3-4f82-403a-aafa-b7a48b20cb38" }',
@@ -42,6 +43,13 @@ const projects = [
 ];
 
 export function Experience() {
+  const { t } = useLang();
+  const projectsTranslated = projects.map((project, index) => ({
+    ...project,
+    status: t.landing.experience.projectStatuses[index],
+    name: t.landing.experience.projectNames[index],
+    meta: `zahtech.net · ${t.landing.experience.projectMeta[index]}`,
+  }));
   return (
     <section id="experience" className="border-b border-border py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -53,13 +61,10 @@ export function Experience() {
           className="mb-14 max-w-2xl"
         >
           <h2 className="text-balance font-display text-4xl font-bold leading-[1.05] md:text-6xl">
-            First-class
-            <br />
-            client experience
+            {t.landing.experience.heading}
           </h2>
           <p className="mt-5 max-w-md text-muted-foreground md:text-lg">
-            We are builders creating solutions for businesses. Our goal: deliver the tech partner
-            that just works.
+            {t.landing.experience.sub}
           </p>
         </motion.div>
 
@@ -74,7 +79,7 @@ export function Experience() {
           >
             <div className="mb-5 flex items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-emerald-400">
-                <Check className="h-3 w-3" strokeWidth={3} /> Delivered
+                <Check className="h-3 w-3" strokeWidth={3} /> {t.landing.experience.delivered}
               </span>
               <span className="font-mono text-muted-foreground">contact@zahtech.net</span>
             </div>
@@ -108,7 +113,7 @@ export function Experience() {
                     <ArrowRight className="h-4 w-4 text-cyan-400" strokeWidth={2.5} />
                   )}
                   <span className={log.kind === "ok" ? "text-emerald-400/90" : "text-cyan-400/90"}>
-                    {log.text}
+                    {t.landing.experience.logs[i]}
                   </span>
                 </motion.div>
               ))}
@@ -124,11 +129,11 @@ export function Experience() {
             className="relative overflow-hidden rounded-xl border border-border bg-[#0a0a0e] p-6 md:p-8"
           >
             <div className="mb-5 flex items-center justify-between text-xs">
-              <span className="text-muted-foreground">Projects</span>
-              <span className="text-muted-foreground">May 2, 2026</span>
+              <span className="text-muted-foreground">{t.landing.experience.projects}</span>
+              <span className="text-muted-foreground">{t.landing.experience.date}</span>
             </div>
             <div className="divide-y divide-border">
-              {projects.map((p, i) => (
+              {projectsTranslated.map((p, i) => (
                 <motion.div
                   key={p.name}
                   initial={{ opacity: 0, x: 8 }}

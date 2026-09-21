@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, Code2, Hammer, FlaskConical, Rocket, Cloud } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
 type StageState = "pending" | "running" | "done";
 
@@ -94,6 +95,7 @@ function CountUp({
 }
 
 export function PipelineAnimation() {
+  const { t } = useLang();
   const reduceMotion = useReducedMotion();
   const [loop, setLoop] = useState(0);
   const [phase, setPhase] = useState(0); // 0..6
@@ -136,12 +138,10 @@ export function PipelineAnimation() {
 
   const fadeOut = phase === 6;
 
-  const stageDefs = [
-    { label: "Code", Icon: Code2 },
-    { label: "Build", Icon: Hammer },
-    { label: "Test", Icon: FlaskConical },
-    { label: "Deploy", Icon: Rocket },
-  ];
+  const stageDefs = [Code2, Hammer, FlaskConical, Rocket].map((Icon, index) => ({
+    label: t.landing.pipeline.stages[index],
+    Icon,
+  }));
 
   return (
     <div className="relative h-[540px] w-full">
@@ -159,7 +159,9 @@ export function PipelineAnimation() {
           animate={reduceMotion ? "still" : "float"}
           className={chip.className}
         >
-          {chip.content}
+          {chip.key === "deployed" ? (
+            <><Check className="mr-1 inline h-2.5 w-2.5" strokeWidth={3} /> {t.landing.pipeline.deployed}</>
+          ) : chip.content}
         </motion.div>
       ))}
 
@@ -187,7 +189,7 @@ export function PipelineAnimation() {
               transition={{ duration: 1.4, repeat: Infinity }}
               className="h-1.5 w-1.5 rounded-full bg-emerald-500"
             />
-            Running
+            {t.landing.pipeline.running}
           </div>
         </div>
 
@@ -196,7 +198,7 @@ export function PipelineAnimation() {
           <div className="text-white/70">
             <span className="text-primary">$</span> git push origin main
           </div>
-          <div className="text-white/40">↳ Pushing to zahtech/client-app...</div>
+          <div className="text-white/40">↳ {t.landing.pipeline.pushing}</div>
         </div>
 
         {/* pipeline stages */}
@@ -287,7 +289,7 @@ export function PipelineAnimation() {
                       <span className="text-[#22d3ee]">→</span>
                     )}
                     <span className="truncate text-white/70">
-                      {showAsDone ? "Deployed to production!" : line.text}
+                      {showAsDone ? t.landing.pipeline.done : t.landing.pipeline.logs[idx]}
                     </span>
                   </div>
                   <span className="shrink-0 text-white/30">{showAsDone ? "0.1s" : line.time}</span>
@@ -308,14 +310,14 @@ export function PipelineAnimation() {
               className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/10 p-3"
             >
               <div className="flex items-center gap-2 text-[12px] font-medium text-emerald-400">
-                🚀 Live in 4.5s
+                🚀 {t.landing.pipeline.live}
               </div>
               <div className="mt-0.5 font-mono text-[10px] text-white/60">
                 client-app.zahtech.net
               </div>
               <div className="mt-1 flex items-center gap-1.5 text-[10px] text-emerald-400/90">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                99.9% uptime
+                99.9% {t.landing.pipeline.uptime}
               </div>
             </motion.div>
           )}
@@ -333,9 +335,9 @@ export function PipelineAnimation() {
             className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 gap-2"
           >
             {[
-              { val: 4.5, suffix: "s deploy", decimals: 1 },
-              { val: 24, suffix: "/24 tests" },
-              { val: 99.9, suffix: "% uptime", decimals: 1 },
+              { val: 4.5, suffix: t.landing.pipeline.deployStat, decimals: 1 },
+              { val: 24, suffix: t.landing.pipeline.testsStat },
+              { val: 99.9, suffix: `% ${t.landing.pipeline.uptime}`, decimals: 1 },
             ].map((b, i) => (
               <motion.div
                 key={i}

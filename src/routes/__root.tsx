@@ -1,6 +1,13 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { LanguageProvider } from "@/lib/i18n";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { BackToTop } from "@/components/site/BackToTop";
+
+const DESCRIPTION =
+  "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services. Get a quote in 24h.";
+const OG_IMAGE = "https://zahtech.org/og-image.png";
 
 function NotFoundComponent() {
   return (
@@ -30,12 +37,21 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ZahTech" },
-      { name: "description", content: "Tech for businesses. Built fast, shipped right." },
+      { name: "description", content: DESCRIPTION },
       { name: "author", content: "ZahTech" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "theme-color", content: "#09090b" },
       { property: "og:title", content: "ZahTech" },
-      { property: "og:description", content: "Tech for businesses. Built fast, shipped right." },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:site_name", content: "ZahTech" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "ZahTech LLC: Tech for businesses. Built fast, shipped right." },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:site", content: "@ZahTech_z" },
     ],
     links: [
@@ -43,6 +59,7 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "canonical", href: "https://zahtech.org/" },
     ],
   }),
   shellComponent: RootShell,
@@ -65,5 +82,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <LanguageProvider>
+      <Outlet />
+      <BackToTop />
+      <WhatsAppButton />
+    </LanguageProvider>
+  );
 }
