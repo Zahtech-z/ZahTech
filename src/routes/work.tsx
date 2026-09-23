@@ -31,16 +31,16 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "BetAction — AI Sports Prediction SaaS",
+    title: "BetAction: AI Sports Prediction SaaS",
     client: "Smart DMV",
     status: "Live",
     description:
       "Cloud-native SaaS platform built with 4 FastAPI microservices, Next.js frontend, PostgreSQL, Redis, and Nginx API Gateway. Deployed on AWS ECS Fargate with Terraform IaC and GitHub Actions CI/CD.",
     tags: ["Next.js", "AWS", "Terraform", "Docker", "FastAPI", "CI/CD"],
-    github: "https://github.com/anicetzt/betaction",
+    github: "https://github.com/anicethermannzie/betaction",
   },
   {
-    title: "SimuWork — Business Management App",
+    title: "SimuWork: Business Management App",
     client: null,
     status: "In Progress",
     description: null,
@@ -122,7 +122,7 @@ function WorkPage() {
                   className="mt-auto inline-flex items-center gap-2 pt-6 text-sm text-[#22d3ee] transition-opacity hover:opacity-80"
                 >
                   <Github className="h-4 w-4" />
-                  github.com/anicetzt/betaction
+                  github.com/anicethermannzie/betaction
                 </a>
               )}
             </Reveal>

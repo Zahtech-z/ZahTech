@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Gauge, ShieldCheck, Eye, TrendingUp, User } from "lucide-react";
+import { Gauge, ShieldCheck, Eye, TrendingUp } from "lucide-react";
 import { PageShell, Eyebrow, PageCta } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -64,14 +64,13 @@ function AboutPage() {
       <section className="border-t border-border py-20">
         <div className="mx-auto grid max-w-5xl items-center gap-12 px-6 md:grid-cols-[320px_1fr]">
           <Reveal>
-            {/* Replace this placeholder with <img src="/anicet.jpg" alt="Anicet Hermann Zie" /> once a photo is available */}
-            <div
-              role="img"
-              aria-label="Photo of Anicet Hermann Zie coming soon"
-              className="flex aspect-square w-full max-w-[320px] items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-[#1a1030] to-[#0a0a0e] shadow-[0_0_60px_-15px_oklch(0.74_0.14_280/0.6)]"
-            >
-              <User className="h-24 w-24 text-primary/50" strokeWidth={1} />
-            </div>
+            <img
+              src="/anicet-hermann-zie.jpg"
+              alt="Anicet Hermann Zie, Founder and CEO of ZahTech"
+              width={900}
+              height={1125}
+              className="w-full max-w-[320px] rounded-2xl border border-primary/30 object-cover shadow-[0_0_60px_-15px_oklch(0.74_0.14_280/0.6)]"
+            />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-display text-4xl font-bold">Anicet Hermann Zie</h2>
