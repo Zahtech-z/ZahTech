@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
-const TO_EMAIL = "contact@zahtech.net";
+// Falls back to contact@zahtech.net; overridden by CONTACT_TO_EMAIL (e.g. while
+// zahtech.net isn't yet verified in Resend and can only deliver to the account owner).
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "contact@zahtech.net";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(120),
