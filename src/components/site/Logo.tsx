@@ -1,46 +1,54 @@
-import { Cpu } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export function Logo({ className = "", size = 32 }: { className?: string; size?: number }) {
+type LogoProps = {
+  className?: string;
+  size?: number;
+  variant?: "default" | "accent" | "inverse";
+};
+
+const colors = {
+  default: "text-logo",
+  accent: "text-logo-accent",
+  inverse: "text-logo-inverse",
+};
+
+/** Two interlocking modules suggest an open Z and a handoff from build to delivery. */
+export function LogoMark({
+  size = 72,
+  className,
+  variant = "default",
+  label = "ZahTech",
+}: LogoProps & { label?: string }) {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <div
-        className="relative flex items-center justify-center rounded-md border border-primary/30 bg-gradient-to-br from-[#1a1030] to-[#0a0a0e] shadow-[0_0_20px_-4px_oklch(0.74_0.14_280/0.6)]"
-        style={{ height: size, width: size }}
-      >
-        <Cpu
-          className="absolute text-primary opacity-50"
-          style={{ height: size * 0.55, width: size * 0.55 }}
-          strokeWidth={1.4}
-        />
-        <span
-          className="relative font-display font-bold text-foreground"
-          style={{ fontSize: size * 0.5 }}
-        >
-          Z
-        </span>
-      </div>
-      <span className="font-display text-lg font-bold tracking-tight">ZahTech</span>
-    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={size}
+      height={size}
+      fill="currentColor"
+      className={cn("shrink-0", colors[variant], className)}
+      role={label ? "img" : undefined}
+      aria-label={label || undefined}
+      aria-hidden={label ? undefined : true}
+      focusable="false"
+    >
+      <path d="M4 4H28V10L23 15H15L20 10H4Z" />
+      <path d="M9 17H17L12 22H28V28H4V22Z" />
+    </svg>
   );
 }
 
-export function LogoMark({ size = 72 }: { size?: number }) {
+export function Logo({ className, size = 32, variant = "default" }: LogoProps) {
   return (
     <div
-      className="relative flex items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-[#1a1030] to-[#0a0a0e] shadow-[0_0_60px_-10px_oklch(0.74_0.14_280/0.7),0_0_120px_-30px_oklch(0.78_0.18_310/0.4)]"
-      style={{ height: size, width: size }}
+      className={cn(
+        "flex items-center gap-2",
+        variant === "inverse" ? colors.inverse : colors.default,
+        className,
+      )}
     >
-      <Cpu
-        className="absolute text-primary opacity-40"
-        style={{ height: size * 0.55, width: size * 0.55 }}
-        strokeWidth={1.2}
-      />
-      <span
-        className="relative bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text font-display font-bold text-transparent"
-        style={{ fontSize: size * 0.55 }}
-      >
-        Z
-      </span>
+      <LogoMark size={size} variant={variant} label="" />
+      <span className="font-sans text-lg font-semibold tracking-tight">ZahTech</span>
     </div>
   );
 }

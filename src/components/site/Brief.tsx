@@ -14,7 +14,7 @@ export function Brief() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="overflow-hidden rounded-xl border border-border bg-[#0a0a0e]"
+          className="dark text-foreground overflow-hidden rounded-xl border border-border bg-[#0a0a0e]"
         >
           {/* top bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">

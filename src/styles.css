@@ -36,6 +36,12 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-text: var(--primary-text);
+  --color-input-background: var(--input-background);
+  --color-logo: var(--logo);
+  --color-logo-accent: var(--logo-accent);
+  --color-logo-inverse: var(--brand-warm-white);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -109,33 +115,68 @@
 }
 
 :root {
+  color-scheme: light;
+  /* ZahTech V2 primitives. Reserve Signal Orange for small accents and actions. */
+  --brand-signal: #ff5a36;
+  --brand-ink: #0a0a0a;
+  --brand-warm-white: #f5f2eb;
+  --brand-graphite: #242424;
   --radius: 0.75rem;
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.08 0 0);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.74 0.14 280); /* indigo #818cf8 */
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.14 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.14 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.74 0.14 280);
-  --accent-foreground: oklch(0.08 0 0);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.74 0.14 280);
-  --surface: oklch(0.06 0 0);
-  --surface-elevated: oklch(0.1 0 0);
+  --background: var(--brand-warm-white);
+  --foreground: var(--brand-ink);
+  --surface: #eeebe4;
+  --surface-elevated: #fffdf8;
+  --card: var(--surface-elevated);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-elevated);
+  --popover-foreground: var(--foreground);
+  --primary: var(--brand-signal);
+  --primary-foreground: var(--brand-ink);
+  --primary-hover: #ed4926;
+  /* Signal Orange is not suitable for small text on light surfaces. */
+  --primary-text: #b83218;
+  --secondary: #e6e2d9;
+  --secondary-foreground: var(--brand-graphite);
+  --muted: var(--surface);
+  --muted-foreground: #625e57;
+  --accent: var(--secondary);
+  --accent-foreground: var(--brand-ink);
+  --destructive: #b42318;
+  --destructive-foreground: #fffdf8;
+  --border: #d5d0c6;
+  --input: #878177;
+  --input-background: var(--surface-elevated);
+  --ring: var(--primary-text);
+  --logo: var(--foreground);
+  --logo-accent: var(--brand-signal);
+  --grid-line: color-mix(in srgb, var(--foreground) 6%, transparent);
+  --tracking-heading: -0.02em;
 }
 
+/* Explicit opt-in only; the primary experience is always light. */
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.98 0 0);
+  color-scheme: dark;
+  --background: var(--brand-ink);
+  --foreground: var(--brand-warm-white);
+  --surface: #191919;
+  --surface-elevated: var(--brand-graphite);
+  --card: var(--surface-elevated);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-elevated);
+  --popover-foreground: var(--foreground);
+  --secondary: #303030;
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-elevated);
+  --muted-foreground: #b9b4aa;
+  --accent: var(--secondary);
+  --accent-foreground: var(--foreground);
+  --primary-text: #ff856b;
+  --border: #45423d;
+  --input: #878177;
+  --input-background: var(--surface-elevated);
+  --ring: var(--primary-text);
+  --logo: var(--foreground);
+  --grid-line: color-mix(in srgb, var(--foreground) 6%, transparent);
 }
 
 @layer base {
@@ -154,7 +195,25 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: var(--tracking-heading);
+  }
+}
+
+/* Preserve existing primary text consumers with an accessible text tone. */
+@layer utilities {
+  .text-primary {
+    color: var(--primary-text);
+  }
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
   }
 }
 
@@ -164,13 +223,14 @@
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.06) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 @utility bg-radial-fade {
-  background: radial-gradient(ellipse at top, oklch(0.74 0.14 280 / 0.18), transparent 60%);
+  /* Compatibility utility: a quiet surface replaces the old brand glow. */
+  background: var(--surface);
 }
 
 /* Smooth in-page navigation; offset anchors so the sticky nav never covers headings */

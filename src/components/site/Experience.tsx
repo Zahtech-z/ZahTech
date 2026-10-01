@@ -75,7 +75,7 @@ export function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-xl border border-border bg-[#0a0a0e] p-6 md:p-8"
+            className="dark text-foreground relative overflow-hidden rounded-xl border border-border bg-[#0a0a0e] p-6 md:p-8"
           >
             <div className="mb-5 flex items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-emerald-400">
@@ -126,7 +126,7 @@ export function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative overflow-hidden rounded-xl border border-border bg-[#0a0a0e] p-6 md:p-8"
+            className="dark text-foreground relative overflow-hidden rounded-xl border border-border bg-[#0a0a0e] p-6 md:p-8"
           >
             <div className="mb-5 flex items-center justify-between text-xs">
               <span className="text-muted-foreground">{t.landing.experience.projects}</span>

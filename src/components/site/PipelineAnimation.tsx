@@ -144,7 +144,7 @@ export function PipelineAnimation() {
   }));
 
   return (
-    <div className="relative h-[540px] w-full">
+    <div className="dark relative h-[540px] w-full text-foreground">
       {/* ambient glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />

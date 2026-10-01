@@ -40,7 +40,7 @@ export const Route = createRootRoute({
       { name: "description", content: DESCRIPTION },
       { name: "author", content: "ZahTech" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-      { name: "theme-color", content: "#09090b" },
+      { name: "theme-color", content: "#f5f2eb" },
       { property: "og:title", content: "ZahTech" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
@@ -55,6 +55,7 @@ export const Route = createRootRoute({
       { name: "twitter:site", content: "@ZahTech_z" },
     ],
     links: [
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       {
         rel: "stylesheet",
         href: appCss,

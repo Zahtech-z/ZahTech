@@ -47,7 +47,7 @@ export function CodePreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-14 overflow-hidden rounded-xl border border-border bg-[#06060a] text-left shadow-[0_0_120px_-30px_oklch(0.74_0.14_280/0.5)]"
+          className="dark text-foreground mt-14 overflow-hidden rounded-xl border border-border bg-[#06060a] text-left shadow-[0_0_120px_-30px_oklch(0.74_0.14_280/0.5)]"
         >
           <div className="flex items-center gap-1.5 border-b border-border px-3 py-2.5">
             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
