@@ -2,17 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SkipLink } from "@/components/site/SkipLink";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { TrustedStack } from "@/components/site/TrustedStack";
-import { CodeTabs } from "@/components/site/CodeTabs";
-import { Experience } from "@/components/site/Experience";
-import { Features } from "@/components/site/Features";
-import { CodePreview } from "@/components/site/CodePreview";
-import { Brief } from "@/components/site/Brief";
+import { SelectedWork } from "@/components/site/SelectedWork";
 import { Services } from "@/components/site/Services";
+import { TechnicalProof } from "@/components/site/TechnicalProof";
 import { Process } from "@/components/site/Process";
-import { Testimonial } from "@/components/site/Testimonial";
 import { Contact } from "@/components/site/Contact";
-import { Footer } from "@/components/site/Footer";
+import { HomeFooter } from "@/components/site/HomeFooter";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -110,21 +105,16 @@ function Index() {
   return (
     <>
       <SkipLink />
+      <Nav />
       <main className="min-h-screen bg-background text-foreground">
-        <Nav />
         <Hero />
-        <TrustedStack />
-        <CodeTabs />
-        <Experience />
-        <Features />
-        <CodePreview />
-        <Brief />
+        <SelectedWork />
         <Services />
-        <Testimonial />
+        <TechnicalProof />
         <Process />
         <Contact />
-        <Footer />
       </main>
+      <HomeFooter />
     </>
   );
 }

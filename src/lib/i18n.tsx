@@ -41,7 +41,7 @@ export const translations = {
       heading: "A process that actually ships.",
       steps: [
         { title: "Discovery Call", desc: "We understand your goals, audience, and constraints." },
-        { title: "Scope & Quote", desc: "Clear deliverables, timeline, and a fixed quote in 24h." },
+        { title: "Scope & Quote", desc: "Prompt scoping, clear deliverables, and a quote tailored to your project." },
         { title: "Build & Iterate", desc: "Weekly demos. Feedback loops. Production-grade code." },
         { title: "Deploy & Support", desc: "Launch, monitor, and maintain: we stay with you." },
       ],
@@ -132,7 +132,7 @@ export const translations = {
       heading: "Un processus qui livre vraiment.",
       steps: [
         { title: "Appel de découverte", desc: "Nous comprenons vos objectifs, votre audience et vos contraintes." },
-        { title: "Cadrage & Devis", desc: "Livrables clairs, calendrier et un devis fixe en 24h." },
+        { title: "Cadrage & Devis", desc: "Cadrage rapide, livrables clairs et devis adapté à votre projet." },
         { title: "Construire & Itérer", desc: "Démos hebdomadaires. Boucles de retour. Code de qualité production." },
         { title: "Déployer & Soutenir", desc: "Lancer, surveiller et maintenir : nous restons avec vous." },
       ],
@@ -223,7 +223,7 @@ export const translations = {
       heading: "Un proceso que realmente entrega.",
       steps: [
         { title: "Llamada de descubrimiento", desc: "Entendemos tus objetivos, audiencia y limitaciones." },
-        { title: "Alcance & Cotización", desc: "Entregables claros, cronograma y cotización fija en 24h." },
+        { title: "Alcance & Cotización", desc: "Definición ágil del alcance, entregables claros y un presupuesto a medida." },
         { title: "Construir & Iterar", desc: "Demos semanales. Ciclos de retroalimentación. Código de calidad." },
         { title: "Desplegar & Mantener", desc: "Lanzar, monitorear y mantener: nos quedamos contigo." },
       ],

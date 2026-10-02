@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket, Check, Loader2 } from "lucide-react";
-import { BookCallButton } from "./BookCallButton";
+import { openCalendly } from "@/lib/calendly";
+import { heroCopy } from "@/lib/hero-copy";
+import { homeCopy } from "@/lib/home-copy";
 import { useLang } from "@/lib/i18n";
 
 const serviceIcons = [Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket];
 export function Contact() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const copy = homeCopy[lang];
   const [picked, setPicked] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -40,26 +42,45 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-b border-border py-24">
-      <div className="mx-auto max-w-3xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <h2 className="text-balance font-display text-4xl font-bold md:text-5xl">
-            {t.contact.heading}
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="border-b border-border py-14 sm:py-20"
+    >
+      <div className="mx-auto grid max-w-7xl items-start gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+        <div>
+          <h2
+            id="contact-heading"
+            className="text-balance font-display text-3xl font-semibold sm:text-4xl"
+          >
+            {heroCopy[lang].project}
           </h2>
-          <p className="mt-4 text-muted-foreground">{t.contact.sub}</p>
-        </motion.div>
+          <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
+            {copy.contactIntro}
+          </p>
+          <div className="mt-6 text-sm">
+            <p className="text-muted-foreground">{copy.contactEmail}</p>
+            <a
+              href="mailto:contact@zahtech.net"
+              className="inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              contact@zahtech.net
+            </a>
+          </div>
+          <button
+            type="button"
+            onClick={openCalendly}
+            className="mt-2 inline-flex min-h-11 items-center text-sm underline underline-offset-4 hover:text-primary-text"
+          >
+            {t.contact.bookCall}
+          </button>
+        </div>
 
         {submitted ? (
           <div
             role="status"
             aria-live="polite"
-            className="rounded-2xl border border-primary/40 bg-surface p-10 text-center"
+            className="rounded-md border border-border bg-surface p-6 text-center"
           >
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-primary">
               <Check className="h-5 w-5" strokeWidth={3} />
@@ -70,7 +91,7 @@ export function Contact() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="relative grid grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-border bg-surface p-6 md:p-8"
+            className="relative grid min-w-0 grid-cols-1 gap-5 rounded-md border border-border bg-surface p-4 sm:p-6"
           >
             {error && (
               <div
@@ -84,7 +105,12 @@ export function Contact() {
             )}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Field label={t.contact.nameLabel}>
-                <input required name="name" className={inputCls} placeholder={t.contact.namePlaceholder} />
+                <input
+                  required
+                  name="name"
+                  className={inputCls}
+                  placeholder={t.contact.namePlaceholder}
+                />
               </Field>
               <Field label={t.contact.emailLabel}>
                 <input
@@ -97,10 +123,10 @@ export function Contact() {
               </Field>
             </div>
 
-            <div>
-              <span className="mb-2 block text-xs font-medium text-muted-foreground">
+            <fieldset className="min-w-0">
+              <legend className="mb-2 text-sm font-medium text-secondary-foreground">
                 {t.contact.servicesLabel}
-              </span>
+              </legend>
               <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
                 {t.services.items.map(({ title }, i) => {
                   const Icon = serviceIcons[i];
@@ -110,10 +136,11 @@ export function Contact() {
                       type="button"
                       key={title}
                       onClick={() => toggle(title)}
-                      className={`flex items-center gap-2 rounded-md border px-3 py-2.5 text-left text-xs transition-all ${
+                      aria-pressed={on}
+                      className={`flex min-h-11 items-center gap-2 rounded-md border px-2 py-3 text-left text-xs transition-colors motion-reduce:transition-none ${
                         on
-                          ? "border-primary/60 bg-primary/10 text-foreground"
-                          : "border-border bg-background/40 text-muted-foreground hover:text-foreground"
+                          ? "border-ring bg-background text-foreground"
+                          : "border-input bg-background text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.6} />
@@ -122,20 +149,24 @@ export function Contact() {
                   );
                 })}
               </div>
-            </div>
+            </fieldset>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Field label={t.contact.budgetLabel}>
-                <select name="budget" className={inputCls + " appearance-none"} defaultValue="">
-                  <option value="" disabled>{t.contact.budgetDefault}</option>
+                <select name="budget" className={inputCls} defaultValue="">
+                  <option value="" disabled>
+                    {t.contact.budgetDefault}
+                  </option>
                   {t.landing.contactOptions.budgets.map((b) => (
                     <option key={b}>{b}</option>
                   ))}
                 </select>
               </Field>
               <Field label={t.contact.timelineLabel}>
-                <select name="timeline" className={inputCls + " appearance-none"} defaultValue="">
-                  <option value="" disabled>{t.contact.timelineDefault}</option>
+                <select name="timeline" className={inputCls} defaultValue="">
+                  <option value="" disabled>
+                    {t.contact.timelineDefault}
+                  </option>
                   {t.landing.contactOptions.timelines.map((timeline) => (
                     <option key={timeline}>{timeline}</option>
                   ))}
@@ -157,9 +188,9 @@ export function Contact() {
               <textarea
                 required
                 name="description"
-                rows={5}
+                rows={4}
                 placeholder={t.contact.descPlaceholder}
-                className={inputCls + " resize-none"}
+                className={inputCls + " resize-y"}
               />
             </Field>
 
@@ -167,17 +198,13 @@ export function Contact() {
               type="submit"
               disabled={submitting}
               aria-busy={submitting}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none"
             >
-              {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-              {submitting ? t.contact.submitting : error ? t.contact.retry : t.contact.submit}
+              {submitting && (
+                <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden />
+              )}
+              {submitting ? t.contact.submitting : error ? t.contact.retry : heroCopy[lang].project}
             </button>
-            <div className="flex items-center gap-3 text-xs text-muted-foreground" aria-hidden>
-              <span className="h-px flex-1 bg-border" />
-              {t.contact.or}
-              <span className="h-px flex-1 bg-border" />
-            </div>
-            <BookCallButton label={t.contact.bookCall} className="w-full py-3" />
             <p className="text-center text-xs text-muted-foreground">{t.contact.note}</p>
           </form>
         )}
@@ -187,7 +214,7 @@ export function Contact() {
 }
 
 const inputCls =
-  "w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors";
+  "min-h-11 min-w-0 w-full rounded-md border border-input bg-input-background px-3 py-2.5 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

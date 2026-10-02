@@ -1,44 +1,45 @@
-import { motion } from "framer-motion";
-import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket } from "lucide-react";
 import { useLang } from "@/lib/i18n";
-
-const icons = [Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket];
+import { homeCopy } from "@/lib/home-copy";
 
 export function Services() {
-  const { t } = useLang();
-
+  const { t, lang } = useLang();
+  const copy = homeCopy[lang];
   return (
-    <section id="services" className="border-b border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 max-w-2xl text-balance font-display text-4xl font-bold md:text-5xl"
-        >
-          {t.services.heading}
-        </motion.h2>
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-          {t.services.items.map(({ title, desc }, i) => {
-            const Icon = icons[i];
-            return (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative bg-background p-8 transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:bg-surface-elevated hover:shadow-[0_10px_40px_-12px_oklch(0.74_0.14_280/0.45)]"
-              >
-                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-elevated text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_-4px_oklch(0.74_0.14_280/0.6)]">
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
-              </motion.div>
-            );
-          })}
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="border-b border-border py-14 sm:py-20"
+    >
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_2fr] lg:gap-16">
+        <div>
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            {copy.capabilities}
+          </p>
+          <h2
+            id="services-heading"
+            className="max-w-sm text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
+          >
+            {copy.services}
+          </h2>
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            {copy.servicesIntro}
+          </p>
+        </div>
+        <div className="border-t border-border">
+          {[0, 1, 3, 4, 2, 5].map((serviceIndex, position) => (
+            <article
+              key={serviceIndex}
+              className="grid gap-2 border-b border-border py-5 sm:grid-cols-[2rem_1fr_1.3fr] sm:gap-5 sm:py-6"
+            >
+              <span className="font-mono text-xs text-muted-foreground">0{position + 1}</span>
+              <h3 className="text-lg font-semibold leading-snug">
+                {t.services.items[serviceIndex].title}
+              </h3>
+              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                {copy.serviceDescriptions[serviceIndex]}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
