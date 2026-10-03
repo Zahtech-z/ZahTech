@@ -2,10 +2,6 @@ import type { Lang } from "./i18n";
 
 export const homeCopy = {
   en: {
-    selected: "Selected Work",
-    product: "A ZahTech-built product",
-    preview: "Product screenshot placeholder",
-    previewNote: "A real product preview will appear here.",
     capabilities: "Capabilities",
     services: "The right expertise, at every stage.",
     servicesIntro: "From a focused first release to the systems that keep it running.",
@@ -30,10 +26,6 @@ export const homeCopy = {
     footerLine: "Software, AI, and cloud. Built with care.",
   },
   fr: {
-    selected: "Réalisations choisies",
-    product: "Un produit créé par ZahTech",
-    preview: "Emplacement pour une capture du produit",
-    previewNote: "Un aperçu réel du produit sera présenté ici.",
     capabilities: "Expertises",
     services: "La bonne expertise, à chaque étape.",
     servicesIntro: "D'une première version ciblée aux systèmes qui la font fonctionner.",
@@ -58,10 +50,6 @@ export const homeCopy = {
     footerLine: "Logiciel, IA et cloud. Conçus avec soin.",
   },
   es: {
-    selected: "Proyectos destacados",
-    product: "Un producto creado por ZahTech",
-    preview: "Espacio para una captura del producto",
-    previewNote: "Aquí se mostrará una vista real del producto.",
     capabilities: "Especialidades",
     services: "La experiencia adecuada en cada etapa.",
     servicesIntro:
@@ -89,10 +77,6 @@ export const homeCopy = {
 } satisfies Record<
   Lang,
   {
-    selected: string;
-    product: string;
-    preview: string;
-    previewNote: string;
     capabilities: string;
     services: string;
     servicesIntro: string;

@@ -32,7 +32,7 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
+  head: ({ matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -60,7 +60,10 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "canonical", href: "https://zahtech.org/" },
+      // Work routes provide their own canonical URL.
+      ...(matches.some((match) => match.pathname === "/work" || match.pathname.startsWith("/work/"))
+        ? []
+        : [{ rel: "canonical", href: "https://zahtech.org/" }]),
     ],
   }),
   shellComponent: RootShell,

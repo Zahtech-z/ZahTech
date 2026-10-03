@@ -13,6 +13,8 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkIndexRouteImport } from './routes/work.index'
+import { Route as WorkMatchwiseRouteImport } from './routes/work.matchwise'
 import { Route as ApiContactRouteImport } from './routes/api.contact'
 
 const WorkRoute = WorkRouteImport.update({
@@ -35,6 +37,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorkRoute,
+} as any)
+const WorkMatchwiseRoute = WorkMatchwiseRouteImport.update({
+  id: '/matchwise',
+  path: '/matchwise',
+  getParentRoute: () => WorkRoute,
+} as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
@@ -45,37 +57,57 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/api/contact': typeof ApiContactRoute
+  '/work/matchwise': typeof WorkMatchwiseRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/work': typeof WorkRoute
   '/api/contact': typeof ApiContactRoute
+  '/work/matchwise': typeof WorkMatchwiseRoute
+  '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/api/contact': typeof ApiContactRoute
+  '/work/matchwise': typeof WorkMatchwiseRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/blog' | '/work' | '/api/contact'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/work'
+    | '/api/contact'
+    | '/work/matchwise'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/blog' | '/work' | '/api/contact'
-  id: '__root__' | '/' | '/about' | '/blog' | '/work' | '/api/contact'
+  to: '/' | '/about' | '/blog' | '/api/contact' | '/work/matchwise' | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/work'
+    | '/api/contact'
+    | '/work/matchwise'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRoute
-  WorkRoute: typeof WorkRoute
+  WorkRoute: typeof WorkRouteWithChildren
   ApiContactRoute: typeof ApiContactRoute
 }
 
@@ -109,6 +141,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/': {
+      id: '/work/'
+      path: '/'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
+    '/work/matchwise': {
+      id: '/work/matchwise'
+      path: '/matchwise'
+      fullPath: '/work/matchwise'
+      preLoaderRoute: typeof WorkMatchwiseRouteImport
+      parentRoute: typeof WorkRoute
+    }
     '/api/contact': {
       id: '/api/contact'
       path: '/api/contact'
@@ -119,11 +165,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface WorkRouteChildren {
+  WorkMatchwiseRoute: typeof WorkMatchwiseRoute
+  WorkIndexRoute: typeof WorkIndexRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkMatchwiseRoute: WorkMatchwiseRoute,
+  WorkIndexRoute: WorkIndexRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogRoute: BlogRoute,
-  WorkRoute: WorkRoute,
+  WorkRoute: WorkRouteWithChildren,
   ApiContactRoute: ApiContactRoute,
 }
 export const routeTree = rootRouteImport
