@@ -30,7 +30,7 @@ export function Nav() {
   }, [menuOpen]);
 
   const items = [
-    { label: t.nav.services, to: "/" as const, hash: "services" },
+    { label: t.nav.services, to: "/services" as const },
     { label: t.nav.work, to: "/work" as const },
     { label: t.nav.about, to: "/about" as const },
     { label: t.nav.blog, to: "/blog" as const },
@@ -39,7 +39,6 @@ export function Nav() {
     <Link
       key={item.label}
       to={item.to}
-      hash={item.hash}
       onClick={() => setMenuOpen(false)}
       className="flex min-h-11 items-center px-2 text-sm font-medium text-secondary-foreground underline-offset-8 hover:underline"
       activeOptions={{ exact: true, includeHash: true }}
