@@ -1,142 +1,154 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Gauge, ShieldCheck, Eye, TrendingUp } from "lucide-react";
-import { PageShell, Eyebrow, PageCta } from "@/components/site/PageShell";
-import { Reveal } from "@/components/site/Reveal";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { HomeFooter } from "@/components/site/HomeFooter";
+import { SkipLink } from "@/components/site/SkipLink";
+import { useLang } from "@/lib/i18n";
+import { aboutCopy } from "@/lib/about-copy";
+import { heroCopy } from "@/lib/hero-copy";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About ZahTech | Meet the Team" },
-      {
-        name: "description",
-        content:
-          "Meet the team behind ZahTech LLC, a Maryland-based tech consulting company founded in 2026 by DevOps engineer Anicet Hermann Zie.",
-      },
-      { property: "og:title", content: "About ZahTech | Meet the Team" },
+      { title: aboutCopy.en.seoTitle },
+      { name: "description", content: aboutCopy.en.seoDescription },
+      { property: "og:title", content: aboutCopy.en.seoTitle },
+      { property: "og:description", content: aboutCopy.en.seoDescription },
       { property: "og:url", content: "https://zahtech.org/about" },
     ],
     links: [{ rel: "canonical", href: "https://zahtech.org/about" }],
   }),
 });
 
-const values = [
-  {
-    icon: Gauge,
-    title: "Speed",
-    desc: "We ship in weeks, not months. AI-assisted workflows and battle-tested pipelines keep momentum high.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Quality",
-    desc: "Production-grade code, automated tests and infrastructure as code. Built to last, not just to demo.",
-  },
-  {
-    icon: Eye,
-    title: "Transparency",
-    desc: "Weekly demos, clear scope and fixed quotes. You always know where your project stands.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Impact",
-    desc: "We measure success by your outcomes: revenue, efficiency and users, not lines of code.",
-  },
-];
-
 function AboutPage() {
+  const { lang } = useLang();
+  const copy = aboutCopy[lang];
   return (
-    <PageShell>
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-40 pb-20">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <Eyebrow>About</Eyebrow>
-          <h1 className="text-balance font-display text-5xl font-medium leading-[1] tracking-tight md:text-7xl">
-            Meet the team behind{" "}
-            <span className="bg-gradient-to-r from-primary to-[#22d3ee] bg-clip-text text-transparent">
-              ZahTech
-            </span>
-          </h1>
-        </div>
-      </section>
-
-      {/* CEO */}
-      <section className="border-t border-border py-20">
-        <div className="mx-auto grid max-w-5xl items-center gap-12 px-6 md:grid-cols-[320px_1fr]">
-          <Reveal>
-            <img
-              src="/anicet-hermann-zie.jpg"
-              alt="Anicet Hermann Zie, Founder and CEO of ZahTech"
-              width={900}
-              height={1125}
-              className="w-full max-w-[320px] rounded-2xl border border-primary/30 object-cover shadow-[0_0_60px_-15px_oklch(0.74_0.14_280/0.6)]"
-            />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-4xl font-bold">Anicet Hermann Zie</h2>
-            <p className="mt-2 text-sm font-medium text-[#22d3ee]">Founder &amp; CEO</p>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              DevOps engineer and builder based in Germantown, MD. I founded ZahTech to help
-              businesses build and ship great tech, fast.
+    <>
+      <SkipLink />
+      <Nav />
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="bg-background pt-28 text-foreground sm:pt-36"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <header className="pb-14 sm:pb-20">
+            <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
+              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
+              {copy.eyebrow}
             </p>
-            <div className="mt-6 flex gap-5 text-sm">
-              <a
-                href="https://linkedin.com/in/anicetzt"
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+            <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              {copy.heading[0]}
+              <br />
+              {copy.heading[1]}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {copy.introduction}
+            </p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              {copy.statement}
+            </p>
+          </header>
+          <section aria-labelledby="thinking-heading" className="pb-14 sm:pb-20">
+            <h2
+              id="thinking-heading"
+              className="mb-8 font-display text-3xl font-semibold sm:text-4xl"
+            >
+              {copy.thinking}
+            </h2>
+            <ol className="border-t border-border">
+              {copy.principles.map((principle, index) => (
+                <li
+                  key={index}
+                  className="grid grid-cols-1 items-start gap-y-4 border-b border-border py-9 md:grid-cols-[2rem_minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-x-8 md:py-12 lg:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-x-12"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="font-mono text-xs text-primary-text md:pt-1.5"
+                  >
+                    0{index + 1}
+                  </span>
+                  <h3 className="min-w-0 text-balance font-display text-2xl font-semibold leading-snug">
+                    {principle.title}
+                  </h3>
+                  <p className="min-w-0 max-w-[60ch] text-base leading-relaxed text-muted-foreground">
+                    {principle.description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <section
+            aria-labelledby="disciplines-heading"
+            className="grid gap-8 pb-14 sm:pb-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-16"
+          >
+            <div>
+              <h2
+                id="disciplines-heading"
+                className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
               >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/Zahtech-z"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                GitHub
-              </a>
+                {copy.disciplinesHeading[0]}
+                <br />
+                {copy.disciplinesHeading[1]}
+              </h2>
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+                {copy.disciplinesIntro}
+              </p>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section className="border-t border-border py-20">
-        <Reveal className="mx-auto max-w-3xl px-6 text-center">
-          <Eyebrow>Our story</Eyebrow>
-          <p className="text-balance font-display text-2xl leading-snug md:text-3xl">
-            ZahTech was founded in 2026 with one mission: make great tech accessible to every
-            business, regardless of size.
-          </p>
-        </Reveal>
-      </section>
-
-      {/* Values */}
-      <section className="border-t border-border py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <Reveal>
-            <h2 className="mb-12 text-center font-display text-4xl font-bold">What we stand for</h2>
-          </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map(({ icon: Icon, title, desc }, i) => (
-              <Reveal
-                key={title}
-                delay={i * 0.08}
-                className="group rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-surface-elevated"
-              >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-elevated text-primary transition-colors group-hover:border-primary/50">
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
+            <dl className="border-t border-border">
+              {copy.disciplines.map((discipline, index) => (
+                <div
+                  key={index}
+                  className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] sm:gap-6"
+                >
+                  <dt className="min-w-0 font-display text-xl font-semibold">{discipline.title}</dt>
+                  <dd className="min-w-0 text-base leading-relaxed text-muted-foreground">
+                    {discipline.description}
+                  </dd>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </dl>
+          </section>
+          <section
+            aria-labelledby="location-heading"
+            className="grid gap-6 border-t border-border py-14 sm:py-20 md:grid-cols-2 md:gap-12"
+          >
+            <h2
+              id="location-heading"
+              className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
+            >
+              {copy.locationHeading[0]}
+              <br />
+              {copy.locationHeading[1]}
+            </h2>
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
+              {copy.location}
+            </p>
+          </section>
         </div>
-      </section>
-
-      <PageCta title="Want to work with us?" label="Get a quote →" />
-    </PageShell>
+        <section
+          aria-labelledby="project-heading"
+          className="border-y border-border py-12 sm:py-16"
+        >
+          <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center">
+            <h2
+              id="project-heading"
+              className="text-balance font-display text-3xl font-semibold sm:text-4xl"
+            >
+              {copy.cta}
+            </h2>
+            <Link
+              to="/"
+              hash="contact"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
+            >
+              {heroCopy[lang].project}
+            </Link>
+          </div>
+        </section>
+      </main>
+      <HomeFooter />
+    </>
   );
 }
