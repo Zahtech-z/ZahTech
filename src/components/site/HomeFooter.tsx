@@ -28,9 +28,9 @@ export function HomeFooter() {
             <Link to="/blog" className={linkClass}>
               {t.nav.blog}
             </Link>
-            <a href="mailto:contact@zahtech.net" className={linkClass}>
+            <Link to="/contact" className={linkClass}>
               {t.nav.contact}
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="mt-6 flex flex-col justify-between gap-3 border-t border-border pt-5 text-xs leading-relaxed text-muted-foreground sm:flex-row sm:items-center">

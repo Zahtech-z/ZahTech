@@ -139,8 +139,7 @@ function AboutPage() {
               {copy.cta}
             </h2>
             <Link
-              to="/"
-              hash="contact"
+              to="/contact"
               className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
             >
               {heroCopy[lang].project}

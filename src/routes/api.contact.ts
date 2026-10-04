@@ -8,6 +8,9 @@ const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "contact@zahtech.net";
 const schema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(200),
+  company: z.string().trim().max(200).optional().default(""),
+  stage: z.string().trim().max(100).optional().default(""),
+  additional: z.string().trim().max(2000).optional().default(""),
   services: z.string().trim().max(500).optional().default(""),
   budget: z.string().trim().max(100).optional().default(""),
   timeline: z.string().trim().max(100).optional().default(""),
@@ -59,6 +62,8 @@ export const Route = createFileRoute("/api/contact")({
         const rows: [string, string][] = [
           ["Name", d.name],
           ["Email", d.email],
+          ...(d.company ? [["Company", d.company] as [string, string]] : []),
+          ...(d.stage ? [["Project stage", d.stage] as [string, string]] : []),
           ["Services", d.services || "-"],
           ["Budget", d.budget || "-"],
           ["Timeline", d.timeline || "-"],
@@ -80,13 +85,15 @@ export const Route = createFileRoute("/api/contact")({
     </table>
     <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin:20px 0 8px">Project description</h2>
     <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(d.description)}</p>
+    ${d.additional ? `<h2 style="font-size:13px;margin:20px 0 8px">Additional details</h2><p style="white-space:pre-wrap">${esc(d.additional)}</p>` : ""}
     <p style="margin:24px 0 0;font-size:12px;color:#9ca3af">Reply to this email to respond directly to ${esc(d.name)}.</p>
   </div>
 </div>`;
 
         const text =
           rows.map(([k, v]) => `${k}: ${v}`).join("\n") +
-          `\n\nProject description:\n${d.description}\n`;
+          `\n\nProject description:\n${d.description}\n` +
+          (d.additional ? `\nAdditional details:\n${d.additional}\n` : "");
 
         try {
           const res = await fetch("https://api.resend.com/emails", {

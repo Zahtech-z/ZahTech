@@ -33,8 +33,7 @@ export function Hero() {
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link
-              to="/"
-              hash="contact"
+              to="/contact"
               className="inline-flex min-h-12 items-center justify-center gap-3 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover motion-reduce:transition-none"
             >
               {copy.project}

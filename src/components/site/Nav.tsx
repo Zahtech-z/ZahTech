@@ -96,8 +96,7 @@ export function Nav() {
             </select>
           </label>
           <Link
-            to="/"
-            hash="contact"
+            to="/contact"
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-flex ${cta}`}
           >
@@ -129,8 +128,7 @@ export function Nav() {
         <div className="flex flex-col gap-2">
           {links}
           <Link
-            to="/"
-            hash="contact"
+            to="/contact"
             onClick={() => setMenuOpen(false)}
             className={`mt-2 inline-flex ${cta}`}
           >
