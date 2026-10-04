@@ -1,79 +1,119 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, Eyebrow } from "@/components/site/PageShell";
-import { Reveal } from "@/components/site/Reveal";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { HomeFooter } from "@/components/site/HomeFooter";
+import { SkipLink } from "@/components/site/SkipLink";
+import { useLang } from "@/lib/i18n";
+import { blogCopy } from "@/lib/blog-copy";
+import { heroCopy } from "@/lib/hero-copy";
 
 export const Route = createFileRoute("/blog")({
   component: BlogPage,
   head: () => ({
     meta: [
-      { title: "Blog | ZahTech" },
-      {
-        name: "description",
-        content: "Engineering notes from ZahTech LLC on cloud, DevOps and shipping software fast.",
-      },
-      { property: "og:title", content: "Blog | ZahTech" },
+      { title: blogCopy.en.seoTitle },
+      { name: "description", content: blogCopy.en.seoDescription },
+      { property: "og:title", content: blogCopy.en.seoTitle },
+      { property: "og:description", content: blogCopy.en.seoDescription },
       { property: "og:url", content: "https://zahtech.org/blog" },
     ],
     links: [{ rel: "canonical", href: "https://zahtech.org/blog" }],
   }),
 });
 
-const posts = [
-  {
-    title: "How we built BetAction on AWS ECS Fargate with Terraform",
-    author: "Anicet Hermann Zie",
-    date: "July 2026",
-    tags: ["AWS", "Terraform", "DevOps"],
-    excerpt:
-      "A look at the architecture behind BetAction: four FastAPI microservices, an Nginx gateway, and a fully automated Terraform and GitHub Actions pipeline on ECS Fargate. Full article coming soon.",
-  },
-];
-
 function BlogPage() {
+  const { lang } = useLang();
+  const copy = blogCopy[lang];
   return (
-    <PageShell>
-      <section className="relative overflow-hidden pt-40 pb-16">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <Eyebrow>Blog</Eyebrow>
-          <h1 className="font-display text-5xl font-medium leading-[1] tracking-tight md:text-7xl">
-            Notes from the build
-          </h1>
-        </div>
-      </section>
-
-      <section className="pb-28">
-        <div className="mx-auto max-w-3xl space-y-6 px-6">
-          {posts.map((post) => (
-            <Reveal
-              key={post.title}
-              as="article"
-              className="rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:border-primary/50 hover:bg-surface-elevated"
+    <>
+      <SkipLink />
+      <Nav />
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="bg-background pt-28 text-foreground sm:pt-36"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <header className="pb-14 sm:pb-20">
+            <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
+              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
+              {copy.eyebrow}
+            </p>
+            <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              {copy.heading}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {copy.introduction}
+            </p>
+          </header>
+          <section
+            aria-labelledby="publication-heading"
+            className="grid gap-6 border-t border-border py-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-12 sm:py-16"
+          >
+            <h2
+              id="publication-heading"
+              className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
             >
-              <ul className="mb-4 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/70"
-                  >
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-              <h2 className="text-balance font-display text-2xl font-bold md:text-3xl">
-                {post.title}
-              </h2>
-              <p className="mt-2 text-xs text-muted-foreground">
-                {post.author} · <time dateTime="2026-07">{post.date}</time>
+              {copy.statusHeading}
+            </h2>
+            <div className="max-w-[60ch]">
+              <p className="text-base leading-relaxed text-muted-foreground">{copy.statusBody}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                {copy.statusNote}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
-              <span className="mt-5 inline-block rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary">
-                Coming soon
-              </span>
-            </Reveal>
-          ))}
+            </div>
+          </section>
+          <section aria-labelledby="topics-heading" className="pb-14 sm:pb-20">
+            <h2
+              id="topics-heading"
+              className="mb-8 font-display text-3xl font-semibold sm:text-4xl"
+            >
+              {copy.topicsHeading}
+            </h2>
+            <ol className="border-t border-border">
+              {copy.topics.map((topic, index) => (
+                <li
+                  key={index}
+                  className="grid grid-cols-1 items-start gap-y-4 border-b border-border py-9 md:grid-cols-[2rem_minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-x-8 md:py-12 lg:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-x-12"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="font-mono text-xs text-primary-text md:pt-1.5"
+                  >
+                    0{index + 1}
+                  </span>
+                  <h3 className="min-w-0 text-balance font-display text-2xl font-semibold leading-snug">
+                    {topic.title}
+                  </h3>
+                  <p className="min-w-0 max-w-[60ch] text-base leading-relaxed text-muted-foreground">
+                    {topic.description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
         </div>
-      </section>
-    </PageShell>
+        <section
+          aria-labelledby="project-heading"
+          className="border-y border-border py-12 sm:py-16"
+        >
+          <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center">
+            <h2
+              id="project-heading"
+              className="text-balance font-display text-3xl font-semibold sm:text-4xl"
+            >
+              {copy.cta}
+            </h2>
+            <Link
+              to="/"
+              hash="contact"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
+            >
+              {heroCopy[lang].project}
+            </Link>
+          </div>
+        </section>
+      </main>
+      <HomeFooter />
+    </>
   );
 }
