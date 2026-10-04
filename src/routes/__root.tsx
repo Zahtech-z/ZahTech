@@ -6,7 +6,7 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { BackToTop } from "@/components/site/BackToTop";
 
 const DESCRIPTION =
-  "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services. Get a quote in 24h.";
+  "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services.";
 const OG_IMAGE = "https://zahtech.org/og-image.png";
 
 function NotFoundComponent() {

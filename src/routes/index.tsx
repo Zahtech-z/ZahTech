@@ -17,19 +17,19 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services. Get a quote in 24h.",
+          "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services.",
       },
       { property: "og:title", content: "Custom Software Development & AI Solutions | ZahTech" },
       {
         property: "og:description",
         content:
-          "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services. Get a quote in 24h.",
+          "ZahTech LLC is a Maryland-based tech consulting company delivering custom app development, cloud & DevOps, AI-powered build, and MVP launch services.",
       },
       { property: "og:url", content: "https://zahtech.org/" },
       { name: "twitter:title", content: "Custom Software Development & AI Solutions | ZahTech" },
       {
         name: "twitter:description",
-        content: "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch. Get a quote in 24h.",
+        content: "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch.",
       },
     ],
     scripts: [
@@ -42,14 +42,11 @@ export const Route = createFileRoute("/")({
           name: "ZahTech LLC",
           url: "https://zahtech.org",
           email: "contact@zahtech.net",
-          telephone: "+12406651472",
           image: "https://zahtech.org/og-image.png",
           foundingDate: "2026",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Germantown",
             addressRegion: "MD",
-            postalCode: "20874",
             addressCountry: "US",
           },
           description:
@@ -61,7 +58,7 @@ export const Route = createFileRoute("/")({
             "Worldwide",
           ],
           knowsAbout: ["Custom software development", "Web application development", "AI solutions", "Cloud and DevOps", "MVP development"],
-          sameAs: ["https://github.com/Zahtech-z", "https://x.com/ZahTech_z", "https://linkedin.com/in/anicetzt"],
+          sameAs: ["https://github.com/Zahtech-z", "https://x.com/ZahTech_z"],
           contactPoint: {
             "@type": "ContactPoint",
             contactType: "sales",
