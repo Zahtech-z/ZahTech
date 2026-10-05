@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket, Check, Loader2 } from "lucide-react";
 import { openCalendly } from "@/lib/calendly";
 import { heroCopy } from "@/lib/hero-copy";
 import { homeCopy } from "@/lib/home-copy";
 import { useLang } from "@/lib/i18n";
+import { privacyCopy } from "@/lib/privacy-copy";
 
 const serviceIcons = [Code2, Cloud, Compass, Sparkles, ShieldCheck, Rocket];
 export function Contact() {
   const { t, lang } = useLang();
   const copy = homeCopy[lang];
+  const privacy = privacyCopy[lang];
   const [picked, setPicked] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -206,6 +209,12 @@ export function Contact() {
               {submitting ? t.contact.submitting : error ? t.contact.retry : heroCopy[lang].project}
             </button>
             <p className="text-center text-xs text-muted-foreground">{t.contact.note}</p>
+            <p className="text-center text-xs leading-relaxed text-muted-foreground">
+              {privacy.contactDisclosure}{" "}
+              <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
+                {privacy.contactLink}
+              </Link>
+            </p>
           </form>
         )}
       </div>

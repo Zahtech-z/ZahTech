@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Nav } from "@/components/site/Nav";
 import { HomeFooter } from "@/components/site/HomeFooter";
@@ -6,6 +6,7 @@ import { SkipLink } from "@/components/site/SkipLink";
 import { useLang } from "@/lib/i18n";
 import { contactCopy } from "@/lib/contact-copy";
 import { serviceIds, servicesCopy } from "@/lib/services-copy";
+import { privacyCopy } from "@/lib/privacy-copy";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -27,6 +28,7 @@ const controlClass =
 function ContactPage() {
   const { lang } = useLang();
   const copy = contactCopy[lang];
+  const privacy = privacyCopy[lang];
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -233,6 +235,15 @@ function ContactPage() {
                   className="hidden"
                 />
                 <p className="text-sm leading-relaxed text-muted-foreground">{copy.note}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {privacy.contactDisclosure}{" "}
+                  <Link
+                    to="/privacy"
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    {privacy.contactLink}
+                  </Link>
+                </p>
                 <button
                   type="submit"
                   disabled={state === "sending" || state === "success"}

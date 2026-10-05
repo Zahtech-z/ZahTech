@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { useLang } from "@/lib/i18n";
 import { homeCopy } from "@/lib/home-copy";
+import { privacyCopy } from "@/lib/privacy-copy";
 
 /** Homepage footer; inner-page footers remain unchanged. */
 export function HomeFooter() {
@@ -30,6 +31,9 @@ export function HomeFooter() {
             </Link>
             <Link to="/contact" className={linkClass}>
               {t.nav.contact}
+            </Link>
+            <Link to="/privacy" className={linkClass}>
+              {privacyCopy[lang].footerLink}
             </Link>
           </nav>
         </div>

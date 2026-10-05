@@ -60,8 +60,8 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
-      // Work, Services, About, Blog, and Contact routes provide their own canonical URLs.
-      ...(matches.some((match) => match.pathname === "/contact" || match.pathname === "/blog" || match.pathname === "/about" || match.pathname === "/services" || match.pathname === "/work" || match.pathname.startsWith("/work/"))
+      // Work, Services, About, Blog, Contact, and Privacy routes provide their own canonical URLs.
+      ...(matches.some((match) => match.pathname === "/contact" || match.pathname === "/blog" || match.pathname === "/about" || match.pathname === "/services" || match.pathname === "/privacy" || match.pathname === "/work" || match.pathname.startsWith("/work/"))
         ? []
         : [{ rel: "canonical", href: "https://zahtech.org/" }]),
     ],
