@@ -214,6 +214,10 @@ html {
     transform: translateY(0);
     transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--site-reveal-delay, 0ms);
+  }
+  .page-intro-enter {
+    animation: page-intro-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .engineering-assembly .engineering-stage {
     animation: engineering-stage-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -251,6 +255,17 @@ html {
   from {
     opacity: 0;
     transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-intro-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;

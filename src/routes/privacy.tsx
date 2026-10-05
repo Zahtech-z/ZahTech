@@ -4,6 +4,7 @@ import { Nav } from "@/components/site/Nav";
 import { SkipLink } from "@/components/site/SkipLink";
 import { useLang } from "@/lib/i18n";
 import { privacyCopy } from "@/lib/privacy-copy";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 
 export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
@@ -32,7 +33,7 @@ function PrivacyPage() {
         className="border-b border-border bg-background pb-14 pt-28 text-foreground sm:pb-20 sm:pt-36"
       >
         <article className="mx-auto max-w-3xl px-4 sm:px-6">
-          <header className="border-b border-border pb-10 sm:pb-14">
+          <HomepageReveal as="header" className="border-b border-border pb-10 sm:pb-14" entrance>
             <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
               {copy.eyebrow}
@@ -44,7 +45,7 @@ function PrivacyPage() {
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {copy.introduction}
             </p>
-          </header>
+          </HomepageReveal>
           <div className="divide-y divide-border">
             {copy.sections.map((section) => (
               <section key={section.title} className="py-9 sm:py-12">

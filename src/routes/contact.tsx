@@ -7,6 +7,7 @@ import { useLang } from "@/lib/i18n";
 import { contactCopy } from "@/lib/contact-copy";
 import { serviceIds, servicesCopy } from "@/lib/services-copy";
 import { privacyCopy } from "@/lib/privacy-copy";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -78,7 +79,7 @@ function ContactPage() {
         className="border-b border-border bg-background pb-14 pt-28 text-foreground sm:pb-20 sm:pt-36"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <header className="pb-12 sm:pb-16">
+          <HomepageReveal as="header" className="pb-12 sm:pb-16" entrance>
             <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
               {copy.eyebrow}
@@ -89,8 +90,8 @@ function ContactPage() {
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {copy.introduction}
             </p>
-          </header>
-          <div className="grid items-start gap-10 border-t border-border pt-10 sm:pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] lg:gap-16">
+          </HomepageReveal>
+          <HomepageReveal className="grid items-start gap-10 border-t border-border pt-10 sm:pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] lg:gap-16">
             <section aria-labelledby="direct-contact-heading" className="min-w-0">
               <h2 id="direct-contact-heading" className="font-display text-2xl font-semibold">
                 {copy.preferEmail}
@@ -261,7 +262,7 @@ function ContactPage() {
                 </p>
               )}
             </form>
-          </div>
+          </HomepageReveal>
         </div>
       </main>
       <HomeFooter />

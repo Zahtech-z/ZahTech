@@ -1,11 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * A progressive-enhancement reveal for homepage sections. SSR content remains
- * visible; JavaScript only prepares sections that begin outside the viewport.
+ * A progressive-enhancement reveal for editorial content. SSR content remains
+ * visible; JavaScript only prepares content that begins outside the viewport.
  */
-export function HomepageReveal({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
+export function HomepageReveal({
+  children,
+  as: Tag = "div",
+  className,
+  delay = 0,
+  entrance = false,
+  ariaLabelledby,
+}: {
+  children: React.ReactNode;
+  as?: "div" | "article" | "header" | "li" | "section";
+  className?: string;
+  delay?: number;
+  entrance?: boolean;
+  ariaLabelledby?: string;
+}) {
+  const ref = useRef<HTMLElement>(null);
   const [state, setState] = useState<"visible" | "pending" | "revealed">("visible");
 
   useEffect(() => {
@@ -33,8 +47,14 @@ export function HomepageReveal({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={ref} data-home-reveal={state}>
+    <Tag
+      ref={ref as never}
+      className={`${entrance ? "page-intro-enter " : ""}${className ?? ""}`.trim()}
+      data-home-reveal={state}
+      aria-labelledby={ariaLabelledby}
+      style={{ "--site-reveal-delay": `${delay}ms` } as React.CSSProperties}
+    >
       {children}
-    </div>
+    </Tag>
   );
 }

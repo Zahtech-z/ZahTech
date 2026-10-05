@@ -5,6 +5,7 @@ import { SkipLink } from "@/components/site/SkipLink";
 import { useLang } from "@/lib/i18n";
 import { aboutCopy } from "@/lib/about-copy";
 import { heroCopy } from "@/lib/hero-copy";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -33,7 +34,7 @@ function AboutPage() {
         className="bg-background pt-28 text-foreground sm:pt-36"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <header className="pb-14 sm:pb-20">
+          <HomepageReveal as="header" className="pb-14 sm:pb-20" entrance>
             <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
               {copy.eyebrow}
@@ -49,7 +50,7 @@ function AboutPage() {
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
               {copy.statement}
             </p>
-          </header>
+          </HomepageReveal>
           <section aria-labelledby="thinking-heading" className="pb-14 sm:pb-20">
             <h2
               id="thinking-heading"
@@ -59,8 +60,10 @@ function AboutPage() {
             </h2>
             <ol className="border-t border-border">
               {copy.principles.map((principle, index) => (
-                <li
+                <HomepageReveal
                   key={index}
+                  as="li"
+                  delay={index * 45}
                   className="grid grid-cols-1 items-start gap-y-4 border-b border-border py-9 md:grid-cols-[2rem_minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-x-8 md:py-12 lg:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-x-12"
                 >
                   <span
@@ -75,12 +78,13 @@ function AboutPage() {
                   <p className="min-w-0 max-w-[60ch] text-base leading-relaxed text-muted-foreground">
                     {principle.description}
                   </p>
-                </li>
+                </HomepageReveal>
               ))}
             </ol>
           </section>
-          <section
-            aria-labelledby="disciplines-heading"
+          <HomepageReveal
+            as="section"
+            ariaLabelledby="disciplines-heading"
             className="grid gap-8 pb-14 sm:pb-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-16"
           >
             <div>
@@ -109,9 +113,10 @@ function AboutPage() {
                 </div>
               ))}
             </dl>
-          </section>
-          <section
-            aria-labelledby="location-heading"
+          </HomepageReveal>
+          <HomepageReveal
+            as="section"
+            ariaLabelledby="location-heading"
             className="grid gap-6 border-t border-border py-14 sm:py-20 md:grid-cols-2 md:gap-12"
           >
             <h2
@@ -125,7 +130,7 @@ function AboutPage() {
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
               {copy.location}
             </p>
-          </section>
+          </HomepageReveal>
         </div>
         <section
           aria-labelledby="project-heading"

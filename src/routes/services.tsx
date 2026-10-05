@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { HomeFooter } from "@/components/site/HomeFooter";
 import { SkipLink } from "@/components/site/SkipLink";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 import { useLang } from "@/lib/i18n";
 import { serviceIds, servicesCopy } from "@/lib/services-copy";
 
@@ -32,7 +33,7 @@ function ServicesPage() {
         className="min-h-screen border-b border-border bg-background pb-14 pt-28 text-foreground sm:pb-20 sm:pt-36"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <header className="pb-10 sm:pb-14">
+          <HomepageReveal as="header" className="pb-10 sm:pb-14" entrance>
             <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
               <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
               {copy.eyebrow}
@@ -43,15 +44,17 @@ function ServicesPage() {
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {copy.introduction}
             </p>
-          </header>
+          </HomepageReveal>
           <section aria-labelledby="capabilities-heading">
             <h2 id="capabilities-heading" className="sr-only">
               {copy.overview}
             </h2>
             <ol className="border-t border-border">
               {serviceIds.map((id, index) => (
-                <li
+                <HomepageReveal
                   key={id}
+                  as="li"
+                  delay={index * 40}
                   className="grid grid-cols-1 items-start gap-y-4 border-b border-border py-9 md:grid-cols-[2rem_minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-x-8 md:py-12 lg:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-x-12"
                 >
                   <span
@@ -66,7 +69,7 @@ function ServicesPage() {
                   <p className="min-w-0 max-w-[60ch] text-base leading-relaxed text-muted-foreground md:col-start-3 md:row-start-1">
                     {copy.services[id].description}
                   </p>
-                </li>
+                </HomepageReveal>
               ))}
             </ol>
           </section>

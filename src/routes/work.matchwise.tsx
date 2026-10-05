@@ -4,6 +4,7 @@ import { WorkCta } from "@/components/work/WorkCta";
 import { useLang } from "@/lib/i18n";
 import { matchWise } from "@/lib/projects";
 import { workCopy } from "@/lib/work-copy";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 
 const seoTitle = `${matchWise.name} — ${workCopy.en.caseStudySeo} | ZahTech`;
 const seoDescription = workCopy.en.projects[matchWise.slug].seoDescription;
@@ -36,7 +37,7 @@ function MatchWisePage() {
   return (
     <>
       <article className="mx-auto max-w-7xl px-4 sm:px-6">
-        <header className="pb-10 sm:pb-14">
+        <HomepageReveal as="header" className="pb-10 sm:pb-14" entrance>
           <Link
             to="/work"
             className="mb-6 inline-flex min-h-11 items-center text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
@@ -60,11 +61,14 @@ function MatchWisePage() {
           </p>
           {landingView && (
             <div className="mt-8 sm:mt-10">
-              <ProjectImage project={matchWise} view={landingView} loading="eager" />
+              <ProjectImage project={matchWise} view={landingView} loading="eager" interactive />
             </div>
           )}
-        </header>
-        <div className={`${sectionClass} grid gap-8 lg:grid-cols-2 lg:gap-16`}>
+        </HomepageReveal>
+        <HomepageReveal
+          as="section"
+          className={`${sectionClass} grid gap-8 lg:grid-cols-2 lg:gap-16`}
+        >
           <section aria-labelledby="product-heading">
             <h2 id="product-heading" className={headingClass}>
               {copy.product}
@@ -81,9 +85,10 @@ function MatchWisePage() {
               {project.role}
             </p>
           </section>
-        </div>
-        <section
-          aria-labelledby="capabilities-heading"
+        </HomepageReveal>
+        <HomepageReveal
+          as="section"
+          ariaLabelledby="capabilities-heading"
           className={`${sectionClass} grid gap-7 lg:grid-cols-[1fr_1.6fr] lg:gap-16`}
         >
           <h2 id="capabilities-heading" className={headingClass}>
@@ -99,9 +104,10 @@ function MatchWisePage() {
               </div>
             ))}
           </dl>
-        </section>
-        <section
-          aria-labelledby="engineering-heading"
+        </HomepageReveal>
+        <HomepageReveal
+          as="section"
+          ariaLabelledby="engineering-heading"
           className={`${sectionClass} grid gap-7 lg:grid-cols-[1fr_1.6fr] lg:gap-16`}
         >
           <div>
@@ -122,8 +128,8 @@ function MatchWisePage() {
               </div>
             ))}
           </dl>
-        </section>
-        <section aria-labelledby="gallery-heading" className={sectionClass}>
+        </HomepageReveal>
+        <HomepageReveal as="section" ariaLabelledby="gallery-heading" className={sectionClass}>
           <h2 id="gallery-heading" className={headingClass}>
             {copy.gallery}
           </h2>
@@ -133,13 +139,14 @@ function MatchWisePage() {
                 key={view.id}
                 className={view.id === "matches" ? "min-w-0 lg:col-span-2" : "min-w-0"}
               >
-                <ProjectImage project={matchWise} view={view} />
+                <ProjectImage project={matchWise} view={view} interactive />
               </div>
             ))}
           </div>
-        </section>
-        <section
-          aria-labelledby="stage-heading"
+        </HomepageReveal>
+        <HomepageReveal
+          as="section"
+          ariaLabelledby="stage-heading"
           className={`${sectionClass} grid gap-5 lg:grid-cols-[1fr_1.6fr] lg:gap-16`}
         >
           <h2 id="stage-heading" className={headingClass}>
@@ -151,7 +158,7 @@ function MatchWisePage() {
               {project.stageDescription}
             </p>
           </div>
-        </section>
+        </HomepageReveal>
       </article>
       <WorkCta />
     </>
