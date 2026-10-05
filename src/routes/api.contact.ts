@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
-// Falls back to contact@zahtech.net; overridden by CONTACT_TO_EMAIL (e.g. while
-// zahtech.net isn't yet verified in Resend and can only deliver to the account owner).
+// Falls back to the current ZahTech inbox; overridden by CONTACT_TO_EMAIL.
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "contact@zahtech.net";
 
 const schema = z.object({
@@ -58,7 +57,11 @@ export const Route = createFileRoute("/api/contact")({
           return json({ ok: false, error: "Email service is not configured." }, 500);
         }
 
-        const from = process.env.CONTACT_FROM_EMAIL || "ZahTech Website <onboarding@resend.dev>";
+        const from = process.env.CONTACT_FROM_EMAIL;
+        if (!from) {
+          console.error("[contact] CONTACT_FROM_EMAIL is not set");
+          return json({ ok: false, error: "Email service is not configured." }, 500);
+        }
         const rows: [string, string][] = [
           ["Name", d.name],
           ["Email", d.email],
