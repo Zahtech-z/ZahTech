@@ -23,7 +23,7 @@ export const heroCopy = {
     heading1: "Vos idées ambitieuses,",
     heading2: "des logiciels concrets.",
     description:
-      "ZahTech conçoit, développe et déploie des produits numériques pour les entreprises et les entrepreneurs — de la première idée à la mise en production.",
+      "ZahTech conçoit, développe et déploie des produits numériques pour les entreprises et les entrepreneurs de la première idée à la mise en production.",
     project: "Démarrer un projet",
     work: "Voir nos réalisations",
     location: "Basés dans le Maryland. Nous construisons pour le monde entier.",
@@ -39,7 +39,7 @@ export const heroCopy = {
     heading1: "Convertimos ideas ambiciosas",
     heading2: "en software que funciona.",
     description:
-      "ZahTech diseña, desarrolla y despliega productos digitales para empresas y emprendedores — desde la primera idea hasta la producción.",
+      "ZahTech diseña, desarrolla y despliega productos digitales para empresas y emprendedores desde la primera idea hasta la producción.",
     project: "Iniciar un proyecto",
     work: "Explora nuestro trabajo",
     location: "Desde Maryland. Construimos para todo el mundo.",
