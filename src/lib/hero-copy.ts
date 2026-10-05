@@ -7,7 +7,7 @@ export const heroCopy = {
     heading1: "We turn ambitious ideas",
     heading2: "into working software.",
     description:
-      "ZahTech designs, builds, and deploys digital products for businesses and founders — from the first idea to production.",
+      "ZahTech designs, builds, and deploys digital products for businesses and founders from the first idea to production.",
     project: "Start a project",
     work: "Explore our work",
     location: "Based in Maryland. Building worldwide.",
