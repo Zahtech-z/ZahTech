@@ -45,7 +45,7 @@ export function ProjectPreview({
           <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
         </Link>
       </div>
-      {firstView && <ProjectImage project={project} view={firstView} />}
+      {firstView && <ProjectImage project={project} view={firstView} interactive />}
     </article>
   );
 }

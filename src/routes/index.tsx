@@ -8,6 +8,7 @@ import { TechnicalProof } from "@/components/site/TechnicalProof";
 import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { HomeFooter } from "@/components/site/HomeFooter";
+import { HomepageReveal } from "@/components/site/HomepageReveal";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -105,11 +106,21 @@ function Index() {
       <Nav />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />
-        <SelectedWork />
-        <Services />
-        <TechnicalProof />
-        <Process />
-        <Contact />
+        <HomepageReveal>
+          <SelectedWork />
+        </HomepageReveal>
+        <HomepageReveal>
+          <Services />
+        </HomepageReveal>
+        <HomepageReveal>
+          <TechnicalProof />
+        </HomepageReveal>
+        <HomepageReveal>
+          <Process />
+        </HomepageReveal>
+        <HomepageReveal>
+          <Contact />
+        </HomepageReveal>
       </main>
       <HomeFooter />
     </>

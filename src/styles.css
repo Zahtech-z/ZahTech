@@ -185,6 +185,96 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Homepage motion is intentionally limited to transform and opacity. */
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-hero-enter {
+    animation: homepage-hero-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .homepage-hero-enter-1 {
+    animation-delay: 40ms;
+  }
+  .homepage-hero-enter-2 {
+    animation-delay: 110ms;
+  }
+  .homepage-hero-enter-3 {
+    animation-delay: 180ms;
+  }
+  .homepage-hero-enter-4 {
+    animation-delay: 250ms;
+  }
+  .homepage-hero-enter-5 {
+    animation-delay: 320ms;
+  }
+  [data-home-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  [data-home-reveal="revealed"] {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .engineering-assembly .engineering-stage {
+    animation: engineering-stage-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .engineering-assembly .engineering-stage-1 {
+    animation-delay: 360ms;
+  }
+  .engineering-assembly .engineering-stage-2 {
+    animation-delay: 680ms;
+  }
+  .engineering-assembly .engineering-stage-3 {
+    animation-delay: 1000ms;
+  }
+  .engineering-assembly .engineering-stage-4 {
+    animation-delay: 1320ms;
+  }
+  .engineering-assembly .engineering-connector {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: engineering-connector-in 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .engineering-assembly .engineering-connector-1 {
+    animation-delay: 520ms;
+  }
+  .engineering-assembly .engineering-connector-2 {
+    animation-delay: 840ms;
+  }
+  .engineering-assembly .engineering-connector-3,
+  .engineering-assembly .engineering-connector-accent {
+    animation-delay: 1160ms;
+  }
+}
+
+@keyframes homepage-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes engineering-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes engineering-connector-in {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* WhatsApp floating button pulse */
 @keyframes wa-pulse {
   0% {

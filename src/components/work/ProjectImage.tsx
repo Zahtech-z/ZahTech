@@ -6,10 +6,12 @@ export function ProjectImage({
   project,
   view,
   loading = "lazy",
+  interactive = false,
 }: {
   project: PortfolioProject;
   view: PortfolioProject["views"][number];
   loading?: "eager" | "lazy";
+  interactive?: boolean;
 }) {
   const { lang } = useLang();
   const copy = workCopy[lang];
@@ -29,7 +31,11 @@ export function ProjectImage({
           height={view.image.height}
           loading={loading}
           decoding="async"
-          className="h-auto w-full rounded-sm border border-border object-contain"
+          className={`h-auto w-full rounded-sm border border-border object-contain ${
+            interactive
+              ? "transition-transform duration-500 ease-out hover:scale-[1.015] motion-reduce:transition-none motion-reduce:hover:scale-100"
+              : ""
+          }`}
         />
       ) : (
         <div className="flex aspect-[8/5] max-h-80 min-h-40 items-center justify-center rounded-md border border-border bg-background px-5 py-8 text-center">
