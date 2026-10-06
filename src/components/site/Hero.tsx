@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { heroCopy } from "@/lib/hero-copy";
 import { EngineeringVisual } from "./EngineeringVisual";
@@ -7,15 +8,86 @@ import { EngineeringVisual } from "./EngineeringVisual";
 export function Hero() {
   const { lang } = useLang();
   const copy = heroCopy[lang];
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    let isIntersecting = false;
+    let listening = false;
+    let frame = 0;
+
+    const reset = () => {
+      hero.style.removeProperty("--hero-copy-scroll-y");
+      hero.style.removeProperty("--hero-copy-scroll-opacity");
+      hero.style.removeProperty("--hero-visual-scroll-y");
+      hero.style.removeProperty("--hero-visual-scroll-opacity");
+      hero.style.removeProperty("--hero-visual-scroll-scale");
+    };
+    const update = () => {
+      frame = 0;
+      const rect = hero.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / Math.max(rect.height * 0.85, 1), 0), 1);
+      hero.style.setProperty("--hero-copy-scroll-y", `${progress * -17}px`);
+      hero.style.setProperty("--hero-copy-scroll-opacity", `${1 - progress * 0.18}`);
+      hero.style.setProperty("--hero-visual-scroll-y", `${progress * -34}px`);
+      hero.style.setProperty("--hero-visual-scroll-opacity", `${1 - progress * 0.28}`);
+      hero.style.setProperty("--hero-visual-scroll-scale", `${1 - progress * 0.015}`);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    const stop = (shouldReset = false) => {
+      if (listening) window.removeEventListener("scroll", schedule);
+      listening = false;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+      if (shouldReset) reset();
+    };
+    const sync = () => {
+      const canAnimate = desktop.matches && !reducedMotion.matches;
+      if (!canAnimate || !isIntersecting) {
+        stop(!canAnimate);
+        return;
+      }
+      if (!listening) {
+        window.addEventListener("scroll", schedule, { passive: true });
+        listening = true;
+      }
+      schedule();
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        sync();
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(hero);
+    desktop.addEventListener("change", sync);
+    reducedMotion.addEventListener("change", sync);
+    return () => {
+      observer.disconnect();
+      desktop.removeEventListener("change", sync);
+      reducedMotion.removeEventListener("change", sync);
+      stop(true);
+    };
+  }, []);
+
   return (
     <section
+      ref={heroRef}
       id="main-content"
       tabIndex={-1}
       aria-labelledby="hero-heading"
       className="border-b border-border bg-background text-foreground"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-36 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-12 lg:pb-20 lg:pt-40">
-        <div className="min-w-0">
+        <div className="hero-scroll-copy min-w-0">
           <p className="homepage-hero-enter homepage-hero-enter-1 mb-6 flex items-center gap-3 text-xs font-semibold tracking-[0.12em] text-secondary-foreground">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 bg-primary" />
             {copy.eyebrow}
@@ -50,7 +122,7 @@ export function Hero() {
             {copy.location}
           </p>
         </div>
-        <div className="homepage-hero-enter homepage-hero-enter-4">
+        <div className="hero-scroll-visual homepage-hero-enter homepage-hero-enter-4">
           <EngineeringVisual />
         </div>
       </div>

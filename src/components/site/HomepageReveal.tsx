@@ -40,7 +40,7 @@ export function HomepageReveal({
         setState("revealed");
         observer.disconnect();
       },
-      { rootMargin: "0px 0px -12%", threshold: 0.01 },
+      { rootMargin: "0px 0px -4%", threshold: 0.01 },
     );
     observer.observe(element);
     return () => observer.disconnect();

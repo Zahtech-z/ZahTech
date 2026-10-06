@@ -23,6 +23,7 @@ export function EngineeringVisual() {
           <path d="M20 80H420M20 160H420M20 240H420M20 320H420M60 30V340M140 30V340M220 30V340M300 30V340M380 30V340" />
         </g>
         <path
+          id="engineering-connector-1"
           className="engineering-connector engineering-connector-1"
           d="M60 280H140V220"
           pathLength="1"
@@ -31,6 +32,7 @@ export function EngineeringVisual() {
           strokeWidth="1.5"
         />
         <path
+          id="engineering-connector-2"
           className="engineering-connector engineering-connector-2"
           d="M140 220H220V140"
           pathLength="1"
@@ -39,6 +41,7 @@ export function EngineeringVisual() {
           strokeWidth="1.5"
         />
         <path
+          id="engineering-connector-3"
           className="engineering-connector engineering-connector-3"
           d="M220 140H300V80H380"
           pathLength="1"
@@ -54,6 +57,23 @@ export function EngineeringVisual() {
           stroke="var(--primary)"
           strokeWidth="3"
         />
+        <g aria-hidden="true" fill="none" pointerEvents="none">
+          <use
+            href="#engineering-connector-1"
+            className="engineering-signal-segment engineering-signal-segment-1"
+            opacity="0"
+          />
+          <use
+            href="#engineering-connector-2"
+            className="engineering-signal-segment engineering-signal-segment-2"
+            opacity="0"
+          />
+          <use
+            href="#engineering-connector-3"
+            className="engineering-signal-segment engineering-signal-segment-3"
+            opacity="0"
+          />
+        </g>
         <g
           className="engineering-stage engineering-stage-1"
           fill="var(--background)"

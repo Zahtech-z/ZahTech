@@ -20,9 +20,12 @@ export function Process() {
         >
           {copy.processTitle}
         </h2>
-        <ol className="mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <ol className="process-progression mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {t.process.steps.map((step, i) => (
-            <li key={i} className="border-t border-border pt-5">
+            <li
+              key={i}
+              className={`process-progression-step process-progression-step-${i + 1} border-t border-border pt-5`}
+            >
               <span className="font-mono text-xs text-primary-text">0{i + 1}</span>
               <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>

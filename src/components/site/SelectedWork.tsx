@@ -19,7 +19,7 @@ export function SelectedWork() {
           {workCopy[lang].title}
         </h2>
         <div className="mt-7 sm:mt-8">
-          <ProjectPreview project={matchWise} headingLevel={3} />
+          <ProjectPreview project={matchWise} headingLevel={3} imageReveal />
         </div>
       </div>
     </section>

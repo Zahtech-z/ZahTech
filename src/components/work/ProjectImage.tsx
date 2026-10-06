@@ -7,11 +7,13 @@ export function ProjectImage({
   view,
   loading = "lazy",
   interactive = false,
+  reveal = false,
 }: {
   project: PortfolioProject;
   view: PortfolioProject["views"][number];
   loading?: "eager" | "lazy";
   interactive?: boolean;
+  reveal?: boolean;
 }) {
   const { lang } = useLang();
   const copy = workCopy[lang];
@@ -24,19 +26,21 @@ export function ProjectImage({
   return (
     <figure className="min-w-0">
       {view.image ? (
-        <img
-          src={view.image.src}
-          alt={view.image.alt[lang]}
-          width={view.image.width}
-          height={view.image.height}
-          loading={loading}
-          decoding="async"
-          className={`h-auto w-full rounded-sm border border-border object-contain ${
-            interactive
-              ? "transition-transform duration-500 ease-out hover:scale-[1.015] motion-reduce:transition-none motion-reduce:hover:scale-100"
-              : ""
-          }`}
-        />
+        <div className={reveal ? "project-image-reveal-frame" : undefined}>
+          <img
+            src={view.image.src}
+            alt={view.image.alt[lang]}
+            width={view.image.width}
+            height={view.image.height}
+            loading={loading}
+            decoding="async"
+            className={`h-auto w-full rounded-sm border border-border object-contain ${
+              interactive
+                ? "transition-transform duration-500 ease-out hover:scale-[1.015] motion-reduce:transition-none motion-reduce:hover:scale-100"
+                : ""
+            }`}
+          />
+        </div>
       ) : (
         <div className="flex aspect-[8/5] max-h-80 min-h-40 items-center justify-center rounded-md border border-border bg-background px-5 py-8 text-center">
           <div className="max-w-xs">

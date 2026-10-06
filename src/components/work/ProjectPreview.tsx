@@ -8,9 +8,11 @@ import { ProjectImage } from "./ProjectImage";
 export function ProjectPreview({
   project,
   headingLevel = 2,
+  imageReveal = false,
 }: {
   project: PortfolioProject;
   headingLevel?: 2 | 3;
+  imageReveal?: boolean;
 }) {
   const { lang } = useLang();
   const copy = workCopy[lang];
@@ -45,7 +47,9 @@ export function ProjectPreview({
           <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
         </Link>
       </div>
-      {firstView && <ProjectImage project={project} view={firstView} interactive />}
+      {firstView && (
+        <ProjectImage project={project} view={firstView} interactive reveal={imageReveal} />
+      )}
     </article>
   );
 }

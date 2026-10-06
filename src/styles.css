@@ -97,6 +97,10 @@
   --logo-accent: var(--brand-signal);
   --grid-line: color-mix(in srgb, var(--foreground) 6%, transparent);
   --tracking-heading: -0.02em;
+  --motion-editorial-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-interaction-duration: 180ms;
+  --motion-sequence-duration: 380ms;
+  --motion-reveal-distance: 12px;
 }
 
 /* Explicit opt-in only; the primary experience is always light. */
@@ -187,6 +191,17 @@ html {
 
 /* Homepage motion is intentionally limited to transform and opacity. */
 @media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 1024px) {
+    .hero-scroll-copy {
+      opacity: var(--hero-copy-scroll-opacity, 1);
+      transform: translate3d(0, var(--hero-copy-scroll-y, 0), 0);
+    }
+    .hero-scroll-visual {
+      opacity: var(--hero-visual-scroll-opacity, 1);
+      transform: translate3d(0, var(--hero-visual-scroll-y, 0), 0)
+        scale(var(--hero-visual-scroll-scale, 1));
+    }
+  }
   .homepage-hero-enter {
     animation: homepage-hero-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
@@ -220,19 +235,21 @@ html {
     animation: page-intro-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .engineering-assembly .engineering-stage {
-    animation: engineering-stage-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation:
+      engineering-stage-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both,
+      engineering-stage-response 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .engineering-assembly .engineering-stage-1 {
-    animation-delay: 360ms;
+    animation-delay: 360ms, 1620ms;
   }
   .engineering-assembly .engineering-stage-2 {
-    animation-delay: 680ms;
+    animation-delay: 680ms, 2110ms;
   }
   .engineering-assembly .engineering-stage-3 {
-    animation-delay: 1000ms;
+    animation-delay: 1000ms, 2600ms;
   }
   .engineering-assembly .engineering-stage-4 {
-    animation-delay: 1320ms;
+    animation-delay: 1320ms, 3090ms;
   }
   .engineering-assembly .engineering-connector {
     stroke-dasharray: 1;
@@ -248,6 +265,186 @@ html {
   .engineering-assembly .engineering-connector-3,
   .engineering-assembly .engineering-connector-accent {
     animation-delay: 1160ms;
+  }
+  .engineering-assembly .engineering-signal-segment {
+    stroke: var(--primary);
+    stroke-width: 4;
+    stroke-linecap: square;
+    stroke-dasharray: 0.32 0.68;
+    stroke-dashoffset: 1;
+    animation: engineering-signal-travel 350ms linear forwards;
+  }
+  .engineering-assembly .engineering-signal-segment-1 {
+    animation-delay: 1770ms;
+  }
+  .engineering-assembly .engineering-signal-segment-2 {
+    animation-delay: 2260ms;
+  }
+  .engineering-assembly .engineering-signal-segment-3 {
+    animation-delay: 2750ms;
+  }
+  .project-image-reveal-frame {
+    position: relative;
+    overflow: hidden;
+  }
+  .project-image-reveal-frame::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    content: "";
+    pointer-events: none;
+    background: var(--primary);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  [data-home-reveal="pending"] .project-image-reveal-frame {
+    clip-path: inset(0 0 0 14%);
+    opacity: 0.15;
+    transform: translateY(22px) scale(0.985);
+  }
+  [data-home-reveal="revealed"] .project-image-reveal-frame {
+    animation: project-image-reveal 1000ms var(--motion-editorial-ease) 100ms both;
+  }
+  [data-home-reveal="revealed"] .project-image-reveal-frame::after {
+    animation: product-frame-signal 820ms var(--motion-editorial-ease) 160ms both;
+  }
+  .technical-proof-progression,
+  .process-progression {
+    position: relative;
+  }
+  .technical-proof-progression::after,
+  .process-progression::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    background: var(--primary);
+    opacity: 0;
+  }
+  .technical-proof-progression::after {
+    inset: 0 auto 0 -1px;
+    width: 3px;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .process-progression::after {
+    inset: 0 0 auto;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  [data-home-reveal="pending"] .technical-proof-layer,
+  [data-home-reveal="pending"] .process-progression-step {
+    opacity: 0;
+  }
+  [data-home-reveal="pending"] .technical-proof-layer {
+    --motion-sequence-offset: 6px;
+    transform: translateY(var(--motion-sequence-offset));
+  }
+  [data-home-reveal="pending"] .process-progression-step {
+    --motion-sequence-offset: 12px;
+    transform: translateY(var(--motion-sequence-offset));
+  }
+  .technical-proof-layer,
+  .process-progression-step {
+    position: relative;
+  }
+  .technical-proof-layer::after,
+  .process-progression-step::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer {
+    animation: engineering-sequence-in 440ms var(--motion-editorial-ease) both;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer::after {
+    animation: engineering-row-signal 360ms var(--motion-editorial-ease) forwards;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-1 {
+    animation-delay: 180ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-1::after {
+    animation-delay: 400ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-2 {
+    animation-delay: 540ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-2::after {
+    animation-delay: 750ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-3 {
+    animation-delay: 900ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-3::after {
+    animation-delay: 1110ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-4 {
+    animation-delay: 1260ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-layer-4::after {
+    animation-delay: 1470ms;
+  }
+  [data-home-reveal="revealed"] .technical-proof-progression::after {
+    animation: engineering-progress-vertical 1760ms var(--motion-editorial-ease) 80ms forwards;
+  }
+  [data-home-reveal="revealed"] .process-progression-step {
+    animation: engineering-sequence-in 440ms var(--motion-editorial-ease) both;
+  }
+  [data-home-reveal="revealed"] .process-progression-step::after {
+    animation: engineering-row-signal 360ms var(--motion-editorial-ease) forwards;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-1 {
+    animation-delay: 180ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-1::after {
+    animation-delay: 420ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-2 {
+    animation-delay: 540ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-2::after {
+    animation-delay: 780ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-3 {
+    animation-delay: 900ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-3::after {
+    animation-delay: 1140ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-4 {
+    animation-delay: 1260ms;
+  }
+  [data-home-reveal="revealed"] .process-progression-step-4::after {
+    animation-delay: 1500ms;
+  }
+  [data-home-reveal="revealed"] .process-progression::after {
+    animation: engineering-progress-horizontal 1840ms var(--motion-editorial-ease) 80ms forwards;
+  }
+  @media (max-width: 639px) {
+    .process-progression {
+      padding-left: 1.25rem;
+    }
+    .process-progression::after {
+      inset: 0 auto 0 0;
+      width: 2px;
+      height: auto;
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    [data-home-reveal="revealed"] .process-progression::after {
+      animation-name: engineering-progress-vertical;
+    }
   }
 }
 
@@ -287,6 +484,117 @@ html {
 @keyframes engineering-connector-in {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes engineering-stage-response {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.78;
+    transform: translateY(-2px) scale(1.015);
+  }
+}
+
+@keyframes engineering-signal-travel {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+  8%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes project-image-reveal {
+  from {
+    clip-path: inset(0 0 0 14%);
+    opacity: 0.15;
+    transform: translateY(22px) scale(0.985);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes product-frame-signal {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  18%,
+  78% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes engineering-sequence-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-sequence-offset, var(--motion-reveal-distance)));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes engineering-progress-vertical {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  12%,
+  86% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes engineering-progress-horizontal {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  12%,
+  86% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes engineering-row-signal {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  18%,
+  74% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
   }
 }
 

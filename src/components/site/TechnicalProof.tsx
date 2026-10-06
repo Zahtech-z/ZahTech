@@ -25,11 +25,11 @@ export function TechnicalProof() {
             {copy.engineeringIntro}
           </p>
         </div>
-        <ol className="dark divide-y divide-border rounded-md border border-border bg-background px-5 py-2 text-foreground sm:px-8">
+        <ol className="technical-proof-progression dark divide-y divide-border rounded-md border border-border bg-background px-5 py-2 text-foreground sm:px-8">
           {copy.layers.map((layer, i) => (
             <li
               key={layer}
-              className="grid grid-cols-[1.5rem_1fr] gap-x-3 gap-y-2 py-5 sm:grid-cols-[1.5rem_1fr_1.2fr]"
+              className={`technical-proof-layer technical-proof-layer-${i + 1} grid grid-cols-[1.5rem_1fr] gap-x-3 gap-y-2 py-5 sm:grid-cols-[1.5rem_1fr_1.2fr]`}
             >
               <span className="pt-0.5 font-mono text-xs text-primary-text">0{i + 1}</span>
               <h3 className="text-sm font-medium">{layer}</h3>
