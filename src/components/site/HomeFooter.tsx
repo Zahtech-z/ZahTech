@@ -20,6 +20,9 @@ export function HomeFooter() {
             <p className="mt-2 text-sm text-muted-foreground">{homeCopy[lang].footerLine}</p>
           </div>
           <nav aria-label={t.footer.company} className="flex flex-wrap gap-x-6 gap-y-1">
+            <Link to="/services" className={linkClass}>
+              {t.nav.services}
+            </Link>
             <Link to="/work" className={linkClass}>
               {t.nav.work}
             </Link>

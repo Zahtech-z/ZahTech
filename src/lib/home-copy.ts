@@ -21,7 +21,9 @@ export const homeCopy = {
     layerDetails: ["React / Next.js", "Node.js / APIs", "PostgreSQL", "AWS / Docker / CI/CD"],
     process: "How we work",
     processTitle: "A clear path from brief to release.",
-    contactIntro: "Tell us what you want to build. We'll help define the next step.",
+    contactHeading: "Have a project in mind?",
+    contactIntro:
+      "Tell us about the product, application, cloud infrastructure, or AI-powered build you want to create.",
     contactEmail: "Prefer email?",
     footerLine: "Software, AI, and cloud. Built with care.",
   },
@@ -45,7 +47,9 @@ export const homeCopy = {
     layerDetails: ["React / Next.js", "Node.js / API", "PostgreSQL", "AWS / Docker / CI/CD"],
     process: "Notre méthode",
     processTitle: "Un parcours clair, du brief à la livraison.",
-    contactIntro: "Parlez-nous de votre projet. Nous vous aiderons à définir la prochaine étape.",
+    contactHeading: "Un projet en tête ?",
+    contactIntro:
+      "Parlez-nous du produit, de l’application, de l’infrastructure cloud ou de la solution enrichie par l’IA que vous souhaitez créer.",
     contactEmail: "Vous préférez écrire ?",
     footerLine: "Logiciel, IA et cloud. Conçus avec soin.",
   },
@@ -70,7 +74,9 @@ export const homeCopy = {
     layerDetails: ["React / Next.js", "Node.js / API", "PostgreSQL", "AWS / Docker / CI/CD"],
     process: "Cómo trabajamos",
     processTitle: "Un camino claro, del brief al lanzamiento.",
-    contactIntro: "Cuéntanos qué quieres construir. Te ayudaremos a definir el siguiente paso.",
+    contactHeading: "¿Tienes un proyecto en mente?",
+    contactIntro:
+      "Cuéntanos sobre el producto, la aplicación, la infraestructura cloud o la solución con IA que quieres crear.",
     contactEmail: "¿Prefieres escribirnos?",
     footerLine: "Software, IA y cloud. Creados con cuidado.",
   },
@@ -88,6 +94,7 @@ export const homeCopy = {
     layerDetails: string[];
     process: string;
     processTitle: string;
+    contactHeading: string;
     contactIntro: string;
     contactEmail: string;
     footerLine: string;

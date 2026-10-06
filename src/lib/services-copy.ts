@@ -7,6 +7,8 @@ type ServicesCopy = {
   heading: string;
   introduction: string;
   overview: string;
+  ctaHeading: string;
+  ctaDescription: string;
   seoTitle: string;
   services: Record<ServiceId, { title: string; description: string }>;
 };
@@ -18,6 +20,9 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
     introduction:
       "ZahTech combines product development, cloud engineering, AI, and technical operations to build and support software across its lifecycle.",
     overview: "Our capabilities",
+    ctaHeading: "Have a project to discuss?",
+    ctaDescription:
+      "Tell us which capabilities your project needs, from product development to ongoing technical operations.",
     seoTitle: "Services | ZahTech",
     services: {
       apps: {
@@ -55,6 +60,9 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
     introduction:
       "ZahTech réunit développement produit, ingénierie cloud, IA et exploitation technique pour créer et accompagner vos logiciels tout au long de leur cycle de vie.",
     overview: "Nos expertises",
+    ctaHeading: "Un projet à discuter ?",
+    ctaDescription:
+      "Parlez-nous des expertises dont votre projet a besoin, du développement produit à l’exploitation technique continue.",
     seoTitle: "Services | ZahTech",
     services: {
       apps: {
@@ -94,6 +102,9 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
     introduction:
       "ZahTech combina desarrollo de producto, ingeniería cloud, IA y operaciones técnicas para crear y mantener software durante todo su ciclo de vida.",
     overview: "Nuestras especialidades",
+    ctaHeading: "¿Tienes un proyecto que comentar?",
+    ctaDescription:
+      "Cuéntanos qué capacidades necesita tu proyecto, desde el desarrollo de producto hasta las operaciones técnicas continuas.",
     seoTitle: "Servicios | ZahTech",
     services: {
       apps: {

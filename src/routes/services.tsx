@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { HomeFooter } from "@/components/site/HomeFooter";
 import { SkipLink } from "@/components/site/SkipLink";
 import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { heroCopy } from "@/lib/hero-copy";
 import { useLang } from "@/lib/i18n";
 import { serviceIds, servicesCopy } from "@/lib/services-copy";
 
@@ -73,6 +74,29 @@ function ServicesPage() {
               ))}
             </ol>
           </section>
+          <HomepageReveal
+            as="section"
+            ariaLabelledby="services-project-heading"
+            className="flex flex-col items-start justify-between gap-6 border-t border-border py-12 sm:py-16 md:flex-row md:items-center"
+          >
+            <div className="max-w-2xl">
+              <h2
+                id="services-project-heading"
+                className="text-balance font-display text-3xl font-semibold sm:text-4xl"
+              >
+                {copy.ctaHeading}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                {copy.ctaDescription}
+              </p>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
+            >
+              {heroCopy[lang].project}
+            </Link>
+          </HomepageReveal>
         </div>
       </main>
       <HomeFooter />
