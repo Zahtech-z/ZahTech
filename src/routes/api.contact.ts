@@ -73,23 +73,23 @@ export const Route = createFileRoute("/api/contact")({
         ];
 
         const html = `
-<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:600px;margin:0 auto;color:#111">
-  <div style="background:#000;padding:20px 24px;border-radius:12px 12px 0 0">
-    <h1 style="margin:0;font-size:18px;color:#fff">New quote request <span style="color:#818cf8">&bull;</span> <span style="color:#22d3ee">ZahTech</span></h1>
+<div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:600px;margin:0 auto;color:#0a0a0a;background:#f5f2eb">
+  <div style="background:#0a0a0a;padding:20px 24px;border-radius:12px 12px 0 0">
+    <h1 style="margin:0;font-size:18px;color:#f5f2eb">New project inquiry <span style="color:#ff5a36">&bull;</span> ZahTech</h1>
   </div>
-  <div style="border:1px solid #e5e7eb;border-top:0;border-radius:0 0 12px 12px;padding:24px">
+  <div style="border:1px solid #d5d0c6;border-top:0;border-radius:0 0 12px 12px;padding:24px;background:#fffdf8">
     <table style="width:100%;border-collapse:collapse;font-size:14px">
       ${rows
         .map(
           ([k, v]) =>
-            `<tr><td style="padding:8px 12px 8px 0;color:#6b7280;width:110px;vertical-align:top">${k}</td><td style="padding:8px 0;font-weight:500">${esc(v)}</td></tr>`,
+            `<tr><td style="padding:8px 12px 8px 0;color:#625e57;width:110px;vertical-align:top">${k}</td><td style="padding:8px 0;font-weight:500">${esc(v)}</td></tr>`,
         )
         .join("")}
     </table>
-    <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin:20px 0 8px">Project description</h2>
+    <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#625e57;margin:20px 0 8px">Project description</h2>
     <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(d.description)}</p>
     ${d.additional ? `<h2 style="font-size:13px;margin:20px 0 8px">Additional details</h2><p style="white-space:pre-wrap">${esc(d.additional)}</p>` : ""}
-    <p style="margin:24px 0 0;font-size:12px;color:#9ca3af">Reply to this email to respond directly to ${esc(d.name)}.</p>
+    <p style="margin:24px 0 0;font-size:12px;color:#625e57">Reply to this email to respond directly to ${esc(d.name)}.</p>
   </div>
 </div>`;
 
@@ -106,7 +106,7 @@ export const Route = createFileRoute("/api/contact")({
               from,
               to: [TO_EMAIL],
               reply_to: d.email,
-              subject: `New quote request from ${oneLine(d.name)}`,
+              subject: `New project inquiry from ${oneLine(d.name)}`,
               html,
               text,
             }),

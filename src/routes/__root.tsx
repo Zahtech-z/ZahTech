@@ -49,7 +49,7 @@ export const Route = createRootRoute({
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "ZahTech LLC: Tech for businesses. Built fast, shipped right." },
+      { property: "og:image:alt", content: "ZahTech LLC: Build. Deploy. Scale." },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:site", content: "@ZahTech_z" },
