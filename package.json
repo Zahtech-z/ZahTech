@@ -41,7 +41,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-query": "^5.83.0",
-    "@tanstack/react-router": "^1.168.26",
+    "@tanstack/react-router": "1.170.41",
     "@tanstack/react-start": "^1.168.60",
     "@tanstack/router-plugin": "^1.168.42",
     "class-variance-authority": "^0.7.1",
@@ -65,6 +65,9 @@
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2"
+  },
+  "overrides": {
+    "srvx": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
