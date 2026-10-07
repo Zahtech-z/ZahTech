@@ -51,6 +51,30 @@ function AboutPage() {
               {copy.statement}
             </p>
           </HomepageReveal>
+          <HomepageReveal
+            as="section"
+            ariaLabelledby="founder-heading"
+            className="grid gap-6 border-t border-border py-12 sm:py-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-12"
+          >
+            <div>
+              <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
+                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
+                {copy.founder.eyebrow}
+              </p>
+              <h2
+                id="founder-heading"
+                className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
+              >
+                {copy.founder.name}
+              </h2>
+              <p className="mt-3 text-sm font-medium text-secondary-foreground">
+                {copy.founder.role}
+              </p>
+            </div>
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {copy.founder.description}
+            </p>
+          </HomepageReveal>
           <section aria-labelledby="thinking-heading" className="pb-14 sm:pb-20">
             <h2
               id="thinking-heading"

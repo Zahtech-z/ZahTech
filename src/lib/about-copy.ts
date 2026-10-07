@@ -1,11 +1,13 @@
 import type { Lang } from "./i18n";
 
 type Row = { title: string; description: string };
+type FounderCopy = { eyebrow: string; name: string; role: string; description: string };
 type AboutCopy = {
   eyebrow: string;
   heading: [string, string];
   introduction: string;
   statement: string;
+  founder: FounderCopy;
   thinking: string;
   principles: [Row, Row, Row];
   disciplinesHeading: [string, string];
@@ -26,6 +28,13 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
       "ZahTech is a Maryland-based software company designing, building, and deploying digital products for businesses and founders.",
     statement:
       "We work across product development, cloud infrastructure, AI, and technical operations — connecting the pieces required to move from an idea to a working product.",
+    founder: {
+      eyebrow: "Founder-led",
+      name: "Anicet Hermann Zie",
+      role: "Founder & CEO, ZahTech LLC",
+      description:
+        "ZahTech is founder-led, with Anicet directly involved in designing, building, and delivering practical digital products across app development, cloud & DevOps, and AI-powered builds.",
+    },
     thinking: "How we think.",
     principles: [
       {
@@ -82,6 +91,13 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
       "ZahTech est une entreprise de logiciels basée dans le Maryland. Nous concevons, développons et déployons des produits numériques pour les entreprises et les entrepreneurs.",
     statement:
       "Développement produit, infrastructure cloud, IA et exploitation technique : nous relions les compétences nécessaires pour passer d’une idée à un produit fonctionnel.",
+    founder: {
+      eyebrow: "Dirigée par son fondateur",
+      name: "Anicet Hermann Zie",
+      role: "Founder & CEO, ZahTech LLC",
+      description:
+        "ZahTech est dirigée par son fondateur, Anicet, directement impliqué dans la conception, la création et la livraison de produits numériques concrets en développement d’applications, cloud & DevOps et solutions enrichies par l’IA.",
+    },
     thinking: "Notre approche.",
     principles: [
       {
@@ -138,6 +154,13 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
       "ZahTech es una empresa de software con sede en Maryland que diseña, desarrolla y despliega productos digitales para empresas y emprendedores.",
     statement:
       "Trabajamos en desarrollo de producto, infraestructura cloud, IA y operaciones técnicas, conectando las piezas necesarias para convertir una idea en un producto funcional.",
+    founder: {
+      eyebrow: "Liderada por su fundador",
+      name: "Anicet Hermann Zie",
+      role: "Founder & CEO, ZahTech LLC",
+      description:
+        "ZahTech está liderada por su fundador, Anicet, quien participa directamente en el diseño, la creación y la entrega de productos digitales prácticos de desarrollo de aplicaciones, cloud y DevOps, y soluciones con IA.",
+    },
     thinking: "Nuestra forma de pensar.",
     principles: [
       {
