@@ -7,7 +7,7 @@ export const homeCopy = {
     servicesIntro: "From a focused first release to the systems that keep it running.",
     serviceDescriptions: [
       "Web applications and digital products, from interface to backend.",
-      "Cloud infrastructure, deployment pipelines, and production environments.",
+      "Cloud infrastructure, deployment pipelines, and production environments that support repeatable releases and day-to-day operation.",
       "Architecture reviews, technical direction, and practical delivery plans.",
       "AI-assisted development and AI features shaped around your product needs.",
       "Monitoring, security updates, and ongoing infrastructure maintenance.",
@@ -33,7 +33,7 @@ export const homeCopy = {
     servicesIntro: "D'une première version ciblée aux systèmes qui la font fonctionner.",
     serviceDescriptions: [
       "Applications web et produits numériques, de l'interface au backend.",
-      "Infrastructure cloud, chaînes de déploiement et environnements de production.",
+      "Infrastructure cloud, chaînes de déploiement et environnements de production qui favorisent des mises en production reproductibles et l’exploitation au quotidien.",
       "Revues d'architecture, orientation technique et plans de réalisation concrets.",
       "Développement assisté par IA et fonctionnalités adaptées aux besoins du produit.",
       "Surveillance, mises à jour de sécurité et maintenance de l'infrastructure.",
@@ -60,7 +60,7 @@ export const homeCopy = {
       "Desde una primera versión bien definida hasta los sistemas que la mantienen en marcha.",
     serviceDescriptions: [
       "Aplicaciones web y productos digitales, desde la interfaz hasta el backend.",
-      "Infraestructura cloud, procesos de despliegue y entornos de producción.",
+      "Infraestructura cloud, procesos de despliegue y entornos de producción que favorecen lanzamientos repetibles y la operación diaria.",
       "Revisiones de arquitectura, dirección técnica y planes de desarrollo prácticos.",
       "Desarrollo asistido por IA y funciones adaptadas a las necesidades del producto.",
       "Supervisión, actualizaciones de seguridad y mantenimiento de infraestructura.",

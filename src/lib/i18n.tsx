@@ -41,9 +41,9 @@ export const translations = {
       heading: "A process that actually ships.",
       steps: [
         { title: "Discovery Call", desc: "We understand your goals, audience, and constraints." },
-        { title: "Scope & Quote", desc: "Prompt scoping, clear deliverables, and a quote tailored to your project." },
-        { title: "Build & Iterate", desc: "Weekly demos. Feedback loops. Production-grade code." },
-        { title: "Deploy & Support", desc: "Launch, monitor, and maintain: we stay with you." },
+        { title: "Scope & Project Plan", desc: "A clear scope, practical deliverables, and a shared plan for the work ahead." },
+        { title: "Build & Iterate", desc: "Working increments and feedback loops that keep product decisions connected to implementation." },
+        { title: "Deploy & Support", desc: "Prepare the product for release, with monitoring and maintenance support where it is part of the project." },
       ],
     },
     contact: {
@@ -132,9 +132,9 @@ export const translations = {
       heading: "Un processus qui livre vraiment.",
       steps: [
         { title: "Appel de découverte", desc: "Nous comprenons vos objectifs, votre audience et vos contraintes." },
-        { title: "Cadrage & Devis", desc: "Cadrage rapide, livrables clairs et devis adapté à votre projet." },
-        { title: "Construire & Itérer", desc: "Démos hebdomadaires. Boucles de retour. Code de qualité production." },
-        { title: "Déployer & Soutenir", desc: "Lancer, surveiller et maintenir : nous restons avec vous." },
+        { title: "Cadrage & plan de projet", desc: "Un périmètre clair, des livrables concrets et un plan partagé pour la suite du travail." },
+        { title: "Construire & Itérer", desc: "Des versions progressives et des boucles de retour qui relient les décisions produit à leur mise en œuvre." },
+        { title: "Déployer & Soutenir", desc: "Préparer le produit à sa mise en production, avec un accompagnement de supervision et de maintenance lorsqu’il fait partie du projet." },
       ],
     },
     contact: {
@@ -223,9 +223,9 @@ export const translations = {
       heading: "Un proceso que realmente entrega.",
       steps: [
         { title: "Llamada de descubrimiento", desc: "Entendemos tus objetivos, audiencia y limitaciones." },
-        { title: "Alcance & Cotización", desc: "Definición ágil del alcance, entregables claros y un presupuesto a medida." },
-        { title: "Construir & Iterar", desc: "Demos semanales. Ciclos de retroalimentación. Código de calidad." },
-        { title: "Desplegar & Mantener", desc: "Lanzar, monitorear y mantener: nos quedamos contigo." },
+        { title: "Alcance y plan de proyecto", desc: "Un alcance claro, entregables prácticos y un plan compartido para el trabajo que sigue." },
+        { title: "Construir & Iterar", desc: "Entregas incrementales y ciclos de retroalimentación que mantienen conectadas las decisiones de producto y la implementación." },
+        { title: "Desplegar & Mantener", desc: "Preparar el producto para su lanzamiento, con soporte de monitoreo y mantenimiento cuando forma parte del proyecto." },
       ],
     },
     contact: {

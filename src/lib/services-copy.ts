@@ -32,7 +32,7 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
       cloud: {
         title: "Cloud & DevOps",
         description:
-          "Cloud infrastructure, deployment pipelines, containers, automation, and production environments.",
+          "Cloud infrastructure, deployment pipelines, containers, automation, and production environments that support repeatable releases and day-to-day operation.",
       },
       ai: {
         title: "AI-Powered Build",
@@ -72,7 +72,7 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
       cloud: {
         title: "Cloud & DevOps",
         description:
-          "Infrastructure cloud, pipelines de déploiement, conteneurs, automatisation et environnements de production.",
+          "Infrastructure cloud, pipelines de déploiement, conteneurs, automatisation et environnements de production qui favorisent des mises en production reproductibles et l’exploitation au quotidien.",
       },
       ai: {
         title: "Développement avec l’IA",
@@ -114,7 +114,7 @@ export const servicesCopy: Record<Lang, ServicesCopy> = {
       cloud: {
         title: "Cloud y DevOps",
         description:
-          "Infraestructura cloud, pipelines de despliegue, contenedores, automatización y entornos de producción.",
+          "Infraestructura cloud, pipelines de despliegue, contenedores, automatización y entornos de producción que favorecen lanzamientos repetibles y la operación diaria.",
       },
       ai: {
         title: "Desarrollo con IA",
