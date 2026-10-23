@@ -11,6 +11,7 @@ type ProjectPresentation = {
   capabilities: Record<CapabilityId, { title: string; description: string }>;
   views: Record<ViewId, string>;
   seoDescription: string;
+  galleryNote: string;
 };
 
 type WorkCopy = {
@@ -32,7 +33,7 @@ type WorkCopy = {
   seoTitle: string;
   seoDescription: string;
   caseStudySeo: string;
-  projects: { matchwise: ProjectPresentation };
+  projects: { onzscore: ProjectPresentation };
 };
 
 // Presentation copy is separate from the language-independent project facts.
@@ -63,15 +64,15 @@ export const workCopy: Record<Lang, WorkCopy> = {
     cta: "Have a product to build?",
     seoTitle: "Selected Work | ZahTech",
     seoDescription:
-      "Explore ZahTech-built software products and the product engineering behind MatchWise, a football intelligence and match analysis product.",
+      "Explore ZahTech-built software products and the product engineering behind OnzScore, a football intelligence and match analysis product.",
     caseStudySeo: "Product Engineering Case Study",
     projects: {
-      matchwise: {
+      onzscore: {
         category: "Football intelligence & match analysis",
         shortDescription:
-          "Match intelligence, prediction analysis and ticket tools in one football product.",
+          "Daily football picks, ready-made coupons and transparent results in one bilingual product.",
         longDescription:
-          "Football analysis brings together fixtures, league context and prediction data. MatchWise connects these views with match analysis, smart picks and ticket intelligence, giving people a place to explore the information together.",
+          "OnzScore brings match probabilities, a free daily pick, ready-made coupons and competition tables into one English/French workspace. Users can explore the model’s analysis, build and save coupons, and practise their own predictions without staking money. The public track record includes wins and losses. OnzScore is a statistical analysis tool: it does not accept bets, and predictions are not guaranteed.",
         role: "ZahTech designed and built the product experience and its engineering system, from the public landing and account flows to the application frontend and backend services.",
         status: "Preparing for production",
         stageDescription:
@@ -79,33 +80,56 @@ export const workCopy: Record<Lang, WorkCopy> = {
         capabilities: {
           matches: {
             title: "Match intelligence",
-            description: "Football fixtures, match data and analysis.",
+            description: "Fixtures, date and league filters, scores and outcome probabilities.",
           },
           predictions: {
-            title: "Prediction analysis",
-            description: "Predictions and analysis across multiple market categories.",
+            title: "Daily free pick",
+            description: "One fully analysed match each day, available without an account.",
           },
           tickets: {
-            title: "Ticket intelligence",
-            description: "Ticket construction, model signals and analysis tools.",
+            title: "Ready-made and personal coupons",
+            description:
+              "Steady, Balanced, Bold and Long Shot profiles, combined probabilities and tools to edit, copy, share and save.",
           },
           leagues: {
-            title: "League context",
-            description: "Leagues, statistics, standings and odds-related data.",
+            title: "Competitions",
+            description:
+              "League tables and knockout brackets for club and international competitions.",
+          },
+          training: {
+            title: "Training mode",
+            description:
+              "Make your own picks, earn points with no monetary value and compare your results with the model.",
+          },
+          record: {
+            title: "Transparent track record",
+            description:
+              "Predictions locked at kick-off, results recorded after matches, and public accuracy and calibration views.",
           },
           account: {
-            title: "Account experience",
-            description: "Registration, authentication, profile and an authenticated dashboard.",
+            title: "Account and access",
+            description:
+              "English/French interface, saved coupons, referral rewards and WhatsApp support.",
+          },
+          pricing: {
+            title: "Free and VIP",
+            description:
+              "The displayed offer includes a free tier and VIP at US$9.99/month with all 18 markets. Mobile Money and card payments are advertised.",
           },
         },
         views: {
-          landing: "Landing / product identity",
-          matches: "Match intelligence",
-          predictions: "Prediction & market analysis",
-          tickets: "Ticket intelligence / signals",
+          landing: "Landing / OnzScore identity",
+          matches: "Matches / probabilities",
+          tickets: "Coupons / four profiles",
+          leagues: "Competitions / tables and brackets",
+          training: "Training / personal predictions",
+          record: "Track record / published results",
+          pricing: "Free and VIP / displayed offer",
         },
         seoDescription:
-          "How ZahTech designed and built MatchWise: football intelligence, match analysis and software engineering across a Next.js frontend and backend services. Preparing for production.",
+          "How ZahTech designed and built OnzScore: football intelligence, match analysis and software engineering across a Next.js frontend and backend services. Preparing for production.",
+        galleryNote:
+          "Product screenshots supplied in October 2026. Scores, probabilities and results illustrate the interface at capture time.",
       },
     },
   },
@@ -135,49 +159,73 @@ export const workCopy: Record<Lang, WorkCopy> = {
     cta: "Un produit à développer ?",
     seoTitle: "Réalisations choisies | ZahTech",
     seoDescription:
-      "Découvrez les produits logiciels créés par ZahTech et l’ingénierie de MatchWise, un produit d’analyse de matchs de football.",
+      "Découvrez les produits logiciels créés par ZahTech et l’ingénierie d’OnzScore, un produit d’analyse de matchs de football.",
     caseStudySeo: "Étude de cas en ingénierie produit",
     projects: {
-      matchwise: {
+      onzscore: {
         category: "Données football & analyse de matchs",
         shortDescription:
-          "Données de matchs, analyse de prédictions et outils de composition de tickets dans un même produit dédié au football.",
+          "Pronostic quotidien, coupons prêts à consulter et résultats transparents dans un produit bilingue dédié au football.",
         longDescription:
-          "L’analyse du football rassemble calendriers de matchs, contexte des ligues et données de prédiction. MatchWise relie ces vues à l’analyse de matchs, aux sélections guidées par des signaux et aux outils de tickets pour explorer ces informations ensemble.",
+          "OnzScore réunit probabilités des matchs, pronostic gratuit quotidien, coupons préparés et classements des compétitions dans un espace en français et en anglais. Les utilisateurs peuvent explorer les analyses du modèle, composer et enregistrer leurs coupons et s’entraîner à pronostiquer sans miser d’argent. L’historique public présente les réussites comme les échecs. OnzScore est un outil d’analyse statistique : il ne prend pas de paris et ne garantit aucun pronostic.",
         role: "ZahTech a conçu et développé l’expérience produit et son système logiciel, de la page publique et des parcours de compte à l’interface applicative et aux services backend.",
         status: "Préparation à la production",
         stageDescription:
           "Le développement se poursuit avec la consolidation du produit et la préparation de son déploiement en production.",
         capabilities: {
           matches: {
-            title: "Analyse de matchs",
-            description: "Calendriers, données et analyse des matchs de football.",
+            title: "Analyse des matchs",
+            description:
+              "Rencontres, filtres par date et par ligue, scores et probabilités des résultats.",
           },
           predictions: {
-            title: "Analyse des prédictions",
-            description: "Prédictions et analyses couvrant plusieurs catégories de marchés.",
+            title: "Pronostic gratuit quotidien",
+            description: "Un match analysé chaque jour, accessible sans créer de compte.",
           },
           tickets: {
-            title: "Analyse des tickets",
-            description: "Composition de tickets, signaux du modèle et outils d’analyse.",
+            title: "Coupons préparés et personnels",
+            description:
+              "Profils Steady, Balanced, Bold et Long Shot, probabilités combinées et outils pour modifier, copier, partager et enregistrer.",
           },
           leagues: {
-            title: "Contexte des ligues",
-            description: "Ligues, statistiques, classements et données de cotes.",
+            title: "Compétitions",
+            description:
+              "Classements des ligues et tableaux à élimination directe pour les clubs et les sélections nationales.",
+          },
+          training: {
+            title: "Mode entraînement",
+            description:
+              "Faire ses propres pronostics, gagner des points sans valeur monétaire et comparer ses résultats à ceux du modèle.",
+          },
+          record: {
+            title: "Historique transparent",
+            description:
+              "Pronostics figés au coup d’envoi, résultats enregistrés après les matchs et suivi public de la précision et de la calibration.",
           },
           account: {
-            title: "Espace personnel",
-            description: "Inscription, authentification, profil et tableau de bord connecté.",
+            title: "Compte et accès",
+            description:
+              "Interface français/anglais, coupons enregistrés, récompenses de parrainage et assistance WhatsApp.",
+          },
+          pricing: {
+            title: "Gratuit et VIP",
+            description:
+              "L’offre affichée comprend une formule gratuite et le VIP à 9,99 $ US/mois avec les 18 marchés. Les paiements Mobile Money et par carte sont annoncés.",
           },
         },
         views: {
-          landing: "Accueil / identité du produit",
-          matches: "Analyse de matchs",
-          predictions: "Prédictions & analyse des marchés",
-          tickets: "Analyse des tickets / signaux",
+          landing: "Accueil / identité OnzScore",
+          matches: "Matchs / probabilités",
+          tickets: "Coupons / quatre profils",
+          leagues: "Compétitions / classements et tableaux",
+          training: "Entraînement / pronostics personnels",
+          record: "Historique / résultats publiés",
+          pricing: "Gratuit et VIP / offre affichée",
         },
         seoDescription:
-          "Comment ZahTech a conçu et développé MatchWise : analyse de football, données de matchs et ingénierie logicielle avec Next.js et des services backend. Préparation à la production.",
+          "Comment ZahTech a conçu et développé OnzScore : analyse de football, données de matchs et ingénierie logicielle avec Next.js et des services backend. Préparation à la production.",
+        galleryNote:
+          "Captures du produit fournies en octobre 2026. Les scores, probabilités et résultats illustrent l’interface au moment de la capture.",
       },
     },
   },
@@ -207,49 +255,73 @@ export const workCopy: Record<Lang, WorkCopy> = {
     cta: "¿Tienes un producto que desarrollar?",
     seoTitle: "Proyectos destacados | ZahTech",
     seoDescription:
-      "Explora los productos de software creados por ZahTech y la ingeniería de MatchWise, un producto de inteligencia y análisis de partidos de fútbol.",
+      "Explora los productos de software creados por ZahTech y la ingeniería de OnzScore, un producto de inteligencia y análisis de partidos de fútbol.",
     caseStudySeo: "Caso de estudio de ingeniería de producto",
     projects: {
-      matchwise: {
+      onzscore: {
         category: "Inteligencia de fútbol y análisis de partidos",
         shortDescription:
-          "Información de partidos, análisis de predicciones y herramientas de tickets en un solo producto de fútbol.",
+          "Pronósticos diarios, cupones preparados y resultados transparentes en un producto de fútbol bilingüe.",
         longDescription:
-          "El análisis del fútbol reúne calendarios de partidos, contexto de ligas y datos de predicción. MatchWise conecta estas vistas con análisis de partidos, selecciones basadas en señales y herramientas de tickets para explorar la información en conjunto.",
+          "OnzScore reúne probabilidades de partidos, un pronóstico diario gratuito, cupones preparados y clasificaciones en un espacio en inglés y francés. Los usuarios pueden explorar el análisis del modelo, crear y guardar cupones y practicar sus pronósticos sin apostar dinero. El historial público incluye aciertos y fallos. OnzScore es una herramienta de análisis estadístico: no acepta apuestas ni garantiza pronósticos.",
         role: "ZahTech diseñó y desarrolló la experiencia del producto y su sistema de software, desde la página pública y los flujos de cuenta hasta la interfaz de la aplicación y los servicios backend.",
         status: "Preparación para producción",
         stageDescription:
           "El desarrollo continúa con el refuerzo del producto y la preparación de su despliegue en producción.",
         capabilities: {
           matches: {
-            title: "Inteligencia de partidos",
-            description: "Calendarios, datos y análisis de partidos de fútbol.",
+            title: "Análisis de partidos",
+            description:
+              "Encuentros, filtros por fecha y liga, marcadores y probabilidades de resultados.",
           },
           predictions: {
-            title: "Análisis de predicciones",
-            description: "Predicciones y análisis en varias categorías de mercados.",
+            title: "Pronóstico diario gratuito",
+            description: "Un partido analizado cada día, accesible sin cuenta.",
           },
           tickets: {
-            title: "Inteligencia de tickets",
-            description: "Construcción de tickets, señales del modelo y herramientas de análisis.",
+            title: "Cupones preparados y personales",
+            description:
+              "Perfiles Steady, Balanced, Bold y Long Shot, probabilidades combinadas y opciones para editar, copiar, compartir y guardar.",
           },
           leagues: {
-            title: "Contexto de ligas",
-            description: "Ligas, estadísticas, clasificaciones y datos de cuotas.",
+            title: "Competiciones",
+            description:
+              "Clasificaciones y cuadros eliminatorios de competiciones de clubes y selecciones.",
+          },
+          training: {
+            title: "Modo de práctica",
+            description:
+              "Haz tus pronósticos, gana puntos sin valor monetario y compara tus resultados con el modelo.",
+          },
+          record: {
+            title: "Historial transparente",
+            description:
+              "Pronósticos fijados al inicio, resultados registrados tras los partidos y vistas públicas de precisión y calibración.",
           },
           account: {
-            title: "Experiencia de cuenta",
-            description: "Registro, autenticación, perfil y panel para usuarios autenticados.",
+            title: "Cuenta y acceso",
+            description:
+              "Interfaz en inglés y francés, cupones guardados, recompensas por referidos y asistencia por WhatsApp.",
+          },
+          pricing: {
+            title: "Gratis y VIP",
+            description:
+              "La oferta mostrada incluye un nivel gratuito y VIP por US$9,99/mes con los 18 mercados. Se anuncian pagos por Mobile Money y tarjeta.",
           },
         },
         views: {
-          landing: "Inicio / identidad del producto",
-          matches: "Inteligencia de partidos",
-          predictions: "Predicciones y análisis de mercados",
-          tickets: "Inteligencia de tickets / señales",
+          landing: "Inicio / identidad OnzScore",
+          matches: "Partidos / probabilidades",
+          tickets: "Cupones / cuatro perfiles",
+          leagues: "Competiciones / clasificaciones y cuadros",
+          training: "Práctica / pronósticos personales",
+          record: "Historial / resultados publicados",
+          pricing: "Gratis y VIP / oferta mostrada",
         },
         seoDescription:
-          "Cómo ZahTech diseñó y desarrolló MatchWise: inteligencia de fútbol, análisis de partidos e ingeniería de software con Next.js y servicios backend. En preparación para producción.",
+          "Cómo ZahTech diseñó y desarrolló OnzScore: inteligencia de fútbol, análisis de partidos e ingeniería de software con Next.js y servicios backend. En preparación para producción.",
+        galleryNote:
+          "Capturas del producto facilitadas en octubre de 2026. Los marcadores, probabilidades y resultados ilustran la interfaz en el momento de la captura.",
       },
     },
   },

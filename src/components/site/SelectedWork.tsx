@@ -1,6 +1,6 @@
 import { useLang } from "@/lib/i18n";
 import { workCopy } from "@/lib/work-copy";
-import { matchWise } from "@/lib/projects";
+import { onzScore } from "@/lib/projects";
 import { ProjectPreview } from "@/components/work/ProjectPreview";
 
 export function SelectedWork() {
@@ -19,7 +19,7 @@ export function SelectedWork() {
           {workCopy[lang].title}
         </h2>
         <div className="mt-7 sm:mt-8">
-          <ProjectPreview project={matchWise} headingLevel={3} imageReveal />
+          <ProjectPreview project={onzScore} headingLevel={3} imageReveal />
         </div>
       </div>
     </section>

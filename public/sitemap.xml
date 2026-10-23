@@ -24,7 +24,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zahtech.org/work/matchwise</loc>
+    <loc>https://zahtech.org/work/onzscore</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,3 +45,4 @@
     <priority>0.3</priority>
   </url>
 </urlset>
+
