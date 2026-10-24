@@ -4,8 +4,8 @@
 
 ## Claude-compatible agent definitions
 
-- [ZahTech Project Manager](../../../.claude/agents/zahtech-project-manager.md)
-- [ZahTech Software Architect](../../../.claude/agents/zahtech-software-architect.md)
+- [ZahTech Project Manager](../../.claude/agents/zahtech-project-manager.md)
+- [ZahTech Software Architect](../../.claude/agents/zahtech-software-architect.md)
 
 These files provide agent instructions in the existing `.claude/agents/` convention. They do **not** create autonomous background workers, guarantee execution, or grant new tool permissions. Actual tool access depends on the agent runtime and user approvals.
 
