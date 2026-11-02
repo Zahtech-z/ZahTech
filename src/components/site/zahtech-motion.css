@@ -1,0 +1,295 @@
+.zah-motion {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  border-radius: 1rem;
+  background: var(--brand-ink);
+  color: var(--brand-warm-white);
+  border: 1px solid var(--brand-graphite);
+}
+.zah-motion__scene {
+  position: relative;
+  height: clamp(320px, 35vw, 460px);
+  overflow: hidden;
+  perspective: 700px;
+}
+.zah-motion__horizon {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 110%,
+    color-mix(in srgb, var(--brand-signal) 30%, transparent),
+    transparent 65%
+  );
+}
+.zah-motion__engine {
+  position: absolute;
+  width: 136px;
+  height: 136px;
+  left: calc(50% - 68px);
+  top: calc(49% - 68px);
+  animation: zah-levitate 4s ease-in-out infinite;
+}
+.zah-motion__aura {
+  position: absolute;
+  inset: -35px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--brand-signal) 40%, transparent),
+    transparent 68%
+  );
+  filter: blur(15px);
+  animation: zah-breathe 3s ease-in-out infinite;
+}
+.zah-motion__ribbons {
+  position: absolute;
+  inset: 0;
+  animation: zah-revolve 8s linear infinite;
+  transform-style: preserve-3d;
+}
+.zah-motion__ribbons span {
+  position: absolute;
+  inset: 8px;
+  border-radius: 42% 58% 62% 38% / 46% 35% 65% 54%;
+  background: linear-gradient(
+    135deg,
+    var(--brand-warm-white),
+    var(--brand-signal) 35%,
+    color-mix(in srgb, var(--brand-signal) 35%, transparent) 80%
+  );
+  box-shadow:
+    inset 0 0 20px color-mix(in srgb, var(--brand-warm-white) 45%, transparent),
+    0 0 25px color-mix(in srgb, var(--brand-signal) 35%, transparent);
+  opacity: 0.8;
+}
+.zah-motion__ribbons span:nth-child(2) {
+  transform: rotate(65deg) rotateY(55deg) scale(1.25);
+}
+.zah-motion__ribbons span:nth-child(3) {
+  transform: rotate(-40deg) rotateX(65deg) scale(1.3);
+}
+.zah-motion__core {
+  position: absolute;
+  inset: 27px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, var(--brand-warm-white), var(--brand-signal) 60%);
+  box-shadow: 0 0 35px var(--brand-signal);
+  opacity: 0.9;
+  animation: zah-breathe 3s ease-in-out infinite;
+}
+.zah-motion__mark {
+  position: absolute;
+  left: 44px;
+  top: 44px;
+  filter: drop-shadow(0 2px 8px var(--brand-ink));
+}
+.zah-motion__satellite {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  animation: zah-orbit 12s linear infinite;
+}
+.zah-motion__satellite--1 {
+  left: 15%;
+  top: 13%;
+}
+.zah-motion__satellite--2 {
+  right: 13%;
+  top: 24%;
+  animation-delay: -4s;
+  animation-direction: reverse;
+}
+.zah-motion__satellite--3 {
+  left: 29%;
+  bottom: 9%;
+  animation-delay: -8s;
+}
+.zah-motion__sphere {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 25% 80%,
+    color-mix(in srgb, var(--brand-warm-white) 75%, var(--brand-graphite)),
+    var(--brand-graphite) 70%
+  );
+  box-shadow: inset 1px 1px 1px #ffffff24;
+}
+.zah-motion__label {
+  position: absolute;
+  left: 38%;
+  top: 21%;
+  padding: 10px 15px;
+  white-space: nowrap;
+  border: 1px solid #ffffff21;
+  border-radius: 30px;
+  background: linear-gradient(120deg, #ffffff12, #0a0a0ad9 65%);
+  backdrop-filter: blur(12px);
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: -0.02em;
+  box-shadow: 0 8px 20px #0003;
+}
+.zah-motion__satellite--2 .zah-motion__label {
+  left: auto;
+  right: -12%;
+}
+.zah-motion__dust {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 70%, #f5f2eb80, #24242440 70%);
+  filter: blur(9px);
+  opacity: 0.55;
+  animation: zah-float 12s ease-in-out infinite;
+}
+.zah-motion__dust--one {
+  left: 8%;
+  top: 49%;
+  animation-delay: -2s;
+}
+.zah-motion__dust--two {
+  right: 26%;
+  top: 9%;
+  animation-delay: -5s;
+  width: 42px;
+  height: 42px;
+}
+.zah-motion__dust--three {
+  right: 9%;
+  bottom: 22%;
+  animation-delay: -8s;
+}
+.zah-motion__dust--four {
+  left: 14%;
+  bottom: 18%;
+  width: 35px;
+  height: 35px;
+}
+.zah-motion__signature {
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  opacity: 0.7;
+}
+.zah-motion__signature span {
+  margin-left: 3px;
+  font-size: 8px;
+  vertical-align: super;
+}
+.zah-motion__caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid #ffffff12;
+  font-size: 11px;
+  color: var(--brand-warm-white);
+}
+.zah-motion__caption > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.zah-motion__status {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brand-signal);
+}
+.zah-motion__toggle {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ffffff30;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.zah-motion__toggle:hover {
+  background: #ffffff14;
+}
+.zah-motion--paused *,
+.zah-motion--paused *::before {
+  animation-play-state: paused !important;
+}
+@keyframes zah-levitate {
+  0%,
+  100% {
+    transform: translateY(10px) rotate(-9deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(9deg);
+  }
+}
+@keyframes zah-revolve {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes zah-orbit {
+  0%,
+  100% {
+    transform: translate(-18px, 0) scale(0.92);
+  }
+  25% {
+    transform: translate(0, -24px) scale(1);
+  }
+  50% {
+    transform: translate(22px, 0) scale(1.08);
+  }
+  75% {
+    transform: translate(0, 24px) scale(1);
+  }
+}
+@keyframes zah-breathe {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+@keyframes zah-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-13px);
+  }
+}
+@media (max-width: 400px) {
+  .zah-motion__label {
+    padding: 8px 11px;
+  }
+  .zah-motion__satellite--1 {
+    left: 9%;
+  }
+  .zah-motion__satellite--2 {
+    right: 9%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zah-motion * {
+    animation: none !important;
+  }
+  .zah-motion__toggle {
+    display: none;
+  }
+}
