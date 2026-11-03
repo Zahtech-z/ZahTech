@@ -47,7 +47,10 @@ export const Route = createFileRoute("/")({
           foundingDate: "2026",
           address: {
             "@type": "PostalAddress",
+            streetAddress: "6325 Woodside Ct., Suite 200 PMB 1064",
+            addressLocality: "Columbia",
             addressRegion: "MD",
+            postalCode: "21046",
             addressCountry: "US",
           },
           description:
