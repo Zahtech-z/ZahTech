@@ -2,7 +2,7 @@
   "baseURL": "http://127.0.0.1:3100",
   "browser": "149.0.7827.55",
   "checks": [
-    "local Syne and Inter fonts loaded",
+    "local Inter font loaded for body and title",
     "normal motion: reveal visibly changes opacity after hydration",
     "desktop 1440: no horizontal overflow or title overlap",
     "desktop screenshot captured",
@@ -57,14 +57,6 @@
       "error": "net::ERR_ABORTED"
     },
     {
-      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
       "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
       "error": "net::ERR_ABORTED"
     },
@@ -113,11 +105,19 @@
       "error": "net::ERR_ABORTED"
     },
     {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
       "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
       "error": "net::ERR_ABORTED"
     },
     {
       "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
       "error": "net::ERR_ABORTED"
     }
   ]

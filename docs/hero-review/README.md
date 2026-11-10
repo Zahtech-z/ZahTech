@@ -1,4 +1,4 @@
-﻿# Premier écran ZahTech — revue visuelle
+# Premier écran ZahTech — revue visuelle
 
 Tâche : navigation et accueil uniquement. Propriétaire de la revue : ZahTech.
 Statut : en attente de revue visuelle.
@@ -6,15 +6,15 @@ Branche : `feat/hero-navigation-review`.
 
 ## Proposition
 
-Fond encre, grain et éclairage discrets, titre Syne blanc chaud ponctué d’orange,
+Fond encre, grain et éclairage discrets, titre Inter blanc chaud, en graisse 500 avec un espacement moins serré, ponctué d’orange,
 navigation flottante et deux liens vers les pages Contact et Work. L’apparition
 Framer Motion dure au plus 0,8 seconde, sans bloquer le défilement. Le HTML reste
 lisible sans JavaScript et la réduction des animations est respectée.
 
 Le logo existant, les sections suivantes et la navigation des autres pages sont
 conservés. Les nouveaux textes EN/FR/ES restent séparés des CTA partagés.
-Syne et Inter sont embarquées sous des alias réservés au premier écran, avec
-leurs licences OFL : les anciennes URL externes sont invalides. Les fichiers
+Inter est utilisée pour le titre et le texte du premier écran, avec
+sa licence OFL : les anciennes URL externes sont invalides. Les fichiers
 partagés de styles et de polices des autres sections ne sont pas modifiés.
 
 ## Aperçu et captures

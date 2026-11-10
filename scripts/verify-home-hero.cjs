@@ -78,10 +78,12 @@ const expected = {
       await page.evaluate(
         () =>
           document.fonts.check('16px "ZahTech Hero Sans"') &&
-          document.fonts.check('600 48px "ZahTech Hero Display"'),
+          document.fonts.check('500 48px "ZahTech Hero Sans"') &&
+          getComputedStyle(document.querySelector("h1")).fontFamily.includes("ZahTech Hero Sans") &&
+          getComputedStyle(document.querySelector("h1")).fontWeight === "500",
       ),
     );
-    checks.push("local Syne and Inter fonts loaded");
+    checks.push("local Inter font loaded for body and title");
     assert.ok(await page.evaluate(() => window.__heroMotionSeen), "normal motion never animated");
     checks.push("normal motion: reveal visibly changes opacity after hydration");
     await noOverflow("desktop 1440");

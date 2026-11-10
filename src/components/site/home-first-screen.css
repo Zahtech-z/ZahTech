@@ -163,12 +163,12 @@
   background: var(--brand-signal);
 }
 .home-hero__heading {
-  font-family: "ZahTech Hero Display", ui-sans-serif, system-ui, sans-serif;
+  font-family: "ZahTech Hero Sans", ui-sans-serif, system-ui, sans-serif;
   margin: 0;
   font-size: clamp(3.4rem, 7.4vw, 7.25rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.06;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 .home-hero__heading > span {
@@ -275,7 +275,7 @@
   }
   .home-hero__heading {
     font-size: clamp(3rem, 9.5vw, 4.75rem);
-    letter-spacing: -0.045em;
+    letter-spacing: -0.035em;
     line-height: 1.12;
   }
   .home-hero__description {
