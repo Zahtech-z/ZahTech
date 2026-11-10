@@ -4,8 +4,9 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { useLang, type Lang } from "@/lib/i18n";
 import { heroCopy } from "@/lib/hero-copy";
+import "./home-first-screen.css";
 
-export function Nav() {
+export function Nav({ floating = false }: { floating?: boolean }) {
   const { lang, setLang, t } = useLang();
   const copy = heroCopy[lang];
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,20 +41,29 @@ export function Nav() {
       key={item.label}
       to={item.to}
       onClick={() => setMenuOpen(false)}
-      className="flex min-h-11 items-center px-2 text-sm font-medium text-secondary-foreground underline-offset-8 hover:underline"
+      className={
+        floating
+          ? "home-nav__link"
+          : "flex min-h-11 items-center px-2 text-sm font-medium text-secondary-foreground underline-offset-8 hover:underline"
+      }
       activeOptions={{ exact: true, includeHash: true }}
       activeProps={{ className: "underline" }}
     >
       {item.label}
     </Link>
   ));
-  const cta =
-    "min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover motion-reduce:transition-none";
+  const cta = floating
+    ? "home-nav__contact"
+    : "min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover motion-reduce:transition-none";
 
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background text-foreground"
+      className={
+        floating
+          ? "home-nav"
+          : "fixed inset-x-0 top-0 z-50 border-b border-border bg-background text-foreground"
+      }
       onKeyDown={(event) => {
         if (event.key === "Escape" && menuOpen) {
           setMenuOpen(false);
@@ -64,14 +74,20 @@ export function Nav() {
         if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
       }}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
+      <div
+        className={
+          floating
+            ? "home-nav__bar"
+            : "mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6"
+        }
+      >
         <Link
           to="/"
           aria-label="ZahTech"
           onClick={() => setMenuOpen(false)}
           className="flex min-h-11 shrink-0 items-center"
         >
-          <Logo />
+          <Logo variant={floating ? "inverse" : "accent"} />
         </Link>
         <nav aria-label={copy.navigation} className="hidden items-center gap-4 lg:flex">
           {links}
@@ -82,7 +98,11 @@ export function Nav() {
             <select
               value={lang}
               onChange={(event) => setLang(event.target.value as Lang)}
-              className="min-h-11 w-[76px] cursor-pointer rounded-md border border-border bg-background px-2 text-sm text-foreground"
+              className={
+                floating
+                  ? "home-nav__language"
+                  : "min-h-11 w-[76px] cursor-pointer rounded-md border border-border bg-background px-2 text-sm text-foreground"
+              }
             >
               <option value="en" lang="en">
                 EN
@@ -100,7 +120,7 @@ export function Nav() {
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-flex ${cta}`}
           >
-            {copy.project}
+            {floating ? t.nav.contact : copy.project}
           </Link>
           <button
             ref={menuButtonRef}
@@ -109,7 +129,11 @@ export function Nav() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border lg:hidden"
+            className={
+              floating
+                ? "home-nav__menu-button lg:hidden"
+                : "flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border lg:hidden"
+            }
           >
             {menuOpen ? (
               <X aria-hidden="true" className="h-5 w-5" />
@@ -123,7 +147,11 @@ export function Nav() {
         id="mobile-menu"
         aria-label={copy.navigation}
         hidden={!menuOpen}
-        className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border px-4 py-4 sm:px-6 lg:hidden"
+        className={
+          floating
+            ? "home-nav__mobile lg:hidden"
+            : "max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border px-4 py-4 sm:px-6 lg:hidden"
+        }
       >
         <div className="flex flex-col gap-2">
           {links}
@@ -132,7 +160,7 @@ export function Nav() {
             onClick={() => setMenuOpen(false)}
             className={`mt-2 inline-flex ${cta}`}
           >
-            {copy.project}
+            {floating ? t.nav.contact : copy.project}
           </Link>
         </div>
       </nav>

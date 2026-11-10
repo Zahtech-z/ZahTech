@@ -106,7 +106,7 @@ function Index() {
   return (
     <>
       <SkipLink />
-      <Nav />
+      <Nav floating />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />
         <HomepageReveal>

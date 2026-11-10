@@ -68,3 +68,56 @@ export const heroCopy = {
     language: string;
   }
 >;
+
+/** First-screen proposal only; shared calls to action elsewhere remain unchanged. */
+export const homeHeroCopy = {
+  en: {
+    eyebrow: "Websites · Applications · Cloud",
+    heading1: "Your next idea.",
+    heading2: "Built to",
+    headingAccent: "work.",
+    description:
+      "We design and build websites, applications, and cloud solutions that help your business move forward.",
+    project: "Start Your Project",
+    work: "Explore Our Work",
+    location: "Based in Maryland. Building worldwide.",
+    discover: "Discover our work",
+  },
+  fr: {
+    eyebrow: "Sites web · Applications · Cloud",
+    heading1: "Votre prochaine idée.",
+    heading2: "Pensée pour",
+    headingAccent: "réussir.",
+    description:
+      "Nous concevons et développons des sites web, des applications et des solutions cloud pour faire avancer votre entreprise.",
+    project: "Démarrer votre projet",
+    work: "Voir nos réalisations",
+    location: "Basés dans le Maryland. Nous construisons pour le monde entier.",
+    discover: "Découvrir nos réalisations",
+  },
+  es: {
+    eyebrow: "Sitios web · Aplicaciones · Cloud",
+    heading1: "Tu próxima idea.",
+    heading2: "Hecha para",
+    headingAccent: "funcionar.",
+    description:
+      "Diseñamos y desarrollamos sitios web, aplicaciones y soluciones en la nube que ayudan a tu empresa a avanzar.",
+    project: "Inicia tu proyecto",
+    work: "Explora nuestro trabajo",
+    location: "Desde Maryland. Construimos para todo el mundo.",
+    discover: "Descubre nuestro trabajo",
+  },
+} satisfies Record<
+  Lang,
+  {
+    eyebrow: string;
+    heading1: string;
+    heading2: string;
+    headingAccent: string;
+    description: string;
+    project: string;
+    work: string;
+    location: string;
+    discover: string;
+  }
+>;
