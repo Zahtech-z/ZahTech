@@ -3,6 +3,7 @@ import type { Lang } from "./i18n";
 export const homeCopy = {
   en: {
     capabilities: "Capabilities",
+    servicesLink: "View all services",
     services: "The right expertise, at every stage.",
     servicesIntro: "From a focused first release to the systems that keep it running.",
     serviceDescriptions: [
@@ -29,6 +30,7 @@ export const homeCopy = {
   },
   fr: {
     capabilities: "Expertises",
+    servicesLink: "Voir tous les services",
     services: "La bonne expertise, à chaque étape.",
     servicesIntro: "D'une première version ciblée aux systèmes qui la font fonctionner.",
     serviceDescriptions: [
@@ -55,6 +57,7 @@ export const homeCopy = {
   },
   es: {
     capabilities: "Especialidades",
+    servicesLink: "Ver todos los servicios",
     services: "La experiencia adecuada en cada etapa.",
     servicesIntro:
       "Desde una primera versión bien definida hasta los sistemas que la mantienen en marcha.",
@@ -84,6 +87,7 @@ export const homeCopy = {
   Lang,
   {
     capabilities: string;
+    servicesLink: string;
     services: string;
     servicesIntro: string;
     serviceDescriptions: string[];
