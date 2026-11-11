@@ -1,4 +1,4 @@
-﻿import { Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { motion, stagger, useAnimate, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useEffect } from "react";
@@ -16,10 +16,10 @@ export function Hero() {
     // SSR stays visible, including when JavaScript is unavailable.
     const reveal = animate(
       "[data-hero-reveal]",
-      reducedMotion ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [16, 0] },
+      reducedMotion ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [40, 0] },
       {
-        duration: reducedMotion ? 0 : 0.5,
-        delay: reducedMotion ? 0 : stagger(0.06),
+        duration: reducedMotion ? 0 : 0.8,
+        delay: reducedMotion ? 0 : stagger(0.085),
         ease: [0.22, 1, 0.36, 1],
       },
     );
@@ -41,9 +41,13 @@ export function Hero() {
           {copy.eyebrow}
         </p>
         <h1 id="hero-heading" className="home-hero__heading">
-          <span data-hero-reveal>{copy.heading1}</span>{" "}
-          <span data-hero-reveal>
-            {copy.heading2} <em>{copy.headingAccent}</em>
+          <span className="home-hero__line">
+            <span data-hero-reveal>{copy.heading1}</span>
+          </span>{" "}
+          <span className="home-hero__line">
+            <span data-hero-reveal>
+              {copy.heading2} <em>{copy.headingAccent}</em>
+            </span>
           </span>
         </h1>
         <p className="home-hero__description" data-hero-reveal>

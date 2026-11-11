@@ -1,3 +1,5 @@
+import { BrandReveal } from "./BrandReveal";
+import { EngineeringMotion } from "./EngineeringMotion";
 import { useLang } from "@/lib/i18n";
 import { homeCopy } from "@/lib/home-copy";
 import "./home-engineering.css";
@@ -16,17 +18,19 @@ export function TechnicalProof() {
           <h2 id="engineering-heading">{copy.engineeringTitle}</h2>
           <p>{copy.engineeringIntro}</p>
         </header>
-        <ol className="home-engineering__layers">
-          {copy.layers.map((layer, index) => (
-            <li className="home-engineering__layer" key={layer}>
-              <span className="home-engineering__number" aria-hidden="true">
-                0{index + 1}
-              </span>
-              <h3>{layer}</h3>
-              <p>{copy.layerDetails[index]}</p>
-            </li>
-          ))}
-        </ol>
+        <EngineeringMotion>
+          <ol className="home-engineering__layers">
+            {copy.layers.map((layer, index) => (
+              <BrandReveal as="li" className="home-engineering__layer" key={layer}>
+                <span className="home-engineering__number" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h3>{layer}</h3>
+                <p>{copy.layerDetails[index]}</p>
+              </BrandReveal>
+            ))}
+          </ol>
+        </EngineeringMotion>
       </div>
     </section>
   );
