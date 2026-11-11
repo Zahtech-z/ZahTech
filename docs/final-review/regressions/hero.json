@@ -1,0 +1,148 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "local Inter font loaded for body and title",
+    "normal motion: reveal visibly changes opacity after hydration",
+    "desktop 1440: no horizontal overflow or title overlap",
+    "desktop screenshot captured",
+    "four navigation routes and both hero CTAs navigate successfully",
+    "discover link scrolls naturally to existing selected-work section",
+    "en 320: no horizontal overflow or title overlap",
+    "fr 320: no horizontal overflow or title overlap",
+    "es 320: no horizontal overflow or title overlap",
+    "en 390: no horizontal overflow or title overlap",
+    "fr 390: no horizontal overflow or title overlap",
+    "es 390: no horizontal overflow or title overlap",
+    "en 768: no horizontal overflow or title overlap",
+    "fr 768: no horizontal overflow or title overlap",
+    "es 768: no horizontal overflow or title overlap",
+    "en 1024: no horizontal overflow or title overlap",
+    "fr 1024: no horizontal overflow or title overlap",
+    "es 1024: no horizontal overflow or title overlap",
+    "en 1440: no horizontal overflow or title overlap",
+    "fr 1440: no horizontal overflow or title overlap",
+    "es 1440: no horizontal overflow or title overlap",
+    "mobile footnote does not overlap existing WhatsApp control",
+    "mobile menu: open, Escape restores focus, outside click closes, contact navigates",
+    "French selection persists after reload",
+    "keyboard skip link moves focus to main-content",
+    "reduced motion: all reveal content immediately visible without transforms",
+    "no JavaScript: server-rendered heading, description and links remain visible"
+  ],
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}

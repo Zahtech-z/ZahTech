@@ -1,0 +1,28 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "four existing steps, original order and descriptions retained",
+    "Inter title in weight 500 applied",
+    "original process anchor, named section and ordered list preserved",
+    "desktop step rows separate number, title and description",
+    "en 320: localized steps fit; responsive row layout verified",
+    "fr 320: localized steps fit; responsive row layout verified",
+    "es 320: localized steps fit; responsive row layout verified",
+    "en 390: localized steps fit; responsive row layout verified",
+    "fr 390: localized steps fit; responsive row layout verified",
+    "es 390: localized steps fit; responsive row layout verified",
+    "en 768: localized steps fit; responsive row layout verified",
+    "fr 768: localized steps fit; responsive row layout verified",
+    "es 768: localized steps fit; responsive row layout verified",
+    "en 1024: localized steps fit; responsive row layout verified",
+    "fr 1024: localized steps fit; responsive row layout verified",
+    "es 1024: localized steps fit; responsive row layout verified",
+    "en 1440: localized steps fit; responsive row layout verified",
+    "fr 1440: localized steps fit; responsive row layout verified",
+    "es 1440: localized steps fit; responsive row layout verified",
+    "reduced motion: visible content without active step animations",
+    "no JavaScript: heading and all four step descriptions remain available"
+  ],
+  "errors": []
+}

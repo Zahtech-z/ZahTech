@@ -64,7 +64,7 @@ const expected = {
       `${label}: horizontal overflow ${JSON.stringify(size)}`,
     );
     const heading = await page.locator("h1").boundingBox();
-    const header = await page.locator("header").boundingBox();
+    const header = await page.locator("header.home-nav").boundingBox();
     assert.ok(heading.y > header.y + header.height, `${label}: header overlaps title`);
     checks.push(`${label}: no horizontal overflow or title overlap`);
   };
