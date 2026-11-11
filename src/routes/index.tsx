@@ -9,6 +9,7 @@ import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { HomeFooter } from "@/components/site/HomeFooter";
 import { HomepageReveal } from "@/components/site/HomepageReveal";
+import "@/components/site/home-accessibility.css";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -30,7 +31,8 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: "Custom Software Development & AI Solutions | ZahTech" },
       {
         name: "twitter:description",
-        content: "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch.",
+        content:
+          "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch.",
       },
     ],
     scripts: [
@@ -61,7 +63,13 @@ export const Route = createFileRoute("/")({
             { "@type": "Country", name: "United States" },
             "Worldwide",
           ],
-          knowsAbout: ["Custom software development", "Web application development", "AI solutions", "Cloud and DevOps", "MVP development"],
+          knowsAbout: [
+            "Custom software development",
+            "Web application development",
+            "AI solutions",
+            "Cloud and DevOps",
+            "MVP development",
+          ],
           sameAs: ["https://github.com/Zahtech-z", "https://x.com/ZahTech_z"],
           contactPoint: {
             "@type": "ContactPoint",
@@ -80,7 +88,12 @@ export const Route = createFileRoute("/")({
           name: "Custom Software Development",
           provider: { "@id": "https://zahtech.org/#organization" },
           url: "https://zahtech.org/#services",
-          serviceType: ["Custom web application development", "MVP development", "Cloud and DevOps", "AI-powered software development"],
+          serviceType: [
+            "Custom web application development",
+            "MVP development",
+            "Cloud and DevOps",
+            "AI-powered software development",
+          ],
           areaServed: "Worldwide",
         }),
       },
@@ -95,7 +108,12 @@ export const Route = createFileRoute("/")({
           worksFor: { "@id": "https://zahtech.org/#organization" },
           url: "https://zahtech.org/",
           sameAs: ["https://linkedin.com/in/anicetzt"],
-          knowsAbout: ["Custom software development", "AI solutions", "Cloud and DevOps", "Technology consulting"],
+          knowsAbout: [
+            "Custom software development",
+            "AI solutions",
+            "Cloud and DevOps",
+            "Technology consulting",
+          ],
         }),
       },
     ],
