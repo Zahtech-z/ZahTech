@@ -125,7 +125,7 @@ function Index() {
           <Contact />
         </HomepageReveal>
       </main>
-      <HomeFooter />
+      <HomeFooter dark />
     </>
   );
 }
