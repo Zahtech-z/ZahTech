@@ -1,0 +1,28 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "four original layers, order and technologies preserved",
+    "Inter heading in weight 500 applied",
+    "existing stack anchor and accessible ordered layer list retained",
+    "desktop diagram presents four columns",
+    "en 320: localized content fits; responsive diagram layout verified",
+    "fr 320: localized content fits; responsive diagram layout verified",
+    "es 320: localized content fits; responsive diagram layout verified",
+    "en 390: localized content fits; responsive diagram layout verified",
+    "fr 390: localized content fits; responsive diagram layout verified",
+    "es 390: localized content fits; responsive diagram layout verified",
+    "en 768: localized content fits; responsive diagram layout verified",
+    "fr 768: localized content fits; responsive diagram layout verified",
+    "es 768: localized content fits; responsive diagram layout verified",
+    "en 1024: localized content fits; responsive diagram layout verified",
+    "fr 1024: localized content fits; responsive diagram layout verified",
+    "es 1024: localized content fits; responsive diagram layout verified",
+    "en 1440: localized content fits; responsive diagram layout verified",
+    "fr 1440: localized content fits; responsive diagram layout verified",
+    "es 1440: localized content fits; responsive diagram layout verified",
+    "reduced motion: content immediately visible without active diagram animations",
+    "no JavaScript: heading, four layers and stack anchor remain available"
+  ],
+  "errors": []
+}
