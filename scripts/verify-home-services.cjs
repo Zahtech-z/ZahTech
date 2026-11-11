@@ -72,12 +72,13 @@ const headings = {
     ]) {
       await section.locator(selector).click();
       await page.waitForURL(`${baseURL}${route}`);
-      await page.locator(".home-nav").waitFor({ state: "detached" });
+      if (route === "/services") await page.locator(".services-page").waitFor();
+      else await page.locator(".home-nav").waitFor({ state: "detached" });
       assert.equal(await page.locator(".home-services").count(), 0);
       await page.goto(baseURL);
       await ready();
     }
-    checks.push("both CTAs navigate to existing pages with their default navigation");
+    checks.push("both CTAs navigate; Services uses the shared floating navigation");
     for (const width of [320, 390, 768, 1024, 1440]) {
       await page.setViewportSize({ width, height: width < 768 ? 844 : 1000 });
       for (const lang of ["en", "fr", "es"]) {

@@ -8,7 +8,8 @@ import { TechnicalProof } from "@/components/site/TechnicalProof";
 import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { HomeFooter } from "@/components/site/HomeFooter";
-import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { BrandReveal } from "@/components/site/BrandReveal";
+import "@/components/site/brand-motion.css";
 import "@/components/site/home-accessibility.css";
 
 export const Route = createFileRoute("/")({
@@ -127,21 +128,21 @@ function Index() {
       <Nav floating />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />
-        <HomepageReveal>
+        <BrandReveal selector=".selected-work__header, .selected-work__details">
           <SelectedWork />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-services__intro">
           <Services />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-engineering__eyebrow, .home-engineering__header">
           <TechnicalProof />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-process__header">
           <Process />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-contact__eyebrow, h2, .home-contact__description, .home-contact__project, .home-contact__email">
           <Contact />
-        </HomepageReveal>
+        </BrandReveal>
       </main>
       <HomeFooter dark />
     </>

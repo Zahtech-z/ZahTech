@@ -1,3 +1,5 @@
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
@@ -9,6 +11,15 @@ import "./selected-work.css";
 
 export function SelectedWork() {
   const { lang } = useLang();
+  const imageRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const { scrollYProgress } = useScroll({ target: imageRef, offset: ["start end", "end start"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 28 });
+  const y = useTransform(progress, [0, 1], [24, -24]);
+  const rotateX = useTransform(progress, [0, 0.4, 0.8, 1], [4, 0, 0, -2]);
+  const scale = useTransform(progress, [0, 0.35, 0.8, 1], [0.96, 1, 1, 0.98]);
   const copy = workCopy[lang];
   const presentation = copy.projects[onzScore.slug];
   const firstView = onzScore.views[0];
@@ -29,9 +40,15 @@ export function SelectedWork() {
 
         <article className="selected-work__project" aria-labelledby="selected-project-heading">
           {firstView && (
-            <div className="selected-work__image">
+            <motion.div
+              ref={imageRef}
+              className="selected-work__image"
+              style={
+                mounted && !reduced ? { y, rotateX, scale, transformPerspective: 1200 } : undefined
+              }
+            >
               <ProjectImage project={onzScore} view={firstView} interactive />
-            </div>
+            </motion.div>
           )}
           <div className="selected-work__details">
             <div className="selected-work__identity">

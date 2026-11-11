@@ -1,3 +1,4 @@
+import { BrandReveal } from "./BrandReveal";
 import { useLang } from "@/lib/i18n";
 import { homeCopy } from "@/lib/home-copy";
 import "./home-process.css";
@@ -17,13 +18,13 @@ export function Process() {
         </header>
         <ol className="home-process__steps">
           {t.process.steps.map((step, index) => (
-            <li className="home-process__step" key={step.title}>
+            <BrandReveal as="li" className="home-process__step" key={step.title}>
               <span className="home-process__number" aria-hidden="true">
                 0{index + 1}
               </span>
               <h3>{step.title}</h3>
               <p>{step.desc}</p>
-            </li>
+            </BrandReveal>
           ))}
         </ol>
       </div>

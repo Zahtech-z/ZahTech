@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import { BrandReveal } from "./BrandReveal";
 import { useLang } from "@/lib/i18n";
 import { homeCopy } from "@/lib/home-copy";
 import { homeHeroCopy } from "@/lib/hero-copy";
@@ -33,13 +34,13 @@ export function Services() {
         </header>
         <ol className="home-services__list">
           {serviceOrder.map((serviceIndex, position) => (
-            <li className="home-services__item" key={serviceIndex}>
+            <BrandReveal as="li" className="home-services__item" key={serviceIndex}>
               <span className="home-services__number" aria-hidden="true">
                 0{position + 1}
               </span>
               <h3>{t.services.items[serviceIndex].title}</h3>
               <p>{copy.serviceDescriptions[serviceIndex]}</p>
-            </li>
+            </BrandReveal>
           ))}
         </ol>
       </div>
