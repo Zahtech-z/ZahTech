@@ -3,19 +3,20 @@ import { Logo } from "./Logo";
 import { useLang } from "@/lib/i18n";
 import { homeCopy } from "@/lib/home-copy";
 import { privacyCopy } from "@/lib/privacy-copy";
+import "./home-contact-footer.css";
 
-/** Homepage footer; inner-page footers remain unchanged. */
-export function HomeFooter() {
+/** Dark appearance is opt-in for the homepage; inner pages keep their footer. */
+export function HomeFooter({ dark = false }: { dark?: boolean }) {
   const { lang, t } = useLang();
   const linkClass =
     "inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground hover:underline underline-offset-4";
   return (
-    <footer className="py-8 sm:py-10">
+    <footer className={dark ? "home-footer" : "py-8 sm:py-10"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-start">
           <div>
             <Link to="/" aria-label="ZahTech" className="inline-flex min-h-11 items-center">
-              <Logo size={28} />
+              <Logo size={28} variant={dark ? "inverse" : "accent"} />
             </Link>
             <p className="mt-2 text-sm text-muted-foreground">{homeCopy[lang].footerLine}</p>
           </div>
