@@ -8,7 +8,7 @@ The [supplied repository](https://github.com/Zahtech-z/react-three-fiber) is the
 
 The homepage now pairs the approved copy with an extruded ZahTech Z in warm white with its orange accent and fine orbit lines. The logo, 3D extrusion and static fallback share the exact approved SVG contours. The Z tilts gently while keeping its front readable. It uses Three.js geometry through React Three Fiber, with no downloaded models, textures, HDR environment or postprocessing libraries. Desktop uses a split composition; mobile places the scene after the existing text and buttons. Brand colors, logo, translations, links and subsequent sections remain available. OnzScore work remains paused and is not included in this branch.
 
-The 3D chunk loads separately after hydration and support detection. A fixed-size SVG illustration is present from SSR, including when JavaScript, WebGL or animation is unavailable. Reduced-motion and save-data preferences keep the static illustration. The pause control is localized in EN/FR/ES. Animation stops outside the viewport and while the document is hidden; demand rendering repaints the paused scene after resizing without advancing its animation.
+The 3D chunk loads separately after hydration and support detection. A fixed-size SVG illustration is present from SSR, including when JavaScript, WebGL or animation is unavailable. Reduced-motion and save-data preferences keep the static illustration. The pause control is an icon in a 44px touch target, with a localized accessible name and hover tooltip in EN/FR/ES. Animation stops outside the viewport and while the document is hidden; demand rendering repaints the paused scene after resizing without advancing its animation.
 
 ## Preview and artifacts
 

@@ -166,10 +166,11 @@ export function BrandSculpture() {
           type="button"
           className="brand-sculpture__control"
           aria-pressed={paused}
+          aria-label={paused ? controls[lang].resume : controls[lang].pause}
+          title={paused ? controls[lang].resume : controls[lang].pause}
           onClick={() => setPaused((value) => !value)}
         >
           {paused ? <Play size={12} aria-hidden="true" /> : <Pause size={12} aria-hidden="true" />}
-          {paused ? controls[lang].resume : controls[lang].pause}
         </button>
       )}
     </div>

@@ -59,21 +59,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 44px;
+  width: 44px;
+  height: 44px;
   max-width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
   transform: translateX(-50%);
   color: #b9b4aa;
   font-size: 0.6875rem;
   line-height: 1.5;
   cursor: pointer;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
 }
 .brand-sculpture__control svg {
   flex-shrink: 0;
 }
 .brand-sculpture__control:hover {
   color: var(--brand-warm-white);
+  background: #ffffff08;
+  border-color: #ffffff18;
 }
 @media (max-width: 1100px) {
   .home-hero--sculpture .home-hero__stage {
@@ -114,7 +122,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-sculpture__poster {
+  .brand-sculpture__poster,
+  .brand-sculpture__control {
     transition: none;
   }
 }

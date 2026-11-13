@@ -105,7 +105,7 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
       await page.setViewportSize({ width, height: width < 768 ? 844 : 1000 });
       for (const lang of ["en", "fr", "es"]) {
         await page.getByRole("combobox").selectOption(lang);
-        assert.equal(await control.innerText(), pauseLabels[lang]);
+        assert.equal(await control.getAttribute("aria-label"), pauseLabels[lang]);
         for (const size of ["100%", "200%"]) {
           await page.evaluate((s) => {
             document.documentElement.style.fontSize = s;
@@ -171,6 +171,7 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
       );
       await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
       await control.evaluate((e) => e.blur());
+      await page.mouse.move(0, 0);
       await page.screenshot({ path: path.join(artifacts, `${name}-first-screen.png`) });
       await page.locator(".home-hero").screenshot({ path: path.join(artifacts, `${name}.png`) });
     }
