@@ -115,7 +115,7 @@ export const onzscoreCaseCopy: Record<Lang, CaseCopy> = {
     outcomeLabel: "05 / In the real world",
     outcomeTitle: "Designed. Built.\nNow live.",
     outcomeBody:
-      "OnzScore is available at onzscore.com. Explore the current product and its public model record. The interface treats probabilities as information, with both hits and misses visible — never as a guaranteed result.",
+      "OnzScore is available at onzscore.com. Explore the current product and its public model record. The interface treats probabilities as information, with both hits and misses visible, never as a guaranteed result.",
     record: "View the public record",
     next: "Have a product\nworth building?",
     project: "Start your project",
