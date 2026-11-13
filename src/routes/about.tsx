@@ -1,11 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav } from "@/components/site/Nav";
-import { HomeFooter } from "@/components/site/HomeFooter";
-import { SkipLink } from "@/components/site/SkipLink";
+import { createFileRoute } from "@tanstack/react-router";
+
 import { useLang } from "@/lib/i18n";
 import { aboutCopy } from "@/lib/about-copy";
 import { heroCopy } from "@/lib/hero-copy";
-import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { BrandReveal } from "@/components/site/BrandReveal";
+import { SitePage, PageIntro, PageCta } from "@/components/site/SitePage";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -25,158 +24,91 @@ function AboutPage() {
   const { lang } = useLang();
   const copy = aboutCopy[lang];
   return (
-    <>
-      <SkipLink />
-      <Nav />
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="bg-background pt-28 text-foreground sm:pt-36"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <HomepageReveal as="header" className="pb-14 sm:pb-20" entrance>
-            <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
-              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
-              {copy.eyebrow}
-            </p>
-            <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              {copy.heading[0]}
-              <br />
-              {copy.heading[1]}
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {copy.introduction}
-            </p>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              {copy.statement}
-            </p>
-          </HomepageReveal>
-          <HomepageReveal
-            as="section"
-            ariaLabelledby="founder-heading"
-            className="grid gap-6 border-t border-border py-12 sm:py-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-12"
-          >
-            <div>
-              <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
-                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
-                {copy.founder.eyebrow}
-              </p>
-              <h2
-                id="founder-heading"
-                className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
-              >
-                {copy.founder.name}
-              </h2>
-              <p className="mt-3 text-sm font-medium text-secondary-foreground">
-                {copy.founder.role}
-              </p>
-            </div>
-            <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {copy.founder.description}
-            </p>
-          </HomepageReveal>
-          <section aria-labelledby="thinking-heading" className="pb-14 sm:pb-20">
-            <h2
-              id="thinking-heading"
-              className="mb-8 font-display text-3xl font-semibold sm:text-4xl"
-            >
-              {copy.thinking}
-            </h2>
-            <ol className="border-t border-border">
-              {copy.principles.map((principle, index) => (
-                <HomepageReveal
-                  key={index}
-                  as="li"
-                  delay={index * 45}
-                  className="grid grid-cols-1 items-start gap-y-4 border-b border-border py-9 md:grid-cols-[2rem_minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-x-8 md:py-12 lg:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-x-12"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="font-mono text-xs text-primary-text md:pt-1.5"
-                  >
-                    0{index + 1}
-                  </span>
-                  <h3 className="min-w-0 text-balance font-display text-2xl font-semibold leading-snug">
-                    {principle.title}
-                  </h3>
-                  <p className="min-w-0 max-w-[60ch] text-base leading-relaxed text-muted-foreground">
-                    {principle.description}
-                  </p>
-                </HomepageReveal>
+    <SitePage page="about">
+      <div className="site-page__container">
+        <PageIntro
+          eyebrow={copy.eyebrow}
+          title={
+            <>
+              {copy.heading.map((line) => (
+                <span key={line}>{line}</span>
               ))}
-            </ol>
-          </section>
-          <HomepageReveal
-            as="section"
-            ariaLabelledby="disciplines-heading"
-            className="grid gap-8 pb-14 sm:pb-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-16"
-          >
-            <div>
-              <h2
-                id="disciplines-heading"
-                className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
-              >
-                {copy.disciplinesHeading[0]}
-                <br />
-                {copy.disciplinesHeading[1]}
-              </h2>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-                {copy.disciplinesIntro}
-              </p>
-            </div>
-            <dl className="border-t border-border">
-              {copy.disciplines.map((discipline, index) => (
-                <div
-                  key={index}
-                  className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] sm:gap-6"
-                >
-                  <dt className="min-w-0 font-display text-xl font-semibold">{discipline.title}</dt>
-                  <dd className="min-w-0 text-base leading-relaxed text-muted-foreground">
-                    {discipline.description}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </HomepageReveal>
-          <HomepageReveal
-            as="section"
-            ariaLabelledby="location-heading"
-            className="grid gap-6 border-t border-border py-14 sm:py-20 md:grid-cols-2 md:gap-12"
-          >
-            <h2
-              id="location-heading"
-              className="text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl"
-            >
-              {copy.locationHeading[0]}
-              <br />
-              {copy.locationHeading[1]}
-            </h2>
-            <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-              {copy.location}
-            </p>
-          </HomepageReveal>
-        </div>
-        <section
-          aria-labelledby="project-heading"
-          className="border-y border-border py-12 sm:py-16"
+            </>
+          }
+          introduction={copy.introduction}
+          note={copy.statement}
+        />
+        <BrandReveal
+          as="section"
+          ariaLabelledby="founder-heading"
+          className="site-section site-split about-founder"
+          selector="h2, p"
         >
-          <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center">
-            <h2
-              id="project-heading"
-              className="text-balance font-display text-3xl font-semibold sm:text-4xl"
-            >
-              {copy.cta}
-            </h2>
-            <Link
-              to="/contact"
-              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
-            >
-              {heroCopy[lang].project}
-            </Link>
+          <div>
+            <p className="site-page__eyebrow">{copy.founder.eyebrow}</p>
+            <h2 id="founder-heading">{copy.founder.name}</h2>
+            <p className="about-founder__role">{copy.founder.role}</p>
           </div>
+          <div className="site-prose">
+            <p>{copy.founder.description}</p>
+          </div>
+        </BrandReveal>
+        <section aria-labelledby="thinking-heading" className="site-section">
+          <h2 id="thinking-heading" className="site-section__heading">
+            {copy.thinking}
+          </h2>
+          <ol className="site-page__list">
+            {copy.principles.map((principle, index) => (
+              <BrandReveal
+                key={principle.title}
+                as="li"
+                className="site-page__row"
+                selector="h3, p"
+              >
+                <span className="site-page__number" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h3>{principle.title}</h3>
+                <p>{principle.description}</p>
+              </BrandReveal>
+            ))}
+          </ol>
         </section>
-      </main>
-      <HomeFooter />
-    </>
+        <section aria-labelledby="disciplines-heading" className="site-section site-split">
+          <div className="site-prose">
+            <h2 id="disciplines-heading">
+              {copy.disciplinesHeading[0]}
+              <br />
+              {copy.disciplinesHeading[1]}
+            </h2>
+            <p>{copy.disciplinesIntro}</p>
+          </div>
+          <dl className="site-definitions">
+            {copy.disciplines.map((discipline) => (
+              <div key={discipline.title}>
+                <dt>{discipline.title}</dt>
+                <dd>{discipline.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+        <BrandReveal
+          as="section"
+          ariaLabelledby="location-heading"
+          className="site-section site-split"
+          selector="h2, p"
+        >
+          <h2 id="location-heading">
+            {copy.locationHeading[0]}
+            <br />
+            {copy.locationHeading[1]}
+          </h2>
+          <div className="site-prose">
+            <p>{copy.location}</p>
+          </div>
+        </BrandReveal>
+      </div>
+      <PageCta heading={copy.cta} label={heroCopy[lang].project} />
+    </SitePage>
   );
 }

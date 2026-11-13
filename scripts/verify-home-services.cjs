@@ -73,7 +73,7 @@ const headings = {
       await section.locator(selector).click();
       await page.waitForURL(`${baseURL}${route}`);
       if (route === "/services") await page.locator(".services-page").waitFor();
-      else await page.locator(".home-nav").waitFor({ state: "detached" });
+      else await page.locator(".site-page--contact").waitFor();
       assert.equal(await page.locator(".home-services").count(), 0);
       await page.goto(baseURL);
       await ready();

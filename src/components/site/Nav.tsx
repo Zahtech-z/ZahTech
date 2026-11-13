@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { useLang, type Lang } from "@/lib/i18n";
@@ -9,12 +9,13 @@ import "./liquid-nav.css";
 
 export function Nav({
   floating = false,
-  liquidGlass = false,
+  liquidGlass = floating,
 }: {
   floating?: boolean;
   liquidGlass?: boolean;
 }) {
   const { lang, setLang, t } = useLang();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const copy = heroCopy[lang];
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -59,7 +60,7 @@ export function Nav({
       release?.();
       preferences.forEach((preference) => preference.removeEventListener("change", update));
     };
-  }, [floating, liquidGlass]);
+  }, [floating, liquidGlass, pathname]);
 
   useEffect(() => {
     if (!menuOpen) return;

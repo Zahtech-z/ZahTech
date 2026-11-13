@@ -2,7 +2,7 @@
 .home-hero.home-hero--sculpture::before {
   content: none;
 }
-body:has(.home-hero--sculpture) .home-nav {
+body:has(.home-hero--sculpture) .home-nav:not(.home-nav--liquid) {
   background: var(--brand-ink);
   border-color: #f5f2eb18;
   box-shadow: none;
