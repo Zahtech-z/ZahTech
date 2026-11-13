@@ -1,0 +1,32 @@
+{
+  "browser": "149.0.7827.55",
+  "renderer": "Chromium software WebGL (SwiftShader)",
+  "checks": [
+    "One real upstream WebGL shader links successfully behind native, accessible navigation",
+    "Actual glass-canvas pixels change while scrolling over the captured page",
+    "fr 1440px: resized and translated snapshot, bounded navigation, one canvas and no leftover capture iframe",
+    "es 390px: resized and translated snapshot, bounded navigation, one canvas and no leftover capture iframe",
+    "fr 320px: resized and translated snapshot, bounded navigation, one canvas and no leftover capture iframe",
+    "en 1440px: resized and translated snapshot, bounded navigation, one canvas and no leftover capture iframe",
+    "Mobile menu uses a stable dark surface; Escape restores focus and glass reappears when closed",
+    "Repeated SPA navigation disposes the glass layer and restores exactly one instance on returning home",
+    "reduce: navigation and hero remain usable without the WebGL glass layer",
+    "no-webgl: navigation and hero remain usable without the WebGL glass layer",
+    "save-data: navigation and hero remain usable without the WebGL glass layer",
+    "contrast: navigation and hero remain usable without the WebGL glass layer",
+    "no-js: navigation and hero remain usable without the WebGL glass layer",
+    "A fresh Services visit does not opt into glass or fetch the capture library"
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "glState": {
+    "linked": true,
+    "width": 1118,
+    "height": 72,
+    "error": 0
+  },
+  "hashes": {
+    "top": "a1d0f3f50234a9f389f43d935d054ee90d30f17c038adcc96763ebaf1916452e",
+    "scrolled": "00e865d9f021f917f7b52ef030213d9f337e35a6279e406bd74ad474a437effe"
+  }
+}

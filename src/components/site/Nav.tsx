@@ -5,13 +5,61 @@ import { Logo } from "./Logo";
 import { useLang, type Lang } from "@/lib/i18n";
 import { heroCopy } from "@/lib/hero-copy";
 import "./home-first-screen.css";
+import "./liquid-nav.css";
 
-export function Nav({ floating = false }: { floating?: boolean }) {
+export function Nav({
+  floating = false,
+  liquidGlass = false,
+}: {
+  floating?: boolean;
+  liquidGlass?: boolean;
+}) {
   const { lang, setLang, t } = useLang();
   const copy = heroCopy[lang];
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const host = headerRef.current;
+    if (!liquidGlass || !floating || !host) return;
+    const preferences = [
+      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-transparency: reduce)",
+      "(prefers-contrast: more)",
+    ].map((query) => matchMedia(query));
+    let disposed = false;
+    let timer = 0;
+    let release: (() => void) | undefined;
+    let generation = 0;
+    const update = () => {
+      const current = ++generation;
+      clearTimeout(timer);
+      release?.();
+      release = undefined;
+      host.dataset.glassState = "fallback";
+      const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
+        .connection;
+      if (preferences.some((preference) => preference.matches) || connection?.saveData) return;
+      timer = window.setTimeout(() => {
+        void import("./liquid-nav")
+          .then((module) => {
+            if (!disposed && current === generation) release = module.mountLiquidNavigation(host);
+          })
+          .catch(() => {
+            host.dataset.glassState = "fallback";
+          });
+      }, 1000);
+    };
+    update();
+    preferences.forEach((preference) => preference.addEventListener("change", update));
+    return () => {
+      disposed = true;
+      clearTimeout(timer);
+      release?.();
+      preferences.forEach((preference) => preference.removeEventListener("change", update));
+    };
+  }, [floating, liquidGlass]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -61,9 +109,10 @@ export function Nav({ floating = false }: { floating?: boolean }) {
       ref={headerRef}
       className={
         floating
-          ? "home-nav"
+          ? `home-nav${liquidGlass ? " home-nav--liquid" : ""}`
           : "fixed inset-x-0 top-0 z-50 border-b border-border bg-background text-foreground"
       }
+      data-menu-open={menuOpen}
       onKeyDown={(event) => {
         if (event.key === "Escape" && menuOpen) {
           setMenuOpen(false);

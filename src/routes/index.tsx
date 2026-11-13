@@ -125,7 +125,7 @@ function Index() {
   return (
     <>
       <SkipLink />
-      <Nav floating />
+      <Nav floating liquidGlass />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />
         <BrandReveal selector=".selected-work__header, .selected-work__details">
