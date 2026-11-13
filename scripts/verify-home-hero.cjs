@@ -94,13 +94,16 @@ const expected = {
     for (const route of ["/services", "/work", "/about", "/blog"]) {
       await page.locator(`header nav:visible a[href='${route}']`).click();
       await page.waitForURL(`${baseURL}${route}`);
-      if (["/services", "/work"].includes(route)) {
-        await page.locator(route === "/work" ? ".work-page" : ".services-page").waitFor();
-        assert.equal(await page.locator(".home-nav").count(), 1);
-      } else {
-        await page.locator(".home-nav").waitFor({ state: "detached" });
-        assert.equal(await page.locator(".home-nav").count(), 0);
-      }
+      await page
+        .locator(
+          route === "/work"
+            ? ".work-page"
+            : route === "/services"
+              ? ".services-page"
+              : ".site-page",
+        )
+        .waitFor();
+      assert.equal(await page.locator(".home-nav").count(), 1);
       await page.goto(baseURL);
       await ready();
     }

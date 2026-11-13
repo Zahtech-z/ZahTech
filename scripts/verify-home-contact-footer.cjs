@@ -82,20 +82,26 @@ const routes = ["/services", "/work", "/about", "/blog", "/contact", "/privacy"]
     for (const route of routes) {
       await footer.locator(`nav a[href='${route}']`).click();
       await page.waitForURL(`${baseURL}${route}`);
-      if (["/services", "/work"].includes(route)) {
-        await page.locator(route === "/work" ? ".work-page" : ".services-page").waitFor();
-        assert.equal(await page.locator("footer.home-footer").count(), 1);
-      } else await page.locator("footer.home-footer").waitFor({ state: "detached" });
+      await page
+        .locator(
+          route === "/work"
+            ? ".work-page"
+            : route === "/services"
+              ? ".services-page"
+              : ".site-page",
+        )
+        .waitFor();
+      assert.equal(await page.locator("footer.home-footer").count(), 1);
       assert.ok(await page.locator("footer").count());
       await page.goto(baseURL, { waitUntil: "domcontentloaded" });
       await ready();
     }
     checks.push(
-      "six footer routes work; Work and Services use dark footers, other pages retain their appearance",
+      "six footer routes work and share the dark floating-navigation/footer presentation",
     );
     await contact.locator(".home-contact__project").click();
     await page.waitForURL(`${baseURL}/contact`);
-    await page.locator("footer.home-footer").waitFor({ state: "detached" });
+    await page.locator(".contact-form").waitFor();
     assert.equal(await page.locator("form").count(), 1);
     assert.ok(await page.locator("form input[type='email']").count());
     checks.push("project CTA reaches the existing inquiry form without submitting it");
