@@ -1,6 +1,8 @@
 # About, Blog, Contact, Privacy — revue visuelle
 
 Statut : prêt pour revue visuelle, sans fusion ni déploiement.
+
+Mise à jour : Liquid Glass est désormais commun à la navigation flottante des sept pages retravaillées. Les captures et les 94 contrôles ci-dessous ont été actualisés ; [rapport et 58 contrôles du verre](../sitewide-glass-review/README.md).
 Branche : `feat/interior-pages-review`, basée sur `experiment/liquid-glass-navigation`.
 
 ## Changements

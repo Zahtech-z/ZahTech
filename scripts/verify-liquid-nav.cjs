@@ -5,7 +5,7 @@ const path = require("node:path");
 const { createHash } = require("node:crypto");
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const baseURL = process.env.BASE_URL || "http://127.0.0.1:3100";
-const artifacts = path.resolve("docs/liquid-glass-review");
+const artifacts = path.resolve(process.env.GLASS_ARTIFACTS || "docs/liquid-glass-review");
 const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
 (async () => {
   await fs.mkdir(artifacts, { recursive: true });
@@ -117,14 +117,16 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
       await page.locator('#mobile-menu a[href="/services"]').click();
       await page.waitForURL(`${baseURL}/services`);
       await page.locator(".services-page").waitFor();
-      assert.equal(await page.locator(".liquid-nav-surface").count(), 0);
+      await ready(390, "en");
+      assert.equal(await page.locator(".liquid-nav-surface").count(), 1);
+      assert.equal(await page.locator(".home-nav").getAttribute("data-glass-path"), "/services");
       await page.getByRole("link", { name: "ZahTech", exact: true }).first().click();
       await page.waitForURL(baseURL + "/");
       await ready(390, "en");
       assert.equal(await page.locator(".liquid-nav-surface").count(), 1);
     }
     checks.push(
-      "Repeated SPA navigation disposes the glass layer and restores exactly one instance on returning home",
+      "Repeated SPA navigation replaces the glass snapshot for Services and home, keeping exactly one instance",
     );
     for (const mode of ["reduce", "no-webgl", "save-data", "contrast", "no-js"]) {
       const fallback = await browser.newContext({
@@ -150,36 +152,82 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
           }),
         );
       const fp = await fallback.newPage();
-      await fp.goto(baseURL, { waitUntil: "domcontentloaded" });
-      await fp.waitForTimeout(1800);
-      assert.equal(await fp.locator(".home-nav canvas").count(), 0);
-      assert.equal(
-        await fp.locator('.home-nav__bar nav a[href="/work"]').getAttribute("href"),
-        "/work",
-      );
-      assert.ok(await fp.getByRole("link", { name: "Contact", exact: true }).first().isVisible());
-      assert.ok(await fp.locator("h1").isVisible());
-      if (mode === "contrast")
+      for (const route of ["/", "/services", "/work", "/about", "/blog", "/contact", "/privacy"]) {
+        await fp.goto(baseURL + route, { waitUntil: "domcontentloaded" });
+        await fp.waitForTimeout(1800);
+        assert.equal(await fp.locator(".home-nav canvas").count(), 0);
         assert.equal(
-          await fp.locator(".home-nav").evaluate((e) => getComputedStyle(e).backdropFilter),
-          "none",
+          await fp.locator('.home-nav__bar nav a[href="/work"]').getAttribute("href"),
+          "/work",
         );
-      checks.push(`${mode}: navigation and hero remain usable without the WebGL glass layer`);
+        assert.ok(await fp.getByRole("link", { name: "Contact", exact: true }).first().isVisible());
+        assert.ok(await fp.locator("h1").isVisible());
+        if (mode === "contrast")
+          assert.equal(
+            await fp.locator(".home-nav").evaluate((e) => getComputedStyle(e).backdropFilter),
+            "none",
+          );
+        checks.push(
+          `${route} ${mode}: navigation and content remain usable without the WebGL glass layer`,
+        );
+      }
       await fallback.close();
     }
     const fresh = await browser.newContext();
     const other = await fresh.newPage();
     await other.goto(`${baseURL}/services`, { waitUntil: "domcontentloaded" });
-    await other.waitForTimeout(500);
-    assert.equal(await other.locator(".home-nav--liquid").count(), 0);
-    assert.equal(
-      await other.evaluate(() =>
-        performance.getEntriesByType("resource").some((r) => r.name.includes("html2canvas")),
-      ),
-      false,
+    await other.waitForFunction(
+      () => document.querySelector(".home-nav")?.dataset.glassState === "ready",
     );
+    assert.equal(await other.locator(".home-nav--liquid canvas").count(), 1);
     await fresh.close();
-    checks.push("A fresh Services visit does not opt into glass or fetch the capture library");
+    checks.push("A fresh Services visit initializes its own glass surface");
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    for (const route of ["/services", "/work", "/about", "/blog", "/contact", "/privacy", "/"]) {
+      // Real links exercise shared Work/Contact/Privacy shells and route cleanup.
+      await page.locator(`a[href="${route}"]`).first().click();
+      await page.waitForURL(baseURL + route);
+      await page.waitForFunction((route) => {
+        const header = document.querySelector(".home-nav");
+        return header?.dataset.glassState === "ready" && header.dataset.glassPath === route;
+      }, route);
+      for (const width of [1440, 390]) {
+        await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
+        await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
+        await ready(width, "en");
+        assert.equal(await page.locator(".home-nav canvas").count(), 1);
+        assert.equal(await page.locator("iframe.html2canvas-container").count(), 0);
+        assert.ok(
+          await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
+        );
+        const name = route === "/" ? "home" : route.slice(1);
+        await page.screenshot({ path: path.join(artifacts, `${name}-${width}.png`) });
+        await page.evaluate(() =>
+          scrollTo({
+            top: Math.min(500, document.documentElement.scrollHeight - innerHeight),
+            behavior: "instant",
+          }),
+        );
+        await page.waitForTimeout(200);
+        assert.equal(await page.locator(".home-nav").getAttribute("data-glass-state"), "ready");
+        await page.screenshot({ path: path.join(artifacts, `${name}-${width}-scrolled.png`) });
+        if (width === 390) {
+          const menu = page.getByRole("button", { name: "Open menu" });
+          await menu.click();
+          assert.equal(
+            await page.locator(".liquid-nav-surface").evaluate((e) => getComputedStyle(e).opacity),
+            "0",
+          );
+          await page.keyboard.press("Escape");
+          assert.ok(await menu.evaluate((e) => e === document.activeElement));
+        }
+        checks.push(
+          `${route} ${width}px: current-page snapshot after SPA navigation, one glass layer, scroll rendering, bounded layout and usable menu`,
+        );
+      }
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      await ready(1440, "en");
+    }
     assert.deepEqual(errors, []);
     assert.deepEqual(httpErrors, []);
     await fs.writeFile(

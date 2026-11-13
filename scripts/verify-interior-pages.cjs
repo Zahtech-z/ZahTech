@@ -70,7 +70,7 @@ const content = async (page) => {
       assert.equal(await page.locator("h1").count(), 1);
       assert.equal(await page.locator("header.home-nav").count(), 1);
       assert.equal(await page.locator("footer.home-footer").count(), 1);
-      assert.equal(await page.locator("canvas").count(), 0);
+      assert.equal(await page.locator("main canvas").count(), 0);
       assert.equal(
         await page.locator("link[rel=canonical]").getAttribute("href"),
         `https://zahtech.org/${route}`,
@@ -95,7 +95,7 @@ const content = async (page) => {
           .evaluate((e) => getComputedStyle(e).fontFamily.includes("ZahTech Hero Sans")),
       );
       checks.push(
-        `${route}: semantic headings/IDs, floating navigation, dark footer, canonical and local Inter; no canvas`,
+        `${route}: semantic headings/IDs, floating navigation, dark footer, canonical and local Inter; no content canvas`,
       );
       contentHashes[route] = {};
       for (const lang of ["en", "fr", "es"]) {

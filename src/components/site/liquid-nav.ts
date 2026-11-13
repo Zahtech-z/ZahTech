@@ -77,6 +77,7 @@ class NavigationGlass extends Container {
     if (this.disposed || !this.gl) return;
     const version = ++this.captureVersion;
     const locale = document.documentElement.lang;
+    const pathname = location.pathname;
     try {
       const { default: html2canvas } = await import("html2canvas");
       if (this.disposed) return;
@@ -137,6 +138,7 @@ class NavigationGlass extends Container {
       this.host.dataset.glassState = this.webglInitialized ? "ready" : "fallback";
       this.host.dataset.glassWidth = String(snapshot.width);
       this.host.dataset.glassLocale = locale;
+      this.host.dataset.glassPath = pathname;
       this.queueRender();
     } catch (error) {
       if (!this.disposed) {

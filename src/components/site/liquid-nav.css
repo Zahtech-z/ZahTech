@@ -1,5 +1,5 @@
 /* One glass surface behind native navigation; no text is rendered into WebGL. */
-body:has(.home-hero--sculpture) .home-nav.home-nav--liquid {
+.home-nav.home-nav--liquid {
   isolation: isolate;
   background: #0a0a0adb;
   border-color: #f5f2eb38;
@@ -47,12 +47,12 @@ body:has(.home-hero--sculpture) .home-nav.home-nav--liquid {
 .home-nav--liquid[data-menu-open="true"] .liquid-nav-surface {
   opacity: 0;
 }
-body:has(.home-hero--sculpture) .home-nav.home-nav--liquid[data-menu-open="true"] {
+.home-nav.home-nav--liquid[data-menu-open="true"] {
   background: #0a0a0af5;
   backdrop-filter: none;
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-  body:has(.home-hero--sculpture) .home-nav.home-nav--liquid {
+  .home-nav.home-nav--liquid {
     background: var(--brand-ink);
     backdrop-filter: none;
   }
