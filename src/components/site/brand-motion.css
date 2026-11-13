@@ -24,10 +24,28 @@
 .engineering-motion__vertical {
   display: none;
 }
-:is(.home-hero, .selected-work, .home-services, .home-contact, .home-footer, .services-page) a svg {
+:is(
+    .home-hero,
+    .selected-work,
+    .home-services,
+    .home-contact,
+    .home-footer,
+    .services-page,
+    .work-page
+  )
+  a
+  svg {
   transition: transform 220ms ease;
 }
-:is(.home-hero, .selected-work, .home-services, .home-contact, .home-footer, .services-page)
+:is(
+    .home-hero,
+    .selected-work,
+    .home-services,
+    .home-contact,
+    .home-footer,
+    .services-page,
+    .work-page
+  )
   a:hover
   svg {
   transform: translate(3px, -3px);
@@ -54,7 +72,15 @@
     opacity: 1 !important;
     transform: none !important;
   }
-  :is(.home-hero, .selected-work, .home-services, .home-contact, .home-footer, .services-page)
+  :is(
+      .home-hero,
+      .selected-work,
+      .home-services,
+      .home-contact,
+      .home-footer,
+      .services-page,
+      .work-page
+    )
     a
     svg {
     transition: none;

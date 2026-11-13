@@ -1,0 +1,30 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "existing inquiry route and email preserved; homepage adds no form",
+    "footer logo, six internal destinations and three social URLs preserved",
+    "44px link targets and contact keyboard focus verified",
+    "six footer routes work; Work and Services use dark footers, other pages retain their appearance",
+    "project CTA reaches the existing inquiry form without submitting it",
+    "en 320: contact and footer fit viewport",
+    "fr 320: contact and footer fit viewport",
+    "es 320: contact and footer fit viewport",
+    "en 390: contact and footer fit viewport",
+    "fr 390: contact and footer fit viewport",
+    "es 390: contact and footer fit viewport",
+    "en 768: contact and footer fit viewport",
+    "fr 768: contact and footer fit viewport",
+    "es 768: contact and footer fit viewport",
+    "en 1024: contact and footer fit viewport",
+    "fr 1024: contact and footer fit viewport",
+    "es 1024: contact and footer fit viewport",
+    "en 1440: contact and footer fit viewport",
+    "fr 1440: contact and footer fit viewport",
+    "es 1440: contact and footer fit viewport",
+    "reduced motion: contact visible and button transitions disabled",
+    "no JavaScript: static contact content and footer links remain available"
+  ],
+  "errors": [],
+  "inquiryPosts": 0
+}

@@ -1,0 +1,31 @@
+{
+  "browser": "149.0.7827.55",
+  "checks": [
+    "Normal motion observed in actual heading opacity frames after hydration",
+    "One documented project, original image/alt, technologies and production-preparation status preserved",
+    "Full-size image link and safe new-tab behavior preserved",
+    "One H1, unique IDs, canonical metadata and local Inter preload",
+    "en 320px: translated title, bounded content and navigation at 100%/200% text",
+    "fr 320px: translated title, bounded content and navigation at 100%/200% text",
+    "es 320px: translated title, bounded content and navigation at 100%/200% text",
+    "en 390px: translated title, bounded content and navigation at 100%/200% text",
+    "fr 390px: translated title, bounded content and navigation at 100%/200% text",
+    "es 390px: translated title, bounded content and navigation at 100%/200% text",
+    "en 768px: translated title, bounded content and navigation at 100%/200% text",
+    "fr 768px: translated title, bounded content and navigation at 100%/200% text",
+    "es 768px: translated title, bounded content and navigation at 100%/200% text",
+    "en 1024px: translated title, bounded content and navigation at 100%/200% text",
+    "fr 1024px: translated title, bounded content and navigation at 100%/200% text",
+    "es 1024px: translated title, bounded content and navigation at 100%/200% text",
+    "en 1440px: translated title, bounded content and navigation at 100%/200% text",
+    "fr 1440px: translated title, bounded content and navigation at 100%/200% text",
+    "es 1440px: translated title, bounded content and navigation at 100%/200% text",
+    "Mobile menu opens, Escape closes it and restores focus",
+    "Keyboard case-study link opens the existing detail page; Back restores the dark Work index",
+    "Contact CTA opens the existing form; no request submitted",
+    "Reduced motion: readable static project content and case-study link",
+    "No JavaScript: readable static project content and case-study link"
+  ],
+  "errors": [],
+  "httpErrors": []
+}

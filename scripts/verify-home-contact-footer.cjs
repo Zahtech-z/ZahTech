@@ -82,8 +82,8 @@ const routes = ["/services", "/work", "/about", "/blog", "/contact", "/privacy"]
     for (const route of routes) {
       await footer.locator(`nav a[href='${route}']`).click();
       await page.waitForURL(`${baseURL}${route}`);
-      if (route === "/services") {
-        await page.locator(".services-page").waitFor();
+      if (["/services", "/work"].includes(route)) {
+        await page.locator(route === "/work" ? ".work-page" : ".services-page").waitFor();
         assert.equal(await page.locator("footer.home-footer").count(), 1);
       } else await page.locator("footer.home-footer").waitFor({ state: "detached" });
       assert.ok(await page.locator("footer").count());
@@ -91,7 +91,7 @@ const routes = ["/services", "/work", "/about", "/blog", "/contact", "/privacy"]
       await ready();
     }
     checks.push(
-      "six footer routes work; Services uses dark footer, other pages retain their appearance",
+      "six footer routes work; Work and Services use dark footers, other pages retain their appearance",
     );
     await contact.locator(".home-contact__project").click();
     await page.waitForURL(`${baseURL}/contact`);
