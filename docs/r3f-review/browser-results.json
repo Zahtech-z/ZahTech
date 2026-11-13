@@ -2,6 +2,7 @@
   "browser": "149.0.7827.55",
   "renderer": "Chromium software WebGL (SwiftShader)",
   "checks": [
+    "3D source/static fallback share the approved logo contours; navigation mark remains identical to the original SVG",
     "Actual React Three Fiber canvas renders and pixels change over time; decorative art is hidden from assistive technology",
     "Keyboard-visible pause/resume control stops actual canvas pixels and resumes movement",
     "Scene rendering stops outside the viewport and resumes on returning",
@@ -31,11 +32,11 @@
   "errors": [],
   "httpErrors": [],
   "moving": [
-    "8fb54df5090fc915939d8417cd7ee0afd7bd12be1e05e214a413b765fd15a182",
-    "8a706aa484f971135d60a66d81e740bf7526295cc73e4ee241d3d1d4986f2f9a"
+    "b64acace746a54a5f0b6f8f21e7770e7ef8857457040f7874a9c101e0dcd1403",
+    "1d4c7ad6720cd192e836477151ba464fe321627bfd785e2591f6d07127b4b650"
   ],
   "paused": [
-    "f8ede65522bb4f9976e1ec37bfa410e13a935af4ddf1942923c46d924e9ee80d",
-    "f8ede65522bb4f9976e1ec37bfa410e13a935af4ddf1942923c46d924e9ee80d"
+    "729eb6a6ca588a9ee922ccf0ccba0fb58288c46c257bdbfcb54f32db70a6a8c9",
+    "729eb6a6ca588a9ee922ccf0ccba0fb58288c46c257bdbfcb54f32db70a6a8c9"
   ]
 }

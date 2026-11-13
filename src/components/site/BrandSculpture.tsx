@@ -3,6 +3,7 @@ import { useInView, useReducedMotion } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import "./brand-sculpture.css";
+import { brandMarkPaths } from "@/lib/brand-mark";
 
 const Scene = lazy(() => import("./BrandSculptureScene"));
 const controls = {
@@ -34,10 +35,10 @@ function Poster() {
       <defs>
         <linearGradient
           id="zahtech-sculpture-orange"
-          x1="150"
-          y1="130"
-          x2="410"
-          y2="460"
+          x1="5"
+          y1="4"
+          x2="28"
+          y2="28"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#ffc2a1" />
@@ -45,11 +46,18 @@ function Poster() {
           <stop offset="0.72" stopColor="#ac2511" />
           <stop offset="1" stopColor="#ff754c" />
         </linearGradient>
-        <radialGradient id="zahtech-sculpture-core">
-          <stop stopColor="#ffd5bf" />
-          <stop offset="0.45" stopColor="#ff8b59" />
-          <stop offset="1" stopColor="#ff5a36" />
-        </radialGradient>
+        <linearGradient
+          id="zahtech-sculpture-ivory"
+          x1="5"
+          y1="4"
+          x2="28"
+          y2="28"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#fffaf0" />
+          <stop offset="0.5" stopColor="#f5f2eb" />
+          <stop offset="1" stopColor="#a9a397" />
+        </linearGradient>
       </defs>
       <circle cx="300" cy="300" r="238" stroke="#f5f2eb" strokeOpacity=".1" />
       <ellipse
@@ -61,10 +69,19 @@ function Poster() {
         strokeOpacity=".15"
         transform="rotate(-30 300 300)"
       />
-      <circle cx="300" cy="300" r="71" fill="url(#zahtech-sculpture-core)" />
-      <g stroke="url(#zahtech-sculpture-orange)" strokeWidth="32">
-        <ellipse cx="300" cy="300" rx="155" ry="83" transform="rotate(-38 300 300)" />
-        <ellipse cx="300" cy="300" rx="155" ry="83" transform="rotate(65 300 300)" />
+      <g transform="translate(108 108) scale(12)">
+        <path d={brandMarkPaths[0]} transform="translate(.6 .6)" fill="#62594e" />
+        <path d={brandMarkPaths[1]} transform="translate(.6 .6)" fill="#8f2d1b" />
+        <path
+          data-brand-mark="primary"
+          d={brandMarkPaths[0]}
+          fill="url(#zahtech-sculpture-ivory)"
+        />
+        <path
+          data-brand-mark="accent"
+          d={brandMarkPaths[1]}
+          fill="url(#zahtech-sculpture-orange)"
+        />
       </g>
       <circle cx="505" cy="191" r="6" fill="#f5f2eb" />
       <circle cx="101" cy="423" r="5" fill="#ff5a36" />

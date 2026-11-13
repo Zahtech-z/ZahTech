@@ -1,18 +1,36 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
-import { Group } from "three";
+import { useEffect, useMemo, useRef } from "react";
+import type { ExtrudeGeometryOptions, Group } from "three";
+import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
+import { brandMarkPaths } from "@/lib/brand-mark";
+
+const extrusion: ExtrudeGeometryOptions = {
+  depth: 4,
+  steps: 1,
+  bevelEnabled: true,
+  bevelSegments: 3,
+  bevelThickness: 0.25,
+  bevelSize: 0.25,
+  curveSegments: 10,
+};
 
 function Sculpture({ active }: { active: boolean }) {
   const group = useRef<Group>(null);
   const orbit = useRef<Group>(null);
   const time = useRef(0);
   const { viewport } = useThree();
+  const shapes = useMemo(() => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">${brandMarkPaths.map((d) => `<path d="${d}"/>`).join("")}</svg>`;
+    return new SVGLoader().parse(svg).paths.flatMap((path) => path.toShapes());
+  }, []);
   useFrame((_state, delta) => {
     if (!active) return;
     time.current += Math.min(delta, 0.05);
     if (group.current) {
-      group.current.rotation.y = time.current * 0.22;
-      group.current.rotation.z = -0.25 + Math.sin(time.current * 0.28) * 0.12;
+      // Keep the Z facing the reader rather than showing its mirrored reverse.
+      group.current.rotation.y = -0.22 + Math.sin(time.current * 0.35) * 0.35;
+      group.current.rotation.x = -0.08 + Math.cos(time.current * 0.28) * 0.05;
+      group.current.rotation.z = -0.03 + Math.sin(time.current * 0.28) * 0.025;
       group.current.position.y = Math.sin(time.current * 0.6) * 0.06;
     }
     if (orbit.current) orbit.current.rotation.z = time.current * -0.07;
@@ -20,21 +38,20 @@ function Sculpture({ active }: { active: boolean }) {
   const scale = Math.min(viewport.width / 5.6, viewport.height / 5.6);
   return (
     <group scale={scale}>
-      <group ref={group} rotation={[0.25, 0, -0.25]}>
-        <mesh>
-          <torusKnotGeometry args={[1.05, 0.2, 144, 20, 2, 3]} />
-          <meshStandardMaterial color="#ff5a36" metalness={0.65} roughness={0.28} />
-        </mesh>
-        <mesh>
-          <sphereGeometry args={[0.52, 32, 24]} />
-          <meshStandardMaterial
-            color="#ff9b66"
-            emissive="#ff5a36"
-            emissiveIntensity={0.5}
-            roughness={0.36}
-            metalness={0.15}
-          />
-        </mesh>
+      <group ref={group} rotation={[-0.03, -0.22, -0.03]}>
+        {/* SVG has downward Y; rotate into 3D and center the depth around zero. */}
+        <group position={[-1.92, 1.92, 0.24]} rotation={[Math.PI, 0, 0]} scale={0.12}>
+          {shapes.map((shape, index) => (
+            <mesh key={index}>
+              <extrudeGeometry args={[shape, extrusion]} />
+              <meshStandardMaterial
+                color={index === 0 ? "#f5f2eb" : "#ff5a36"}
+                metalness={0.5}
+                roughness={0.28}
+              />
+            </mesh>
+          ))}
+        </group>
       </group>
       <group ref={orbit} rotation={[0.3, -0.35, 0]}>
         <mesh rotation={[0.85, 0.25, -0.5]}>

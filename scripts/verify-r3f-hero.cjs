@@ -31,6 +31,29 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
     const canvas = scene.locator("canvas");
     assert.equal(await canvas.count(), 1);
     assert.equal(await canvas.evaluate((e) => e.tabIndex), -1);
+    const approvedSvg = await fs.readFile(
+      path.resolve(__dirname, "../public/logo-mark.svg"),
+      "utf8",
+    );
+    const approvedPaths = [...approvedSvg.matchAll(/<path\b[^>]*\bd="([^"]+)"/g)].map(
+      (match) => match[1],
+    );
+    assert.equal(approvedPaths.length, 2);
+    assert.deepEqual(
+      await page
+        .locator('.home-nav svg[viewBox="0 0 32 32"] path')
+        .evaluateAll((paths) => paths.map((p) => p.getAttribute("d"))),
+      approvedPaths,
+    );
+    assert.deepEqual(
+      await page
+        .locator(".brand-sculpture__poster [data-brand-mark]")
+        .evaluateAll((paths) => paths.map((p) => p.getAttribute("d"))),
+      approvedPaths,
+    );
+    checks.push(
+      "3D source/static fallback share the approved logo contours; navigation mark remains identical to the original SVG",
+    );
     assert.equal(await page.locator(".brand-sculpture__art").getAttribute("aria-hidden"), "true");
     const moving = [];
     for (let i = 0; i < 2; i++) {
@@ -158,6 +181,7 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
     ]) {
       await page.locator(selector).click();
       await page.waitForURL(`${baseURL}${destination}`);
+      await page.locator(".brand-sculpture").waitFor({ state: "detached" });
       assert.equal(await page.locator(".brand-sculpture canvas").count(), 0);
       await page.goto(baseURL, { waitUntil: "domcontentloaded" });
       await page.locator(".home-hero").waitFor();

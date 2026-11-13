@@ -41,22 +41,6 @@
       "error": "net::ERR_ABORTED"
     },
     {
-      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
-      "error": "net::ERR_ABORTED"
-    },
-    {
       "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
       "error": "net::ERR_ABORTED"
     },
@@ -81,15 +65,35 @@
       "error": "net::ERR_ABORTED"
     },
     {
-      "url": "http://127.0.0.1:3100/assets/contact-2UI6vv2z.js",
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
       "error": "net::ERR_ABORTED"
     },
     {
-      "url": "http://127.0.0.1:3100/assets/HomepageReveal-COtG8H_R.js",
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
       "error": "net::ERR_ABORTED"
     },
     {
-      "url": "http://127.0.0.1:3100/assets/BrandSculptureScene-BKz87Pjz.js",
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
       "error": "net::ERR_ABORTED"
     }
   ]
