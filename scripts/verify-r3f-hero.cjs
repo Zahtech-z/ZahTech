@@ -5,7 +5,7 @@ const path = require("node:path");
 const { createHash } = require("node:crypto");
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const baseURL = process.env.BASE_URL || "http://127.0.0.1:3100";
-const artifacts = path.resolve("docs/r3f-review");
+const artifacts = path.resolve(process.env.REVIEW_ARTIFACTS || "docs/r3f-review");
 const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
 (async () => {
   await fs.mkdir(artifacts, { recursive: true });
@@ -270,6 +270,7 @@ const hash = (buffer) => createHash("sha256").update(buffer).digest("hex");
     );
     console.log(`PASS: ${checks.length} R3F hero checks; no local HTTP or runtime errors`);
     await context.close();
+    if (process.env.SKIP_RECORDING === "1") return;
     const recording = await browser.newContext({
       viewport: { width: 1280, height: 800 },
       recordVideo: { dir: path.resolve("../r3f-recordings"), size: { width: 1280, height: 800 } },

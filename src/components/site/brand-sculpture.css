@@ -36,7 +36,6 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse, #ff5a360b, transparent 66%);
 }
 .brand-sculpture__poster {
   position: absolute;
