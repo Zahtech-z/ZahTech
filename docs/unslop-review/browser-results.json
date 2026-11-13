@@ -1,0 +1,42 @@
+{
+  "browser": "149.0.7827.55",
+  "renderer": "Chromium software WebGL (SwiftShader)",
+  "checks": [
+    "3D source/static fallback share the approved logo contours; navigation mark remains identical to the original SVG",
+    "Actual React Three Fiber canvas renders and pixels change over time; decorative art is hidden from assistive technology",
+    "Keyboard-visible pause/resume control stops actual canvas pixels and resumes movement",
+    "Scene rendering stops outside the viewport and resumes on returning",
+    "en 320px: localized controls and readable hero at 100%/200% text",
+    "fr 320px: localized controls and readable hero at 100%/200% text",
+    "es 320px: localized controls and readable hero at 100%/200% text",
+    "en 390px: localized controls and readable hero at 100%/200% text",
+    "fr 390px: localized controls and readable hero at 100%/200% text",
+    "es 390px: localized controls and readable hero at 100%/200% text",
+    "en 768px: localized controls and readable hero at 100%/200% text",
+    "fr 768px: localized controls and readable hero at 100%/200% text",
+    "es 768px: localized controls and readable hero at 100%/200% text",
+    "en 1024px: localized controls and readable hero at 100%/200% text",
+    "fr 1024px: localized controls and readable hero at 100%/200% text",
+    "es 1024px: localized controls and readable hero at 100%/200% text",
+    "en 1440px: localized controls and readable hero at 100%/200% text",
+    "fr 1440px: localized controls and readable hero at 100%/200% text",
+    "es 1440px: localized controls and readable hero at 100%/200% text",
+    "Paused 3D sculpture retains visible orange pixels after desktop/mobile resizing",
+    "Hero buttons still open Work and Contact; canvas unmounts on navigation; no form submitted",
+    "reduced: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "no-js: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "no-webgl: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "save-data: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "Services does not render the scene or request the lazy 3D scene chunk"
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "moving": [
+    "022e5a57df80b520160e778b1c36a87b7cc96af8a6487c24d5f2b1ec695c2ce6",
+    "5bdf4cad6511aabe008ef9fa8f944d4665f0a20792cac0dfe670950ae2d66b6d"
+  ],
+  "paused": [
+    "161aa60902880c0f1b7586350108cad0d5f8651827ad144a6216cfd40a89699c",
+    "161aa60902880c0f1b7586350108cad0d5f8651827ad144a6216cfd40a89699c"
+  ]
+}

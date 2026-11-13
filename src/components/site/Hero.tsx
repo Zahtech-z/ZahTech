@@ -6,6 +6,7 @@ import { useLang } from "@/lib/i18n";
 import { homeHeroCopy } from "@/lib/hero-copy";
 import "./home-first-screen.css";
 import { BrandSculpture } from "./BrandSculpture";
+import "./hero-polish.css";
 
 export function Hero() {
   const { lang } = useLang();
@@ -17,10 +18,10 @@ export function Hero() {
     // SSR stays visible, including when JavaScript is unavailable.
     const reveal = animate(
       "[data-hero-reveal]",
-      reducedMotion ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [40, 0] },
+      reducedMotion ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [12, 0] },
       {
-        duration: reducedMotion ? 0 : 0.8,
-        delay: reducedMotion ? 0 : stagger(0.085),
+        duration: reducedMotion ? 0 : 0.45,
+        delay: reducedMotion ? 0 : stagger(0.05),
         ease: [0.22, 1, 0.36, 1],
       },
     );
@@ -35,11 +36,9 @@ export function Hero() {
       aria-labelledby="hero-heading"
       className="home-hero home-hero--sculpture"
     >
-      <div className="home-hero__light" aria-hidden="true" />
       <div className="home-hero__stage">
         <div className="home-hero__content">
           <p className="home-hero__eyebrow" data-hero-reveal>
-            <span aria-hidden="true" />
             {copy.eyebrow}
           </p>
           <h1 id="hero-heading" className="home-hero__heading">
@@ -62,7 +61,7 @@ export function Hero() {
             >
               <Link to="/contact" className="home-hero__primary">
                 {copy.project}
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>
             </motion.div>
             <motion.div
@@ -71,7 +70,7 @@ export function Hero() {
             >
               <Link to="/work" className="home-hero__secondary">
                 {copy.work}
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>
             </motion.div>
           </div>
@@ -82,7 +81,7 @@ export function Hero() {
         <p>{copy.location}</p>
         <a href="#selected-work" className="home-hero__discover">
           {copy.discover}
-          <ArrowDown size={15} aria-hidden="true" />
+          <ArrowDown size={16} strokeWidth={1.5} aria-hidden="true" />
         </a>
       </div>
     </section>

@@ -16,7 +16,6 @@ const extrusion: ExtrudeGeometryOptions = {
 
 function Sculpture({ active }: { active: boolean }) {
   const group = useRef<Group>(null);
-  const orbit = useRef<Group>(null);
   const time = useRef(0);
   const { viewport } = useThree();
   const shapes = useMemo(() => {
@@ -29,11 +28,7 @@ function Sculpture({ active }: { active: boolean }) {
     if (group.current) {
       // Keep the Z facing the reader rather than showing its mirrored reverse.
       group.current.rotation.y = -0.22 + Math.sin(time.current * 0.35) * 0.35;
-      group.current.rotation.x = -0.08 + Math.cos(time.current * 0.28) * 0.05;
-      group.current.rotation.z = -0.03 + Math.sin(time.current * 0.28) * 0.025;
-      group.current.position.y = Math.sin(time.current * 0.6) * 0.06;
     }
-    if (orbit.current) orbit.current.rotation.z = time.current * -0.07;
   });
   const scale = Math.min(viewport.width / 5.6, viewport.height / 5.6);
   return (
@@ -46,30 +41,12 @@ function Sculpture({ active }: { active: boolean }) {
               <extrudeGeometry args={[shape, extrusion]} />
               <meshStandardMaterial
                 color={index === 0 ? "#f5f2eb" : "#ff5a36"}
-                metalness={0.5}
-                roughness={0.28}
+                metalness={0.3}
+                roughness={0.4}
               />
             </mesh>
           ))}
         </group>
-      </group>
-      <group ref={orbit} rotation={[0.3, -0.35, 0]}>
-        <mesh rotation={[0.85, 0.25, -0.5]}>
-          <torusGeometry args={[2.05, 0.006, 6, 128]} />
-          <meshBasicMaterial color="#f5f2eb" transparent opacity={0.2} />
-        </mesh>
-        <mesh rotation={[-0.5, 0.55, 0.75]}>
-          <torusGeometry args={[1.9, 0.006, 6, 128]} />
-          <meshBasicMaterial color="#ff5a36" transparent opacity={0.2} />
-        </mesh>
-        <mesh position={[1.78, 0.85, 0.2]}>
-          <sphereGeometry args={[0.045, 12, 8]} />
-          <meshBasicMaterial color="#f5f2eb" />
-        </mesh>
-        <mesh position={[-1.55, -0.9, 0.5]}>
-          <sphereGeometry args={[0.035, 12, 8]} />
-          <meshBasicMaterial color="#ff5a36" />
-        </mesh>
       </group>
     </group>
   );

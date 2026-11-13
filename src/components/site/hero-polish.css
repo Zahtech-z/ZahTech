@@ -1,0 +1,40 @@
+/* Homepage-only Unslop polish. Preserve the approved brand, copy and split. */
+.home-hero.home-hero--sculpture::before {
+  content: none;
+}
+body:has(.home-hero--sculpture) .home-nav {
+  background: var(--brand-ink);
+  border-color: #f5f2eb18;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.home-hero.home-hero--sculpture .home-hero__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+.home-hero.home-hero--sculpture .home-hero__actions {
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.home-hero.home-hero--sculpture :is(.home-hero__primary, .home-hero__secondary) {
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+}
+.home-hero.home-hero--sculpture .home-hero__primary {
+  color: var(--brand-ink);
+  background: var(--brand-warm-white);
+  border-color: var(--brand-warm-white);
+}
+.home-hero.home-hero--sculpture .home-hero__primary:hover {
+  background: #e6e1d7;
+  border-color: #e6e1d7;
+}
+.home-hero.home-hero--sculpture .home-hero__secondary {
+  border-color: #f5f2eb26;
+}
+.home-hero.home-hero--sculpture .home-hero__secondary:hover {
+  background: #f5f2eb08;
+  border-color: #f5f2eb50;
+}

@@ -59,16 +59,6 @@ function Poster() {
           <stop offset="1" stopColor="#a9a397" />
         </linearGradient>
       </defs>
-      <circle cx="300" cy="300" r="238" stroke="#f5f2eb" strokeOpacity=".1" />
-      <ellipse
-        cx="300"
-        cy="300"
-        rx="253"
-        ry="105"
-        stroke="#f5f2eb"
-        strokeOpacity=".15"
-        transform="rotate(-30 300 300)"
-      />
       <g transform="translate(108 108) scale(12)">
         <path d={brandMarkPaths[0]} transform="translate(.6 .6)" fill="#62594e" />
         <path d={brandMarkPaths[1]} transform="translate(.6 .6)" fill="#8f2d1b" />
@@ -83,8 +73,6 @@ function Poster() {
           fill="url(#zahtech-sculpture-orange)"
         />
       </g>
-      <circle cx="505" cy="191" r="6" fill="#f5f2eb" />
-      <circle cx="101" cy="423" r="5" fill="#ff5a36" />
     </svg>
   );
 }
@@ -170,7 +158,11 @@ export function BrandSculpture() {
           title={paused ? controls[lang].resume : controls[lang].pause}
           onClick={() => setPaused((value) => !value)}
         >
-          {paused ? <Play size={12} aria-hidden="true" /> : <Pause size={12} aria-hidden="true" />}
+          {paused ? (
+            <Play size={16} strokeWidth={1.5} aria-hidden="true" />
+          ) : (
+            <Pause size={16} strokeWidth={1.5} aria-hidden="true" />
+          )}
         </button>
       )}
     </div>
