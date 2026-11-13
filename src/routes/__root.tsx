@@ -61,7 +61,7 @@ export const Route = createRootRoute({
       { rel: "icon", type: "image/x-icon", sizes: "16x16 32x32 48x48 96x96", href: "/favicon.ico" },
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
-      // Redesigned pages use local Inter; the paused case study keeps its font behavior.
+      // Fonts are self-hosted; redesigned pages preload only Inter.
       ...([
         "/",
         "/services",
@@ -83,21 +83,16 @@ export const Route = createRootRoute({
           ]
         : [
             {
-              rel: "preconnect",
-              href: "https://fonts.gstatic.com",
-              crossOrigin: "anonymous" as const,
-            },
-            {
               rel: "preload",
               as: "font",
-              href: "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
+              href: "/fonts/hero/syne-latin.woff2",
               type: "font/woff2",
               crossOrigin: "anonymous" as const,
             },
             {
               rel: "preload",
               as: "font",
-              href: "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
+              href: "/fonts/hero/inter-latin.woff2",
               type: "font/woff2",
               crossOrigin: "anonymous" as const,
             },
