@@ -62,9 +62,16 @@ export const Route = createRootRoute({
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       // Redesigned pages use local Inter; the paused case study keeps its font behavior.
-      ...(["/", "/services", "/work", "/about", "/blog", "/contact", "/privacy"].includes(
-        (matches.at(-1)?.pathname ?? "/").replace(/\/$/, "") || "/",
-      )
+      ...([
+        "/",
+        "/services",
+        "/work",
+        "/work/onzscore",
+        "/about",
+        "/blog",
+        "/contact",
+        "/privacy",
+      ].includes((matches.at(-1)?.pathname ?? "/").replace(/\/$/, "") || "/")
         ? [
             {
               rel: "preload",

@@ -1,4 +1,4 @@
-/* Work index only. The case-study layout keeps its existing presentation. */
+/* Shared Work shell; the live case study owns its internal spacing. */
 .work-page {
   --ring: var(--brand-signal);
   color-scheme: dark;
@@ -7,6 +7,9 @@
   background: var(--brand-ink);
   color: var(--brand-warm-white);
   font-family: "ZahTech Hero Sans", ui-sans-serif, system-ui, sans-serif;
+}
+.work-page:has(.onz-case) {
+  padding-top: 0;
 }
 .work-page__header,
 .work-page__projects,

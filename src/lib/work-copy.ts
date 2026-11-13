@@ -70,13 +70,12 @@ export const workCopy: Record<Lang, WorkCopy> = {
       onzscore: {
         category: "Football intelligence & match analysis",
         shortDescription:
-          "Daily football picks, ready-made coupons and transparent results in one bilingual product.",
+          "Match probabilities, detailed analysis and team trends in a live, bilingual football product.",
         longDescription:
-          "OnzScore brings match probabilities, a free daily pick, ready-made coupons and competition tables into one English/French workspace. Users can explore the model’s analysis, build and save coupons, and practise their own predictions without staking money. The public track record includes wins and losses. OnzScore is a statistical analysis tool: it does not accept bets, and predictions are not guaranteed.",
+          "OnzScore brings football probabilities, detailed match analysis and team streaks into one English/French experience. It works in the browser and can be installed like an app. Its public model record includes hits and misses. OnzScore is a statistical analysis tool, not a betting service, and no result is guaranteed.",
         role: "ZahTech designed and built the product experience and its engineering system, from the public landing and account flows to the application frontend and backend services.",
-        status: "Preparing for production",
-        stageDescription:
-          "Product development continues with production hardening and deployment preparation.",
+        status: "Live at onzscore.com",
+        stageDescription: "The product is publicly available at onzscore.com.",
         capabilities: {
           matches: {
             title: "Match intelligence",
@@ -118,7 +117,7 @@ export const workCopy: Record<Lang, WorkCopy> = {
           },
         },
         views: {
-          landing: "Landing / OnzScore identity",
+          landing: "OnzScore / The live experience",
           matches: "Matches / probabilities",
           tickets: "Coupons / four profiles",
           leagues: "Competitions / tables and brackets",
@@ -127,9 +126,9 @@ export const workCopy: Record<Lang, WorkCopy> = {
           pricing: "Free and VIP / displayed offer",
         },
         seoDescription:
-          "How ZahTech designed and built OnzScore: football intelligence, match analysis and software engineering across a Next.js frontend and backend services. Preparing for production.",
+          "How ZahTech designed and built OnzScore, a live football product with match analysis, a bilingual mobile experience and dedicated backend services.",
         galleryNote:
-          "Product screenshots supplied in October 2026. Scores, probabilities and results illustrate the interface at capture time.",
+          "Current official interface previews from onzscore.com. Match data is illustrative.",
       },
     },
   },
@@ -165,13 +164,12 @@ export const workCopy: Record<Lang, WorkCopy> = {
       onzscore: {
         category: "Données football & analyse de matchs",
         shortDescription:
-          "Pronostic quotidien, coupons prêts à consulter et résultats transparents dans un produit bilingue dédié au football.",
+          "Probabilités des matchs, analyses détaillées et tendances d’équipes dans un produit de football bilingue en ligne.",
         longDescription:
-          "OnzScore réunit probabilités des matchs, pronostic gratuit quotidien, coupons préparés et classements des compétitions dans un espace en français et en anglais. Les utilisateurs peuvent explorer les analyses du modèle, composer et enregistrer leurs coupons et s’entraîner à pronostiquer sans miser d’argent. L’historique public présente les réussites comme les échecs. OnzScore est un outil d’analyse statistique : il ne prend pas de paris et ne garantit aucun pronostic.",
+          "OnzScore réunit probabilités de football, analyses détaillées et séries d’équipes dans une expérience en français et en anglais. Le produit fonctionne dans le navigateur et peut s’installer comme une application. L’historique public du modèle présente réussites et échecs. OnzScore est un outil d’analyse statistique, pas un service de paris, et aucun résultat n’est garanti.",
         role: "ZahTech a conçu et développé l’expérience produit et son système logiciel, de la page publique et des parcours de compte à l’interface applicative et aux services backend.",
-        status: "Préparation à la production",
-        stageDescription:
-          "Le développement se poursuit avec la consolidation du produit et la préparation de son déploiement en production.",
+        status: "En ligne sur onzscore.com",
+        stageDescription: "Le produit est accessible publiquement sur onzscore.com.",
         capabilities: {
           matches: {
             title: "Analyse des matchs",
@@ -214,7 +212,7 @@ export const workCopy: Record<Lang, WorkCopy> = {
           },
         },
         views: {
-          landing: "Accueil / identité OnzScore",
+          landing: "OnzScore / L’expérience en ligne",
           matches: "Matchs / probabilités",
           tickets: "Coupons / quatre profils",
           leagues: "Compétitions / classements et tableaux",
@@ -223,9 +221,9 @@ export const workCopy: Record<Lang, WorkCopy> = {
           pricing: "Gratuit et VIP / offre affichée",
         },
         seoDescription:
-          "Comment ZahTech a conçu et développé OnzScore : analyse de football, données de matchs et ingénierie logicielle avec Next.js et des services backend. Préparation à la production.",
+          "Comment ZahTech a conçu et développé OnzScore, un produit de football en ligne avec analyses de matchs, expérience mobile bilingue et services backend dédiés.",
         galleryNote:
-          "Captures du produit fournies en octobre 2026. Les scores, probabilités et résultats illustrent l’interface au moment de la capture.",
+          "Aperçus officiels de l’interface actuelle issus d’onzscore.com. Les données de matchs sont illustratives.",
       },
     },
   },
@@ -261,13 +259,12 @@ export const workCopy: Record<Lang, WorkCopy> = {
       onzscore: {
         category: "Inteligencia de fútbol y análisis de partidos",
         shortDescription:
-          "Pronósticos diarios, cupones preparados y resultados transparentes en un producto de fútbol bilingüe.",
+          "Probabilidades, análisis detallado y tendencias de equipos en un producto de fútbol bilingüe en línea.",
         longDescription:
-          "OnzScore reúne probabilidades de partidos, un pronóstico diario gratuito, cupones preparados y clasificaciones en un espacio en inglés y francés. Los usuarios pueden explorar el análisis del modelo, crear y guardar cupones y practicar sus pronósticos sin apostar dinero. El historial público incluye aciertos y fallos. OnzScore es una herramienta de análisis estadístico: no acepta apuestas ni garantiza pronósticos.",
+          "OnzScore reúne probabilidades de fútbol, análisis detallado y rachas de equipos en una experiencia en inglés y francés. Funciona en el navegador y puede instalarse como una aplicación. El historial público incluye aciertos y fallos. OnzScore es una herramienta de análisis estadístico, no un servicio de apuestas, y ningún resultado está garantizado.",
         role: "ZahTech diseñó y desarrolló la experiencia del producto y su sistema de software, desde la página pública y los flujos de cuenta hasta la interfaz de la aplicación y los servicios backend.",
-        status: "Preparación para producción",
-        stageDescription:
-          "El desarrollo continúa con el refuerzo del producto y la preparación de su despliegue en producción.",
+        status: "En línea en onzscore.com",
+        stageDescription: "El producto está disponible públicamente en onzscore.com.",
         capabilities: {
           matches: {
             title: "Análisis de partidos",
@@ -310,7 +307,7 @@ export const workCopy: Record<Lang, WorkCopy> = {
           },
         },
         views: {
-          landing: "Inicio / identidad OnzScore",
+          landing: "OnzScore / La experiencia en línea",
           matches: "Partidos / probabilidades",
           tickets: "Cupones / cuatro perfiles",
           leagues: "Competiciones / clasificaciones y cuadros",
@@ -319,9 +316,9 @@ export const workCopy: Record<Lang, WorkCopy> = {
           pricing: "Gratis y VIP / oferta mostrada",
         },
         seoDescription:
-          "Cómo ZahTech diseñó y desarrolló OnzScore: inteligencia de fútbol, análisis de partidos e ingeniería de software con Next.js y servicios backend. En preparación para producción.",
+          "Cómo ZahTech diseñó y desarrolló OnzScore, un producto de fútbol en línea con análisis de partidos, experiencia móvil bilingüe y servicios backend dedicados.",
         galleryNote:
-          "Capturas del producto facilitadas en octubre de 2026. Los marcadores, probabilidades y resultados ilustran la interfaz en el momento de la captura.",
+          "Vistas oficiales de la interfaz actual de onzscore.com. Los datos de partidos son ilustrativos.",
       },
     },
   },

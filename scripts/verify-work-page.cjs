@@ -58,7 +58,7 @@ const artifacts = path.resolve("docs/work-page-review");
     assert.equal(await page.locator(".work-project").count(), 1);
     assert.equal(await page.locator(".work-project h2").innerText(), "OnzScore");
     assert.ok(
-      (await page.locator(".work-project__label").innerText()).includes("Preparing for production"),
+      (await page.locator(".work-project__label").innerText()).includes("Live at onzscore.com"),
     );
     assert.deepEqual(await page.locator(".work-project__identity li").allTextContents(), [
       "Next.js",
@@ -66,14 +66,14 @@ const artifacts = path.resolve("docs/work-page-review");
       "PostgreSQL",
     ]);
     const img = page.locator(".work-project img");
-    assert.equal(await img.getAttribute("src"), "/images/onzscore/onzscore-landing.webp");
+    assert.equal(await img.getAttribute("src"), "/images/onzscore/live/onzscore-cover.png");
     await img.evaluate((e) => e.decode());
     assert.ok(await img.evaluate((e) => e.naturalWidth > 0 && e.alt.length > 0));
     checks.push(
-      "One documented project, original image/alt, technologies and production-preparation status preserved",
+      "One documented project, current artwork/alt, technologies and verified live status",
     );
     const fullSize = page.locator(".work-project figcaption a");
-    assert.equal(await fullSize.getAttribute("href"), "/images/onzscore/onzscore-landing.webp");
+    assert.equal(await fullSize.getAttribute("href"), "/images/onzscore/live/onzscore-cover.png");
     assert.equal(await fullSize.getAttribute("target"), "_blank");
     assert.ok((await fullSize.getAttribute("rel")).includes("noopener"));
     checks.push("Full-size image link and safe new-tab behavior preserved");
@@ -155,9 +155,9 @@ const artifacts = path.resolve("docs/work-page-review");
     );
     await page.keyboard.press("Enter");
     await page.waitForURL(`${baseURL}/work/onzscore`);
-    await page.locator(".work-page").waitFor({ state: "detached" });
-    assert.equal(await page.locator(".home-nav").count(), 0);
-    assert.equal(await page.locator("h1").innerText(), "OnzScore");
+    await page.locator(".onz-case").waitFor();
+    assert.equal(await page.locator(".home-nav--liquid").count(), 1);
+    assert.ok((await page.locator("h1").innerText()).includes("OnzScore"));
     await page.getByRole("link", { name: "Back to work", exact: true }).click();
     await ready();
     assert.equal(await page.locator(".home-nav").count(), 1);

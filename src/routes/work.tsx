@@ -10,7 +10,8 @@ export const Route = createFileRoute("/work")({ component: WorkLayout });
 
 function WorkLayout() {
   const editorial = useRouterState({
-    select: (state) => state.location.pathname.replace(/\/$/, "") === "/work",
+    select: (state) =>
+      ["/work", "/work/onzscore"].includes(state.location.pathname.replace(/\/$/, "")),
   });
   return (
     <>
