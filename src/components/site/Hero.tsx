@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLang } from "@/lib/i18n";
 import { homeHeroCopy } from "@/lib/hero-copy";
 import "./home-first-screen.css";
+import { BrandSculpture } from "./BrandSculpture";
 
 export function Hero() {
   const { lang } = useLang();
@@ -32,47 +33,50 @@ export function Hero() {
       id="main-content"
       tabIndex={-1}
       aria-labelledby="hero-heading"
-      className="home-hero"
+      className="home-hero home-hero--sculpture"
     >
       <div className="home-hero__light" aria-hidden="true" />
-      <div className="home-hero__content">
-        <p className="home-hero__eyebrow" data-hero-reveal>
-          <span aria-hidden="true" />
-          {copy.eyebrow}
-        </p>
-        <h1 id="hero-heading" className="home-hero__heading">
-          <span className="home-hero__line">
-            <span data-hero-reveal>{copy.heading1}</span>
-          </span>{" "}
-          <span className="home-hero__line">
-            <span data-hero-reveal>
-              {copy.heading2} <em>{copy.headingAccent}</em>
+      <div className="home-hero__stage">
+        <div className="home-hero__content">
+          <p className="home-hero__eyebrow" data-hero-reveal>
+            <span aria-hidden="true" />
+            {copy.eyebrow}
+          </p>
+          <h1 id="hero-heading" className="home-hero__heading">
+            <span className="home-hero__line">
+              <span data-hero-reveal>{copy.heading1}</span>
+            </span>{" "}
+            <span className="home-hero__line">
+              <span data-hero-reveal>
+                {copy.heading2} <em>{copy.headingAccent}</em>
+              </span>
             </span>
-          </span>
-        </h1>
-        <p className="home-hero__description" data-hero-reveal>
-          {copy.description}
-        </p>
-        <div className="home-hero__actions" data-hero-reveal>
-          <motion.div
-            whileHover={reducedMotion ? undefined : { y: -2 }}
-            whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-          >
-            <Link to="/contact" className="home-hero__primary">
-              {copy.project}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-          </motion.div>
-          <motion.div
-            whileHover={reducedMotion ? undefined : { y: -2 }}
-            whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-          >
-            <Link to="/work" className="home-hero__secondary">
-              {copy.work}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-          </motion.div>
+          </h1>
+          <p className="home-hero__description" data-hero-reveal>
+            {copy.description}
+          </p>
+          <div className="home-hero__actions" data-hero-reveal>
+            <motion.div
+              whileHover={reducedMotion ? undefined : { y: -2 }}
+              whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+            >
+              <Link to="/contact" className="home-hero__primary">
+                {copy.project}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={reducedMotion ? undefined : { y: -2 }}
+              whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+            >
+              <Link to="/work" className="home-hero__secondary">
+                {copy.work}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
+        <BrandSculpture />
       </div>
       <div className="home-hero__footnote">
         <p>{copy.location}</p>

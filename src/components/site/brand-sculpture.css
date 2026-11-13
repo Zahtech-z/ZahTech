@@ -1,0 +1,120 @@
+.home-hero--sculpture .home-hero__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 78rem;
+  margin: auto;
+  padding-block: 1rem 3rem;
+}
+.home-hero--sculpture .home-hero__content {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.home-hero--sculpture .home-hero__eyebrow,
+.home-hero--sculpture .home-hero__actions {
+  justify-content: flex-start;
+}
+.home-hero--sculpture .home-hero__heading {
+  font-size: clamp(3.1rem, 5.2vw, 5.4rem);
+}
+.home-hero--sculpture .home-hero__description {
+  margin-inline: 0;
+  max-width: 31rem;
+}
+.brand-sculpture {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  align-self: center;
+}
+.brand-sculpture__art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse, #ff5a360b, transparent 66%);
+}
+.brand-sculpture__poster {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 350ms ease;
+}
+.brand-sculpture[data-scene-state="ready"] .brand-sculpture__poster {
+  opacity: 0;
+}
+.brand-sculpture__canvas {
+  position: absolute !important;
+  inset: 0;
+  pointer-events: none;
+}
+.brand-sculpture__control {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  transform: translateX(-50%);
+  color: #b9b4aa;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.brand-sculpture__control svg {
+  flex-shrink: 0;
+}
+.brand-sculpture__control:hover {
+  color: var(--brand-warm-white);
+}
+@media (max-width: 1100px) {
+  .home-hero--sculpture .home-hero__stage {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .home-hero--sculpture .home-hero__content {
+    text-align: center;
+  }
+  .home-hero--sculpture .home-hero__eyebrow,
+  .home-hero--sculpture .home-hero__actions {
+    justify-content: center;
+  }
+  .home-hero--sculpture .home-hero__description {
+    margin-inline: auto;
+  }
+  .brand-sculpture {
+    width: min(100%, 24rem);
+    margin-inline: auto;
+  }
+}
+/* Leave room for three navigation rows when desktop text is enlarged. */
+@media (min-width: 1024px) and (max-width: 1100px) {
+  .home-hero--sculpture {
+    padding-top: 15rem;
+  }
+}
+@media (max-width: 767px) {
+  .home-hero--sculpture .home-hero__heading {
+    font-size: clamp(2.65rem, 9.5vw, 4.75rem);
+  }
+  .brand-sculpture {
+    width: min(100%, 19rem);
+  }
+  .home-hero--sculpture .home-hero__stage {
+    padding-bottom: 1.5rem;
+    gap: 0.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-sculpture__poster {
+    transition: none;
+  }
+}

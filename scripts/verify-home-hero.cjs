@@ -168,7 +168,8 @@ const expected = {
         .evaluate((element) => element === document.activeElement),
     );
     await page.getByRole("button", { name: "Open menu" }).click();
-    await page.locator(".home-hero__description").click();
+    // The exposed viewport gutter remains outside the expanded navigation.
+    await page.mouse.click(8, 422);
     assert.equal(
       await page.getByRole("button", { name: "Open menu" }).getAttribute("aria-expanded"),
       "false",

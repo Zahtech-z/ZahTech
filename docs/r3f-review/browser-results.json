@@ -1,0 +1,41 @@
+{
+  "browser": "149.0.7827.55",
+  "renderer": "Chromium software WebGL (SwiftShader)",
+  "checks": [
+    "Actual React Three Fiber canvas renders and pixels change over time; decorative art is hidden from assistive technology",
+    "Keyboard-visible pause/resume control stops actual canvas pixels and resumes movement",
+    "Scene rendering stops outside the viewport and resumes on returning",
+    "en 320px: localized controls and readable hero at 100%/200% text",
+    "fr 320px: localized controls and readable hero at 100%/200% text",
+    "es 320px: localized controls and readable hero at 100%/200% text",
+    "en 390px: localized controls and readable hero at 100%/200% text",
+    "fr 390px: localized controls and readable hero at 100%/200% text",
+    "es 390px: localized controls and readable hero at 100%/200% text",
+    "en 768px: localized controls and readable hero at 100%/200% text",
+    "fr 768px: localized controls and readable hero at 100%/200% text",
+    "es 768px: localized controls and readable hero at 100%/200% text",
+    "en 1024px: localized controls and readable hero at 100%/200% text",
+    "fr 1024px: localized controls and readable hero at 100%/200% text",
+    "es 1024px: localized controls and readable hero at 100%/200% text",
+    "en 1440px: localized controls and readable hero at 100%/200% text",
+    "fr 1440px: localized controls and readable hero at 100%/200% text",
+    "es 1440px: localized controls and readable hero at 100%/200% text",
+    "Paused 3D sculpture retains visible orange pixels after desktop/mobile resizing",
+    "Hero buttons still open Work and Contact; canvas unmounts on navigation; no form submitted",
+    "reduced: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "no-js: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "no-webgl: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "save-data: static SVG remains visible, no 3D canvas, hero content and links preserved",
+    "Services does not render the scene or request the lazy 3D scene chunk"
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "moving": [
+    "8fb54df5090fc915939d8417cd7ee0afd7bd12be1e05e214a413b765fd15a182",
+    "8a706aa484f971135d60a66d81e740bf7526295cc73e4ee241d3d1d4986f2f9a"
+  ],
+  "paused": [
+    "f8ede65522bb4f9976e1ec37bfa410e13a935af4ddf1942923c46d924e9ee80d",
+    "f8ede65522bb4f9976e1ec37bfa410e13a935af4ddf1942923c46d924e9ee80d"
+  ]
+}
