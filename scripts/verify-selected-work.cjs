@@ -35,19 +35,19 @@ const screenshotStyle =
     assert.equal(await section.getByRole("heading", { level: 3 }).innerText(), "OnzScore");
     assert.equal(
       await section.locator("img").getAttribute("src"),
-      "/images/onzscore/onzscore-landing.webp",
+      "/images/onzscore/live/onzscore-cover.png",
     );
     assert.equal(
       await section.locator(".selected-work__status").innerText(),
-      "Preparing for production",
+      "Live at onzscore.com",
     );
     assert.equal(await section.locator(".selected-work__technologies li").count(), 3);
-    assert.ok((await section.locator(".selected-work__note").innerText()).includes("October 2026"));
+    assert.ok((await section.locator(".selected-work__note").innerText()).includes("illustrative"));
     checks.push(
-      "one documented OnzScore project, original screenshot, status, technologies and capture note preserved",
+      "one documented OnzScore project, current artwork, verified live status, technologies and illustrative-data note",
     );
     const fullSize = section.getByRole("link", { name: /View full-size image/ });
-    assert.equal(await fullSize.getAttribute("href"), "/images/onzscore/onzscore-landing.webp");
+    assert.equal(await fullSize.getAttribute("href"), "/images/onzscore/live/onzscore-cover.png");
     assert.equal(await fullSize.getAttribute("target"), "_blank");
     assert.ok((await fullSize.getAttribute("rel")).includes("noopener"));
     checks.push("original full-size image link and safe new-tab attributes preserved");
@@ -55,7 +55,8 @@ const screenshotStyle =
 
     await section.locator(".selected-work__case-study").click();
     await page.waitForURL(`${baseURL}/work/onzscore`);
-    await page.locator(".home-nav").waitFor({ state: "detached" });
+    await page.locator(".onz-case").waitFor();
+    assert.equal(await page.locator(".home-nav--liquid").count(), 1);
     assert.ok((await page.locator("h1").innerText()).includes("OnzScore"));
     checks.push("case-study link navigates to existing OnzScore case study");
     await page.goto(baseURL);
