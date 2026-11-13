@@ -1,0 +1,107 @@
+/* Keep enlarged text readable across the redesigned pages. */
+body:has(.home-hero, .services-page, .work-page, .site-page) {
+  font-family: "ZahTech Hero Sans", ui-sans-serif, system-ui, sans-serif;
+}
+:is(
+    .home-hero,
+    .selected-work,
+    .home-services,
+    .home-engineering,
+    .home-process,
+    .home-contact,
+    .home-footer,
+    .services-page,
+    .work-page,
+    .site-page
+  )
+  :is(h1, h2, h3, p, a) {
+  overflow-wrap: anywhere;
+}
+.home-nav {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 3rem);
+}
+.home-nav .home-nav__bar {
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.home-nav .home-nav__bar > div {
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+}
+.home-nav .home-nav__language {
+  width: 3.25rem;
+}
+.home-nav .home-nav__mobile {
+  min-height: 0;
+  max-height: none;
+  flex: 1 1 auto;
+}
+.selected-work .selected-work__header {
+  flex-wrap: wrap;
+}
+.selected-work :is(.selected-work__header > div, .selected-work__all, .selected-work__case-study) {
+  min-width: 0;
+  max-width: 100%;
+}
+.home-hero :is(.home-hero__primary, .home-hero__secondary),
+.home-services .home-services__contact,
+.home-contact .home-contact__project {
+  min-width: 0;
+  max-width: 100%;
+  gap: min(1.5rem, 4vw);
+  padding-inline: min(1.5rem, 6vw);
+}
+.home-hero .home-hero__footnote > *,
+.home-contact .home-contact__email > * {
+  min-width: 0;
+  max-width: 100%;
+}
+/* Icon-only floating controls keep their touch target size when text is enlarged. */
+body:has(.home-hero, .services-page, .work-page, .site-page)
+  .fixed:has(> a[href^="https://wa.me/"])
+  > a {
+  width: 56px;
+  height: 56px;
+}
+body:has(.home-hero, .services-page, .work-page, .site-page)
+  .fixed:has(> a[href^="https://wa.me/"])
+  svg {
+  width: 28px;
+  height: 28px;
+}
+body:has(.home-hero, .services-page, .work-page, .site-page) button.fixed {
+  width: 44px;
+  height: 44px;
+}
+body:has(.home-hero, .services-page, .work-page, .site-page) button.fixed svg {
+  width: 16px;
+  height: 16px;
+}
+@media (max-width: 767px) {
+  body:has(.home-hero, .services-page, .work-page, .site-page)
+    .fixed:has(> a[href^="https://wa.me/"]) {
+    right: 20px;
+    bottom: 20px;
+  }
+  body:has(.home-hero, .services-page, .work-page, .site-page) button.fixed {
+    right: 96px;
+    bottom: 20px;
+  }
+  .home-hero .home-hero__footnote {
+    padding-right: 72px;
+  }
+}
+@media (min-width: 768px) {
+  body:has(.home-hero, .services-page, .work-page, .site-page)
+    .fixed:has(> a[href^="https://wa.me/"]) {
+    right: 24px;
+    bottom: 24px;
+  }
+  body:has(.home-hero, .services-page, .work-page, .site-page) button.fixed {
+    right: 112px;
+    bottom: 24px;
+  }
+}

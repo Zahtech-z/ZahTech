@@ -1,0 +1,39 @@
+{
+  "globalChecks": 37,
+  "regressionChecks": 133,
+  "suites": [
+    {
+      "suite": "hero",
+      "checks": 27,
+      "runtimeErrors": 0
+    },
+    {
+      "suite": "selected-work",
+      "checks": 21,
+      "runtimeErrors": 0
+    },
+    {
+      "suite": "services",
+      "checks": 21,
+      "runtimeErrors": 0
+    },
+    {
+      "suite": "engineering",
+      "checks": 21,
+      "runtimeErrors": 0
+    },
+    {
+      "suite": "process",
+      "checks": 21,
+      "runtimeErrors": 0
+    },
+    {
+      "suite": "contact-footer",
+      "checks": 22,
+      "runtimeErrors": 0
+    }
+  ],
+  "homepageRuntimeErrors": [],
+  "homepageHttpErrors": [],
+  "totalChecks": 170
+}

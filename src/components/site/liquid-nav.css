@@ -1,0 +1,63 @@
+/* One glass surface behind native navigation; no text is rendered into WebGL. */
+.home-nav.home-nav--liquid {
+  isolation: isolate;
+  background: #0a0a0adb;
+  border-color: #f5f2eb38;
+  backdrop-filter: blur(16px) saturate(1.08);
+  box-shadow: 0 8px 24px #00000020;
+}
+.home-nav--liquid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #ffffff0a, transparent 45%, #ffffff03);
+  box-shadow:
+    inset 0 1px 0 #ffffff3a,
+    inset 0 -1px 0 #ffffff14;
+  pointer-events: none;
+}
+.home-nav--liquid :is(.home-nav__bar, .home-nav__mobile) {
+  position: relative;
+  z-index: 2;
+}
+.home-nav--liquid .home-nav__link {
+  color: var(--brand-warm-white);
+}
+.liquid-nav-surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+}
+.liquid-nav-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #0a0a0aad;
+}
+.home-nav--liquid[data-glass-state="ready"] .liquid-nav-surface {
+  opacity: 1;
+}
+.home-nav--liquid[data-menu-open="true"] .liquid-nav-surface {
+  opacity: 0;
+}
+.home-nav.home-nav--liquid[data-menu-open="true"] {
+  background: #0a0a0af5;
+  backdrop-filter: none;
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .home-nav.home-nav--liquid {
+    background: var(--brand-ink);
+    backdrop-filter: none;
+  }
+  .home-nav--liquid::before,
+  .home-nav--liquid .liquid-nav-surface {
+    display: none;
+  }
+}

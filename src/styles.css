@@ -10,16 +10,14 @@
     font-style: normal;
     font-weight: 400 800;
     font-display: optional;
-    src: url("https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2")
-      format("woff2");
+    src: url("/fonts/hero/syne-latin.woff2") format("woff2");
   }
   @font-face {
     font-family: "Inter";
     font-style: normal;
     font-weight: 100 900;
     font-display: optional;
-    src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2")
-      format("woff2");
+    src: url("/fonts/hero/inter-latin.woff2") format("woff2");
   }
 }
 
@@ -57,7 +55,6 @@
   --color-surface-elevated: var(--surface-elevated);
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-
 }
 
 :root {
@@ -227,7 +224,8 @@ html {
   [data-home-reveal="revealed"] {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transition:
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--site-reveal-delay, 0ms);
   }

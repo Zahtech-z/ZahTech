@@ -39,7 +39,10 @@ export const Route = createRootRoute({
       { title: "ZahTech" },
       { name: "description", content: DESCRIPTION },
       { name: "author", content: "ZahTech" },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { name: "theme-color", content: "#f5f2eb" },
       { property: "og:title", content: "ZahTech" },
       { property: "og:description", content: DESCRIPTION },
@@ -58,27 +61,57 @@ export const Route = createRootRoute({
       { rel: "icon", type: "image/x-icon", sizes: "16x16 32x32 48x48 96x96", href: "/favicon.ico" },
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "preload",
-        as: "font",
-        href: "https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uT6k0pBp.woff2",
-        type: "font/woff2",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "preload",
-        as: "font",
-        href: "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2",
-        type: "font/woff2",
-        crossOrigin: "anonymous",
-      },
+      // Fonts are self-hosted; redesigned pages preload only Inter.
+      ...([
+        "/",
+        "/services",
+        "/work",
+        "/work/onzscore",
+        "/about",
+        "/blog",
+        "/contact",
+        "/privacy",
+      ].includes((matches.at(-1)?.pathname ?? "/").replace(/\/$/, "") || "/")
+        ? [
+            {
+              rel: "preload",
+              as: "font",
+              href: "/fonts/hero/inter-latin.woff2",
+              type: "font/woff2",
+              crossOrigin: "anonymous" as const,
+            },
+          ]
+        : [
+            {
+              rel: "preload",
+              as: "font",
+              href: "/fonts/hero/syne-latin.woff2",
+              type: "font/woff2",
+              crossOrigin: "anonymous" as const,
+            },
+            {
+              rel: "preload",
+              as: "font",
+              href: "/fonts/hero/inter-latin.woff2",
+              type: "font/woff2",
+              crossOrigin: "anonymous" as const,
+            },
+          ]),
       {
         rel: "stylesheet",
         href: appCss,
       },
       // Work, Services, About, Blog, Contact, and Privacy routes provide their own canonical URLs.
-      ...(matches.some((match) => match.pathname === "/contact" || match.pathname === "/blog" || match.pathname === "/about" || match.pathname === "/services" || match.pathname === "/privacy" || match.pathname === "/work" || match.pathname.startsWith("/work/"))
+      ...(matches.some(
+        (match) =>
+          match.pathname === "/contact" ||
+          match.pathname === "/blog" ||
+          match.pathname === "/about" ||
+          match.pathname === "/services" ||
+          match.pathname === "/privacy" ||
+          match.pathname === "/work" ||
+          match.pathname.startsWith("/work/"),
+      )
         ? []
         : [{ rel: "canonical", href: "https://zahtech.org/" }]),
     ],

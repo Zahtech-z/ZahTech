@@ -18,7 +18,7 @@ export type PortfolioProject = {
   slug: ProjectId;
   name: string;
   category?: "football-intelligence";
-  status?: "production-preparation";
+  status?: "live";
   role?: "product-design-and-engineering";
   capabilities: readonly CapabilityId[];
   engineering: readonly { id: EngineeringLayer; items: readonly string[] }[];
@@ -28,13 +28,14 @@ export type PortfolioProject = {
   repository?: { visibility: "public" | "private"; url?: string };
 };
 
-// Engineering facts retained from the owner’s product audit; screenshots supplied in October 2026.
-// Screenshots do not establish deployment status or verified payment processing.
+// Engineering facts retained from the owner’s product audit.
+// Public availability confirmed at onzscore.com on 2026-11-13; payments are not tested.
 export const onzScore: PortfolioProject = {
   slug: "onzscore",
   name: "OnzScore",
   category: "football-intelligence",
-  status: "production-preparation",
+  status: "live",
+  externalUrl: "https://onzscore.com/",
   role: "product-design-and-engineering",
   capabilities: [
     "matches",
@@ -73,13 +74,13 @@ export const onzScore: PortfolioProject = {
     {
       id: "landing",
       image: {
-        src: "/images/onzscore/onzscore-landing.webp",
-        width: 1888,
-        height: 988,
+        src: "/images/onzscore/live/onzscore-cover.png",
+        width: 1600,
+        height: 1000,
         alt: {
-          en: "OnzScore — Landing / OnzScore identity.",
-          fr: "OnzScore — Accueil / identité OnzScore.",
-          es: "OnzScore — Inicio / identidad OnzScore.",
+          en: "OnzScore — current match list and analysis, composed from official previews with illustrative data.",
+          fr: "OnzScore — liste des matchs et analyse actuelles, composition d’aperçus officiels avec données illustratives.",
+          es: "OnzScore — partidos y análisis actuales, composición de vistas oficiales con datos ilustrativos.",
         },
       },
     },

@@ -1,0 +1,35 @@
+{
+  "browser": "149.0.7827.55",
+  "checks": [
+    "Project image transform changes with actual scroll position",
+    "Engineering orange line progresses with actual scroll position",
+    "All six existing Services entries and anchor IDs preserved",
+    "en 320px: translated title, no horizontal overflow at 100% and 200% text",
+    "fr 320px: translated title, no horizontal overflow at 100% and 200% text",
+    "es 320px: translated title, no horizontal overflow at 100% and 200% text",
+    "en 390px: translated title, no horizontal overflow at 100% and 200% text",
+    "fr 390px: translated title, no horizontal overflow at 100% and 200% text",
+    "es 390px: translated title, no horizontal overflow at 100% and 200% text",
+    "en 768px: translated title, no horizontal overflow at 100% and 200% text",
+    "fr 768px: translated title, no horizontal overflow at 100% and 200% text",
+    "es 768px: translated title, no horizontal overflow at 100% and 200% text",
+    "en 1024px: translated title, no horizontal overflow at 100% and 200% text",
+    "fr 1024px: translated title, no horizontal overflow at 100% and 200% text",
+    "es 1024px: translated title, no horizontal overflow at 100% and 200% text",
+    "en 1440px: translated title, no horizontal overflow at 100% and 200% text",
+    "fr 1440px: translated title, no horizontal overflow at 100% and 200% text",
+    "es 1440px: translated title, no horizontal overflow at 100% and 200% text",
+    "Contact CTA supports keyboard focus and opens the existing form; no submission",
+    "Reduced motion: readable service content and static project image",
+    "No JavaScript: readable service content"
+  ],
+  "errors": [],
+  "transforms": [
+    "matrix3d(0.982559, 0, 0, 0, 0, 0.981945, 0.0353545, -2.94621e-05, 0, -0.0347379, 0.999375, -0.000832812, 0, 14.5252, 0, 1)",
+    "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.000833333, 0, 1.28871, 0, 1)"
+  ],
+  "rails": [
+    "matrix(0, 0, 0, 1, 0, 0)",
+    "matrix(0.646605, 0, 0, 1, 0, 0)"
+  ]
+}

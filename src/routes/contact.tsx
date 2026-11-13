@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent, type ReactNode } from "react";
-import { Nav } from "@/components/site/Nav";
-import { HomeFooter } from "@/components/site/HomeFooter";
-import { SkipLink } from "@/components/site/SkipLink";
+
 import { useLang } from "@/lib/i18n";
 import { contactCopy } from "@/lib/contact-copy";
 import { serviceIds, servicesCopy } from "@/lib/services-copy";
 import { privacyCopy } from "@/lib/privacy-copy";
-import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { SitePage, PageIntro } from "@/components/site/SitePage";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -70,203 +68,170 @@ function ContactPage() {
   }
 
   return (
-    <>
-      <SkipLink />
-      <Nav />
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="border-b border-border bg-background pb-14 pt-28 text-foreground sm:pb-20 sm:pt-36"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <HomepageReveal as="header" className="pb-12 sm:pb-16" entrance>
-            <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-secondary-foreground">
-              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
-              {copy.eyebrow}
-            </p>
-            <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              {copy.heading}
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {copy.introduction}
-            </p>
-          </HomepageReveal>
-          <HomepageReveal className="grid items-start gap-10 border-t border-border pt-10 sm:pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)] lg:gap-16">
-            <section aria-labelledby="direct-contact-heading" className="min-w-0">
-              <h2 id="direct-contact-heading" className="font-display text-2xl font-semibold">
-                {copy.preferEmail}
-              </h2>
-              <a
-                href="mailto:contact@zahtech.net"
-                className="mt-3 inline-flex min-h-11 max-w-full items-center break-all text-base underline underline-offset-4"
-              >
-                contact@zahtech.net
-              </a>
-              <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
-                {copy.location}
-              </p>
-            </section>
-            <form
-              onSubmit={submit}
-              aria-labelledby="inquiry-heading"
-              aria-describedby="required-note"
-              aria-busy={state === "sending"}
-              onChange={() => {
-                if (state !== "sending") setState("idle");
-              }}
-              onInvalid={(event) => {
-                const control = event.target as HTMLInputElement;
-                control.setCustomValidity("");
-                if (control.validity.valueMissing) control.setCustomValidity(copy.requiredError);
-                else if (control.validity.typeMismatch) control.setCustomValidity(copy.emailError);
-              }}
-              onInput={(event) => (event.target as HTMLInputElement).setCustomValidity("")}
-              className="min-w-0"
+    <SitePage page="contact">
+      <div className="site-page__container">
+        <PageIntro eyebrow={copy.eyebrow} title={copy.heading} introduction={copy.introduction} />
+        <div className="site-split contact-layout">
+          <section aria-labelledby="direct-contact-heading" className="contact-direct site-prose">
+            <h2 id="direct-contact-heading" className="font-display text-2xl font-semibold">
+              {copy.preferEmail}
+            </h2>
+            <a
+              href="mailto:contact@zahtech.net"
+              className="mt-3 inline-flex min-h-11 max-w-full items-center break-all text-base underline underline-offset-4"
             >
-              <h2 id="inquiry-heading" className="font-display text-2xl font-semibold">
-                {copy.formHeading}
-              </h2>
-              <p id="required-note" className="mb-7 mt-3 text-sm text-muted-foreground">
-                {copy.required}
-              </p>
-              <fieldset disabled={state === "sending"} className="grid min-w-0 gap-6">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <Field id="inquiry-name" label={copy.name + " *"}>
-                    <input
-                      id="inquiry-name"
-                      name="name"
-                      required
-                      maxLength={120}
-                      autoComplete="name"
-                      className={controlClass}
-                    />
-                  </Field>
-                  <Field id="inquiry-email" label={copy.email + " *"}>
-                    <input
-                      id="inquiry-email"
-                      name="email"
-                      required
-                      type="email"
-                      maxLength={200}
-                      autoComplete="email"
-                      className={controlClass}
-                    />
-                  </Field>
-                </div>
-                <Field id="inquiry-company" label={`${copy.company} (${copy.optional})`}>
+              contact@zahtech.net
+            </a>
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
+              {copy.location}
+            </p>
+          </section>
+          <form
+            onSubmit={submit}
+            aria-labelledby="inquiry-heading"
+            aria-describedby="required-note"
+            aria-busy={state === "sending"}
+            onChange={() => {
+              if (state !== "sending") setState("idle");
+            }}
+            onInvalid={(event) => {
+              const control = event.target as HTMLInputElement;
+              control.setCustomValidity("");
+              if (control.validity.valueMissing) control.setCustomValidity(copy.requiredError);
+              else if (control.validity.typeMismatch) control.setCustomValidity(copy.emailError);
+            }}
+            onInput={(event) => (event.target as HTMLInputElement).setCustomValidity("")}
+            className="contact-form"
+          >
+            <h2 id="inquiry-heading" className="font-display text-2xl font-semibold">
+              {copy.formHeading}
+            </h2>
+            <p id="required-note" className="mb-7 mt-3 text-sm text-muted-foreground">
+              {copy.required}
+            </p>
+            <fieldset disabled={state === "sending"} className="grid min-w-0 gap-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <Field id="inquiry-name" label={copy.name + " *"}>
                   <input
-                    id="inquiry-company"
-                    name="company"
-                    maxLength={200}
-                    autoComplete="organization"
+                    id="inquiry-name"
+                    name="name"
+                    required
+                    maxLength={120}
+                    autoComplete="name"
                     className={controlClass}
                   />
                 </Field>
-                <Field id="inquiry-description" label={copy.description + " *"}>
-                  <textarea
-                    id="inquiry-description"
-                    name="description"
+                <Field id="inquiry-email" label={copy.email + " *"}>
+                  <input
+                    id="inquiry-email"
+                    name="email"
                     required
-                    maxLength={5000}
-                    rows={5}
-                    className={controlClass + " resize-y"}
+                    type="email"
+                    maxLength={200}
+                    autoComplete="email"
+                    className={controlClass}
                   />
                 </Field>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <Field id="inquiry-service" label={copy.service}>
-                    <select
-                      id="inquiry-service"
-                      name="services"
-                      defaultValue=""
-                      className={controlClass}
-                    >
-                      <option value="">{copy.unsure}</option>
-                      {serviceIds.map((id) => (
-                        <option key={id} value={id}>
-                          {servicesCopy[lang].services[id].title}
-                        </option>
-                      ))}
-                    </select>
-                  </Field>
-                  <Field id="inquiry-stage" label={`${copy.stage} (${copy.optional})`}>
-                    <select
-                      id="inquiry-stage"
-                      name="stage"
-                      defaultValue=""
-                      className={controlClass}
-                    >
-                      <option value="">{copy.choose}</option>
-                      {copy.stages.map((stage, index) => (
-                        <option key={index} value={index}>
-                          {stage}
-                        </option>
-                      ))}
-                    </select>
-                  </Field>
-                </div>
-                <Field id="inquiry-budget" label={`${copy.budget} (${copy.optional})`}>
+              </div>
+              <Field id="inquiry-company" label={`${copy.company} (${copy.optional})`}>
+                <input
+                  id="inquiry-company"
+                  name="company"
+                  maxLength={200}
+                  autoComplete="organization"
+                  className={controlClass}
+                />
+              </Field>
+              <Field id="inquiry-description" label={copy.description + " *"}>
+                <textarea
+                  id="inquiry-description"
+                  name="description"
+                  required
+                  maxLength={5000}
+                  rows={5}
+                  className={controlClass + " resize-y"}
+                />
+              </Field>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <Field id="inquiry-service" label={copy.service}>
                   <select
-                    id="inquiry-budget"
-                    name="budget"
-                    defaultValue="0"
+                    id="inquiry-service"
+                    name="services"
+                    defaultValue=""
                     className={controlClass}
                   >
-                    {copy.budgets.map((budget, index) => (
-                      <option key={index} value={index}>
-                        {budget}
+                    <option value="">{copy.unsure}</option>
+                    {serviceIds.map((id) => (
+                      <option key={id} value={id}>
+                        {servicesCopy[lang].services[id].title}
                       </option>
                     ))}
                   </select>
                 </Field>
-                <Field id="inquiry-additional" label={`${copy.additional} (${copy.optional})`}>
-                  <textarea
-                    id="inquiry-additional"
-                    name="additional"
-                    maxLength={2000}
-                    rows={2}
-                    className={controlClass + " resize-y"}
-                  />
+                <Field id="inquiry-stage" label={`${copy.stage} (${copy.optional})`}>
+                  <select id="inquiry-stage" name="stage" defaultValue="" className={controlClass}>
+                    <option value="">{copy.choose}</option>
+                    {copy.stages.map((stage, index) => (
+                      <option key={index} value={index}>
+                        {stage}
+                      </option>
+                    ))}
+                  </select>
                 </Field>
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  className="hidden"
-                />
-                <p className="text-sm leading-relaxed text-muted-foreground">{copy.note}</p>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {privacy.contactDisclosure}{" "}
-                  <Link
-                    to="/privacy"
-                    className="underline underline-offset-4 hover:text-foreground"
-                  >
-                    {privacy.contactLink}
-                  </Link>
-                </p>
-                <button
-                  type="submit"
-                  disabled={state === "sending" || state === "success"}
-                  className="inline-flex min-h-12 items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:justify-self-start"
-                >
-                  {state === "sending" ? copy.sending : copy.send}
-                </button>
-              </fieldset>
-              <div role="status" aria-live="polite" className="mt-5 text-base leading-relaxed">
-                {state === "success" ? copy.success : ""}
               </div>
-              {state === "error" && (
-                <p role="alert" className="mt-3 text-base leading-relaxed text-destructive">
-                  {copy.error}
-                </p>
-              )}
-            </form>
-          </HomepageReveal>
+              <Field id="inquiry-budget" label={`${copy.budget} (${copy.optional})`}>
+                <select id="inquiry-budget" name="budget" defaultValue="0" className={controlClass}>
+                  {copy.budgets.map((budget, index) => (
+                    <option key={index} value={index}>
+                      {budget}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+              <Field id="inquiry-additional" label={`${copy.additional} (${copy.optional})`}>
+                <textarea
+                  id="inquiry-additional"
+                  name="additional"
+                  maxLength={2000}
+                  rows={2}
+                  className={controlClass + " resize-y"}
+                />
+              </Field>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
+              <p className="text-sm leading-relaxed text-muted-foreground">{copy.note}</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {privacy.contactDisclosure}{" "}
+                <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
+                  {privacy.contactLink}
+                </Link>
+              </p>
+              <button
+                type="submit"
+                disabled={state === "sending" || state === "success"}
+                className="site-button sm:justify-self-start"
+              >
+                {state === "sending" ? copy.sending : copy.send}
+              </button>
+            </fieldset>
+            <div role="status" aria-live="polite" className="mt-5 text-base leading-relaxed">
+              {state === "success" ? copy.success : ""}
+            </div>
+            {state === "error" && (
+              <p role="alert" className="mt-3 text-base leading-relaxed text-destructive">
+                {copy.error}
+              </p>
+            )}
+          </form>
         </div>
-      </main>
-      <HomeFooter />
-    </>
+      </div>
+    </SitePage>
   );
 }
 

@@ -8,7 +8,9 @@ import { TechnicalProof } from "@/components/site/TechnicalProof";
 import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { HomeFooter } from "@/components/site/HomeFooter";
-import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { BrandReveal } from "@/components/site/BrandReveal";
+import "@/components/site/brand-motion.css";
+import "@/components/site/home-accessibility.css";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -30,7 +32,8 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: "Custom Software Development & AI Solutions | ZahTech" },
       {
         name: "twitter:description",
-        content: "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch.",
+        content:
+          "Maryland-based tech consulting: custom apps, cloud & DevOps, AI-powered build and MVP launch.",
       },
     ],
     scripts: [
@@ -61,7 +64,13 @@ export const Route = createFileRoute("/")({
             { "@type": "Country", name: "United States" },
             "Worldwide",
           ],
-          knowsAbout: ["Custom software development", "Web application development", "AI solutions", "Cloud and DevOps", "MVP development"],
+          knowsAbout: [
+            "Custom software development",
+            "Web application development",
+            "AI solutions",
+            "Cloud and DevOps",
+            "MVP development",
+          ],
           sameAs: ["https://github.com/Zahtech-z", "https://x.com/ZahTech_z"],
           contactPoint: {
             "@type": "ContactPoint",
@@ -80,7 +89,12 @@ export const Route = createFileRoute("/")({
           name: "Custom Software Development",
           provider: { "@id": "https://zahtech.org/#organization" },
           url: "https://zahtech.org/#services",
-          serviceType: ["Custom web application development", "MVP development", "Cloud and DevOps", "AI-powered software development"],
+          serviceType: [
+            "Custom web application development",
+            "MVP development",
+            "Cloud and DevOps",
+            "AI-powered software development",
+          ],
           areaServed: "Worldwide",
         }),
       },
@@ -95,7 +109,12 @@ export const Route = createFileRoute("/")({
           worksFor: { "@id": "https://zahtech.org/#organization" },
           url: "https://zahtech.org/",
           sameAs: ["https://linkedin.com/in/anicetzt"],
-          knowsAbout: ["Custom software development", "AI solutions", "Cloud and DevOps", "Technology consulting"],
+          knowsAbout: [
+            "Custom software development",
+            "AI solutions",
+            "Cloud and DevOps",
+            "Technology consulting",
+          ],
         }),
       },
     ],
@@ -106,26 +125,26 @@ function Index() {
   return (
     <>
       <SkipLink />
-      <Nav />
+      <Nav floating liquidGlass />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />
-        <HomepageReveal>
+        <BrandReveal selector=".selected-work__header, .selected-work__details">
           <SelectedWork />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-services__intro">
           <Services />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-engineering__eyebrow, .home-engineering__header">
           <TechnicalProof />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-process__header">
           <Process />
-        </HomepageReveal>
-        <HomepageReveal>
+        </BrandReveal>
+        <BrandReveal selector=".home-contact__eyebrow, h2, .home-contact__description, .home-contact__project, .home-contact__email">
           <Contact />
-        </HomepageReveal>
+        </BrandReveal>
       </main>
-      <HomeFooter />
+      <HomeFooter dark />
     </>
   );
 }

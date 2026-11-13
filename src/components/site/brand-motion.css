@@ -1,0 +1,100 @@
+/* Motion enhances the approved layout; content is visible before JavaScript. */
+.home-hero__line {
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.home-hero__line > span {
+  display: block;
+}
+.engineering-motion {
+  position: relative;
+  display: flow-root;
+}
+.engineering-motion__horizontal {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--brand-signal);
+  transform-origin: left;
+  pointer-events: none;
+}
+.engineering-motion__vertical {
+  display: none;
+}
+:is(
+    .home-hero,
+    .selected-work,
+    .home-services,
+    .home-contact,
+    .home-footer,
+    .services-page,
+    .work-page
+  )
+  a
+  svg {
+  transition: transform 220ms ease;
+}
+:is(
+    .home-hero,
+    .selected-work,
+    .home-services,
+    .home-contact,
+    .home-footer,
+    .services-page,
+    .work-page
+  )
+  a:hover
+  svg {
+  transform: translate(3px, -3px);
+}
+@media (max-width: 1023px) {
+  .engineering-motion__horizontal {
+    display: none;
+  }
+  .engineering-motion__vertical {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    left: 0.25rem;
+    width: 1px;
+    height: calc(100% - 3rem);
+    background: var(--brand-signal);
+    transform-origin: top;
+    pointer-events: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-motion-state],
+  [data-motion-state] [style] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  :is(
+      .home-hero,
+      .selected-work,
+      .home-services,
+      .home-contact,
+      .home-footer,
+      .services-page,
+      .work-page
+    )
+    a
+    svg {
+    transition: none;
+    transform: none !important;
+  }
+  .selected-work__image {
+    transform: none !important;
+  }
+}
+[data-motion-state]:focus-within,
+[data-motion-state]:focus-within [style] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.home-hero__discover:hover svg {
+  transform: translateY(3px);
+}

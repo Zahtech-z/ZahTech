@@ -1,0 +1,28 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "six existing services and their order preserved; Inter applied",
+    "contact and services links have valid destinations and 44px minimum targets",
+    "keyboard tab order and visible focus ring verified",
+    "both CTAs navigate; Services uses the shared floating navigation",
+    "en 320: headings, descriptions and links fit viewport",
+    "fr 320: headings, descriptions and links fit viewport",
+    "es 320: headings, descriptions and links fit viewport",
+    "en 390: headings, descriptions and links fit viewport",
+    "fr 390: headings, descriptions and links fit viewport",
+    "es 390: headings, descriptions and links fit viewport",
+    "en 768: headings, descriptions and links fit viewport",
+    "fr 768: headings, descriptions and links fit viewport",
+    "es 768: headings, descriptions and links fit viewport",
+    "en 1024: headings, descriptions and links fit viewport",
+    "fr 1024: headings, descriptions and links fit viewport",
+    "es 1024: headings, descriptions and links fit viewport",
+    "en 1440: headings, descriptions and links fit viewport",
+    "fr 1440: headings, descriptions and links fit viewport",
+    "es 1440: headings, descriptions and links fit viewport",
+    "reduced motion: visible content and disabled link transitions",
+    "no JavaScript: six services and navigation remain available"
+  ],
+  "errors": []
+}

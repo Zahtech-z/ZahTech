@@ -1,0 +1,28 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "one documented OnzScore project, current artwork, verified live status, technologies and illustrative-data note",
+    "original full-size image link and safe new-tab attributes preserved",
+    "case-study link navigates to existing OnzScore case study",
+    "work link navigates to the unchanged Work page",
+    "en 320: localized content stays within viewport",
+    "fr 320: localized content stays within viewport",
+    "es 320: localized content stays within viewport",
+    "en 390: localized content stays within viewport",
+    "fr 390: localized content stays within viewport",
+    "es 390: localized content stays within viewport",
+    "en 768: localized content stays within viewport",
+    "fr 768: localized content stays within viewport",
+    "es 768: localized content stays within viewport",
+    "en 1024: localized content stays within viewport",
+    "fr 1024: localized content stays within viewport",
+    "es 1024: localized content stays within viewport",
+    "en 1440: localized content stays within viewport",
+    "fr 1440: localized content stays within viewport",
+    "es 1440: localized content stays within viewport",
+    "reduced motion: section visible and image hover transition disabled",
+    "no JavaScript: project content and case-study link remain available"
+  ],
+  "errors": []
+}

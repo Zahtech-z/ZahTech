@@ -4,7 +4,7 @@ import { WorkCta } from "@/components/work/WorkCta";
 import { useLang } from "@/lib/i18n";
 import { projects } from "@/lib/projects";
 import { workCopy } from "@/lib/work-copy";
-import { HomepageReveal } from "@/components/site/HomepageReveal";
+import { BrandReveal } from "@/components/site/BrandReveal";
 
 export const Route = createFileRoute("/work/")({
   component: WorkIndex,
@@ -27,22 +27,18 @@ function WorkIndex() {
   const copy = workCopy[lang];
   return (
     <>
-      <HomepageReveal as="header" className="mx-auto max-w-7xl px-4 pb-9 sm:px-6 sm:pb-12" entrance>
-        <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-          {copy.title}
-        </h1>
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          {copy.intro}
-        </p>
-      </HomepageReveal>
-      <div className="mx-auto max-w-7xl space-y-10 px-4 pb-10 sm:px-6 sm:pb-14">
+      <BrandReveal as="header" className="work-page__header" selector="h1, p">
+        <h1>{copy.title}</h1>
+        <p>{copy.intro}</p>
+      </BrandReveal>
+      <div className="work-page__projects">
         {projects.map((project) => (
-          <HomepageReveal key={project.slug}>
-            <ProjectPreview project={project} />
-          </HomepageReveal>
+          <ProjectPreview key={project.slug} project={project} />
         ))}
       </div>
-      <WorkCta />
+      <BrandReveal selector="h2, a">
+        <WorkCta editorial />
+      </BrandReveal>
     </>
   );
 }
