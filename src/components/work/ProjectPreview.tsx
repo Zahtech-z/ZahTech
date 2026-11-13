@@ -4,6 +4,7 @@ import { useLang } from "@/lib/i18n";
 import type { PortfolioProject } from "@/lib/projects";
 import { workCopy } from "@/lib/work-copy";
 import { ProjectImage } from "./ProjectImage";
+import { BrandReveal } from "@/components/site/BrandReveal";
 
 export function ProjectPreview({
   project,
@@ -20,36 +21,47 @@ export function ProjectPreview({
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const firstView = project.views[0];
   return (
-    <article className="grid items-start gap-6 border-t border-border pt-6 sm:pt-8 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
-      <div className="min-w-0 lg:pt-1">
-        <p className="mb-3 flex items-center gap-2 text-xs text-secondary-foreground">
-          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-primary" />
+    <article className="work-project" aria-labelledby={`work-project-${project.slug}`}>
+      <div className="work-project__label">
+        <p>
+          <span aria-hidden="true" />
           {copy.ownership}
         </p>
-        <Heading className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-          {project.name}
-        </Heading>
-        {project.category && <p className="mt-3 text-sm font-medium">{presentation.category}</p>}
-        <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-          {presentation.shortDescription}
-        </p>
-        <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-xs text-secondary-foreground">
-          {project.featuredTechnologies.map((technology) => (
-            <li key={technology}>{technology}</li>
-          ))}
-        </ul>
-        <Link
-          to={`/work/${project.slug}`}
-          className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-medium underline decoration-border underline-offset-4 hover:decoration-foreground"
-        >
-          {copy.caseStudy}
-          <span className="sr-only"> — {project.name}</span>
-          <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
-        </Link>
+        {project.status && <p>{presentation.status}</p>}
       </div>
       {firstView && (
-        <ProjectImage project={project} view={firstView} interactive reveal={imageReveal} />
+        <BrandReveal className="work-project__visual">
+          <ProjectImage
+            project={project}
+            view={firstView}
+            loading="eager"
+            interactive
+            reveal={imageReveal}
+          />
+        </BrandReveal>
       )}
+      <BrandReveal
+        className="work-project__details"
+        selector=".work-project__identity, .work-project__summary"
+      >
+        <div className="work-project__identity">
+          <Heading id={`work-project-${project.slug}`}>{project.name}</Heading>
+          {project.category && <p>{presentation.category}</p>}
+          <ul aria-label={copy.engineering}>
+            {project.featuredTechnologies.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="work-project__summary">
+          <p>{presentation.shortDescription}</p>
+          <Link to={`/work/${project.slug}`} className="work-project__link">
+            {copy.caseStudy}
+            <span className="sr-only"> — {project.name}</span>
+            <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+          </Link>
+        </div>
+      </BrandReveal>
     </article>
   );
 }

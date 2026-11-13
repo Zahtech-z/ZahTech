@@ -62,7 +62,8 @@ const screenshotStyle =
     await ready();
     await section.locator(".selected-work__all").click();
     await page.waitForURL(`${baseURL}/work`);
-    await page.locator(".home-nav").waitFor({ state: "detached" });
+    await page.locator(".work-page").waitFor();
+    assert.equal(await page.locator(".home-nav").count(), 1);
     assert.equal(await page.locator(".selected-work").count(), 0);
     checks.push("work link navigates to the unchanged Work page");
     await page.goto(baseURL);
